@@ -1,0 +1,29 @@
+.img-responsive {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 100%;
+    max-height: 100px;
+}
+
+.lang-icons {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+form {
+    margin-top: 100px;
+}
+
+.form-container {
+    background: #e8e9e9;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 0px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

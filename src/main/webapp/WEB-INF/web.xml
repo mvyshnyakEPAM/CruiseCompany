@@ -1,0 +1,77 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>language</param-name>
+    <param-value>en</param-value>
+  </context-param>
+
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <listener>
+    <listener-class>ua.training.controller.listeners.ContextListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>ua.training.controller.listeners.SessionListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>ua.training.controller.servlets.Servlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/language</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/guest/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/client/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Servlet</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>ua.training.controller.filters.EncodingFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>ua.training.controller.filters.AuthFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/company/client/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/company/admin/*</url-pattern>
+  </filter-mapping>
+</web-app>
