@@ -1,12 +1,12 @@
 package ua.training.controller.commands;
 
+import ua.training.constants.Attributes;
+import ua.training.constants.Pages;
 import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
+import ua.training.model.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static ua.training.controller.constants.Attributes.ATTRIBUTE_USER;
-import static ua.training.controller.constants.Pages.PAGE_INDEX;
 
 /**
  * Максим
@@ -15,7 +15,8 @@ import static ua.training.controller.constants.Pages.PAGE_INDEX;
 public class LogoutCommand implements Command {
     @Override
     public ServletAction execute(HttpServletRequest request) {
-        request.getSession().removeAttribute(ATTRIBUTE_USER);
-        return new Redirect(PAGE_INDEX);
+        request.getSession().removeAttribute(Attributes.USER);
+        request.getSession().setAttribute(Attributes.ROLE, User.Role.GUEST);
+        return new Redirect(Pages.INDEX);
     }
 }

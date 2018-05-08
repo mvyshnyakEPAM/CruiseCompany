@@ -1,14 +1,11 @@
 package ua.training.controller.util;
 
-import ua.training.model.entities.User;
+import ua.training.constants.Attributes;
+import ua.training.constants.Messages;
+import ua.training.constants.RegExp;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import java.util.HashSet;
-import java.util.Set;
-
-import static ua.training.controller.constants.Attributes.ATTRIBUTE_LOGGED_USERS;
-import static ua.training.controller.constants.Attributes.ATTRIBUTE_USER;
+import java.util.Optional;
 
 /**
  * Максим
@@ -16,19 +13,16 @@ import static ua.training.controller.constants.Attributes.ATTRIBUTE_USER;
  */
 @SuppressWarnings("unchecked")
 public class ControllerUtil {
-    public synchronized static boolean addLoggedUserToContext(HttpSession session, String login) {
-        ServletContext context = session.getServletContext();
-        Set<String> loggedUsers = (HashSet<String>) context.getAttribute(ATTRIBUTE_LOGGED_USERS);
-        boolean userAdded = loggedUsers.add(login);
-        context.setAttribute(ATTRIBUTE_LOGGED_USERS, loggedUsers);
-        return userAdded;
-    }
-
-    public synchronized static void deleteLoggedUserFromContext(HttpSession session) {
-        ServletContext context = session.getServletContext();
-        Set<String> loggedUsers = (HashSet<String>) context.getAttribute(ATTRIBUTE_LOGGED_USERS);
-        User user = (User) session.getAttribute(ATTRIBUTE_USER);
-        loggedUsers.remove(user.getLogin());
-        context.setAttribute(ATTRIBUTE_LOGGED_USERS, loggedUsers);
+    public static boolean isDataValid(HttpSession session, String login, String password) {
+        boolean valid = true;
+        if (!(Optional.ofNullable(login).isPresent() && login.matches(RegExp.LOGIN))) {
+            session.setAttribute(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
+            valid = false;
+        }
+        if (!(Optional.ofNullable(password).isPresent() && password.matches(RegExp.PASSWORD))) {
+            session.setAttribute(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
+            valid = false;
+        }
+        return valid;
     }
 }

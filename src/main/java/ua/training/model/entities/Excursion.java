@@ -90,6 +90,7 @@ public class Excursion {
 
         public Excursion build() {
             Excursion excursion = new Excursion();
+            excursion.setId(id);
             excursion.setName(name);
             excursion.setPrice(price);
             excursion.setPort(port);

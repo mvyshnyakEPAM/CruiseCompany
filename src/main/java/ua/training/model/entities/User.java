@@ -1,7 +1,5 @@
 package ua.training.model.entities;
 
-import ua.training.model.entities.enums.Role;
-
 import java.util.List;
 
 /**
@@ -9,12 +7,16 @@ import java.util.List;
  * 27.04.2018
  */
 public class User {
+    public enum Role {
+        GUEST, CLIENT, ADMIN
+    }
+
     private int id;
     private String login;
     private String password;
     private Role role;
 
-    private List<Ticket> tickets;
+    private List<Ship> cruises;
     private List<Excursion> excursions;
 
     public int getId() {
@@ -49,12 +51,12 @@ public class User {
         this.role = role;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<Ship> getCruises() {
+        return cruises;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setCruises(List<Ship> cruises) {
+        this.cruises = cruises;
     }
 
     public List<Excursion> getExcursions() {
@@ -71,7 +73,7 @@ public class User {
         private String password;
         private Role role;
 
-        private List<Ticket> tickets;
+        private List<Ship> tickets;
         private List<Excursion> excursions;
 
         public UserBuilder setId(int id) {
@@ -94,7 +96,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder setTickets(List<Ticket> tickets) {
+        public UserBuilder setTickets(List<Ship> tickets) {
             this.tickets = tickets;
             return this;
         }
@@ -106,10 +108,11 @@ public class User {
 
         public User build() {
             User user = new User();
+            user.setId(id);
             user.setLogin(login);
             user.setPassword(password);
             user.setRole(role);
-            user.setTickets(tickets);
+            user.setCruises(tickets);
             user.setExcursions(excursions);
             return user;
         }

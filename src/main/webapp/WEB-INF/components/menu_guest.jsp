@@ -11,13 +11,13 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/"><fmt:message key="home_link"/> <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/guest/login-page">
+        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/login-page">
             <div class="col-auto pl-0">
                 <button class="btn btn-warning font-weight-bold" type="submit"><fmt:message key="signin_button"/></button>
             </div>
         </form>
 
-        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/guest/registration-page">
+        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/registration-page">
             <div class="col-auto pl-0 pr-0">
                 <button class="btn btn-warning font-weight-bold" type="submit"><fmt:message key="signup_button"/></button>
             </div>

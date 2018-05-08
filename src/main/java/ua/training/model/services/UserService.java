@@ -1,7 +1,11 @@
 package ua.training.model.services;
 
+import ua.training.model.dao.UserDao;
+import ua.training.model.dao.cp.ConnectionPool;
+import ua.training.model.dao.factory.DaoFactory;
 import ua.training.model.entities.User;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 /**
@@ -9,6 +13,8 @@ import java.util.Optional;
  * 30.04.2018
  */
 public class UserService {
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+
     private final static class Holder {
         private static final UserService INSTANCE = new UserService();
     }
@@ -22,6 +28,14 @@ public class UserService {
     }
 
     public Optional<User> signIn(String login, String password) {
-        return Optional.empty();
+        Connection connection = ConnectionPool.getConnection();
+        try(UserDao userDao = daoFactory.createUserDao(connection)) {
+            Optional<User> user = userDao.getUserByLogin(login);
+            if (user.isPresent() && password.equals(user.get().getPassword())) {
+                return user;
+            } else {
+                return Optional.empty();
+            }
+        }
     }
 }

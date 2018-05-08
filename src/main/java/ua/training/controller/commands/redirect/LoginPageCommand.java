@@ -1,12 +1,11 @@
 package ua.training.controller.commands.redirect;
 
 import ua.training.controller.commands.Command;
+import ua.training.constants.Pages;
 import ua.training.controller.servlets.actions.Forward;
 import ua.training.controller.servlets.actions.ServletAction;
 
 import javax.servlet.http.HttpServletRequest;
-
-import static ua.training.controller.constants.Pages.PAGE_LOGIN;
 
 /**
  * Максим
@@ -15,6 +14,6 @@ import static ua.training.controller.constants.Pages.PAGE_LOGIN;
 public class LoginPageCommand implements Command {
     @Override
     public ServletAction execute(HttpServletRequest request) {
-        return new Forward(PAGE_LOGIN);
+        return new Forward(Pages.LOGIN);
     }
 }

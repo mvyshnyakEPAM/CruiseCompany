@@ -1,23 +1,19 @@
 package ua.training.controller.commands;
 
+import ua.training.constants.Attributes;
+import ua.training.constants.Messages;
+import ua.training.constants.Parameters;
+import ua.training.constants.URLs;
+import ua.training.controller.listeners.LoginDto;
 import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
+import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.User;
-import ua.training.model.entities.enums.Role;
 import ua.training.model.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
-import static ua.training.controller.constants.Attributes.ATTRIBUTE_MESSAGE;
-import static ua.training.controller.constants.Attributes.ATTRIBUTE_USER;
-import static ua.training.controller.constants.Messages.MESSAGE_LOGIN_FAIL;
-import static ua.training.controller.constants.Parameters.PARAMETER_LOGIN;
-import static ua.training.controller.constants.Parameters.PARAMETER_PASSWORD;
-import static ua.training.controller.constants.URLs.URL_ADMIN;
-import static ua.training.controller.constants.URLs.URL_CLIENT;
-import static ua.training.controller.constants.URLs.URL_LOGIN;
-import static ua.training.controller.util.ControllerUtil.*;
 
 /**
  * Максим
@@ -28,35 +24,30 @@ public class LoginCommand implements Command {
 
     @Override
     public ServletAction execute(HttpServletRequest request) {
-        String login = request.getParameter(PARAMETER_LOGIN);
-        String password = request.getParameter(PARAMETER_PASSWORD);
+        String login = request.getParameter(Parameters.LOGIN);
+        String password = request.getParameter(Parameters.PASSWORD);
 
+        if (!ControllerUtil.isDataValid(request.getSession(), login, password)) {
+            return new Redirect(URLs.LOGIN);
+        }
+
+        HttpSession session = request.getSession();
         Optional<User> user = userService.signIn(login, password);
-
-        boolean isLogged = user.isPresent() &&
-                addLoggedUserToContext(request.getSession(), user.get().getLogin());
-
-        if (isLogged) {
-            request.getSession().setAttribute(ATTRIBUTE_USER, user);
+        if (user.isPresent()) {
+            session.setAttribute(Attributes.USER, new LoginDto(login));
+            session.setAttribute(Attributes.ROLE, user.get().getRole());
             return new Redirect(getUserPage(user.get().getRole()));
         } else {
-            request.setAttribute(ATTRIBUTE_MESSAGE, MESSAGE_LOGIN_FAIL);
-            return new Redirect(URL_LOGIN);
+            request.setAttribute(Attributes.MESSAGE, Messages.LOGIN_FAIL);
+            return new Redirect(URLs.LOGIN);
         }
-
-        /*if (login.equals("user") && password.equals("123")) {
-            return new Redirect(URL_CLIENT);
-        } else if (login.equals("admin") && password.equals("321")) {
-            return new Redirect(URL_ADMIN);
-        }
-        return new Redirect(PAGE_INDEX);*/
     }
 
-    private String getUserPage(Role role) {
-        if (role == Role.CLIENT) {
-            return URL_CLIENT;
+    private String getUserPage(User.Role role) {
+        if (role == User.Role.CLIENT) {
+            return URLs.CLIENT;
         } else {
-            return URL_ADMIN;
+            return URLs.ADMIN;
         }
     }
 }

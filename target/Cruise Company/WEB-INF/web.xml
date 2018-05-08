@@ -18,10 +18,6 @@
   </welcome-file-list>
 
   <listener>
-    <listener-class>ua.training.controller.listeners.ContextListener</listener-class>
-  </listener>
-
-  <listener>
     <listener-class>ua.training.controller.listeners.SessionListener</listener-class>
   </listener>
 
@@ -32,22 +28,7 @@
 
   <servlet-mapping>
     <servlet-name>Servlet</servlet-name>
-    <url-pattern>/language</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Servlet</servlet-name>
-    <url-pattern>/guest/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Servlet</servlet-name>
-    <url-pattern>/client/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Servlet</servlet-name>
-    <url-pattern>/admin/*</url-pattern>
+    <url-pattern>/company/*</url-pattern>
   </servlet-mapping>
 
   <filter>
@@ -67,11 +48,6 @@
 
   <filter-mapping>
     <filter-name>AuthFilter</filter-name>
-    <url-pattern>/company/client/*</url-pattern>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>AuthFilter</filter-name>
-    <url-pattern>/company/admin/*</url-pattern>
+    <url-pattern>/company/*</url-pattern>
   </filter-mapping>
 </web-app>

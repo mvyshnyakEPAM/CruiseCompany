@@ -1,7 +1,6 @@
 package ua.training.model.entities;
 
-import ua.training.model.entities.enums.ShipClass;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,18 +9,26 @@ import java.util.List;
  * 27.04.2018
  */
 public class Ship {
+    public enum Class {
+        STANDART, PREMIUM, LUX
+    }
+
+    public enum  Bonus {
+    }
     private int id;
     private String cruiseName;
+    private BigDecimal price;
     private int portsVisited;
     private LocalDate departure;
     private LocalDate arrival;
     private int cruiseDuration;
-    private ShipClass shipClass;
+    private Class shipClass;
     private int passengerCapacity;
     private int staff;
 
     private List<Port> ports;
-    private List<Ticket> tickets;
+    private List<User> users;
+    private List<Bonus> bonuses;
 
     public int getId() {
         return id;
@@ -37,6 +44,14 @@ public class Ship {
 
     public void setCruiseName(String cruiseName) {
         this.cruiseName = cruiseName;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public int getPortsVisited() {
@@ -71,11 +86,11 @@ public class Ship {
         this.cruiseDuration = cruiseDuration;
     }
 
-    public ShipClass getShipClass() {
+    public Class getShipClass() {
         return shipClass;
     }
 
-    public void setShipClass(ShipClass shipClass) {
+    public void setShipClass(Class shipClass) {
         this.shipClass = shipClass;
     }
 
@@ -103,27 +118,37 @@ public class Ship {
         this.ports = ports;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setUsers(List<User> tickets) {
+        this.users = tickets;
+    }
+
+    public List<Bonus> getBonuses() {
+        return bonuses;
+    }
+
+    public void setBonuses(List<Bonus> bonuses) {
+        this.bonuses = bonuses;
     }
 
     public static final class ShipBuilder {
         private int id;
         private String cruiseName;
+        private BigDecimal price;
         private int portsVisited;
         private LocalDate departure;
         private LocalDate arrival;
         private int cruiseDuration;
-        private ShipClass shipClass;
+        private Class shipClass;
         private int passengerCapacity;
         private int staff;
 
         private List<Port> ports;
-        private List<Ticket> tickets;
+        private List<User> users;
+        private List<Bonus> bonuses;
 
         public ShipBuilder setId(int id) {
             this.id = id;
@@ -132,6 +157,11 @@ public class Ship {
 
         public ShipBuilder setCruiseName(String cruiseName) {
             this.cruiseName = cruiseName;
+            return this;
+        }
+
+        public ShipBuilder setPrice(BigDecimal price) {
+            this.price = price;
             return this;
         }
 
@@ -155,7 +185,7 @@ public class Ship {
             return this;
         }
 
-        public ShipBuilder setShipClass(ShipClass shipClass) {
+        public ShipBuilder setShipClass(Class shipClass) {
             this.shipClass = shipClass;
             return this;
         }
@@ -175,14 +205,21 @@ public class Ship {
             return this;
         }
 
-        public ShipBuilder setTickets(List<Ticket> tickets) {
-            this.tickets = tickets;
+        public ShipBuilder setUsers(List<User> users) {
+            this.users = users;
+            return this;
+        }
+
+        public ShipBuilder setBonuses(List<Bonus> bonuses) {
+            this.bonuses = bonuses;
             return this;
         }
 
         public Ship build() {
             Ship ship = new Ship();
+            ship.setId(id);
             ship.setCruiseName(cruiseName);
+            ship.setPrice(price);
             ship.setPortsVisited(portsVisited);
             ship.setDeparture(departure);
             ship.setArrival(arrival);
@@ -190,6 +227,9 @@ public class Ship {
             ship.setShipClass(shipClass);
             ship.setPassengerCapacity(passengerCapacity);
             ship.setStaff(staff);
+            ship.setPorts(ports);
+            ship.setUsers(users);
+            ship.setBonuses(bonuses);
             return ship;
         }
     }
