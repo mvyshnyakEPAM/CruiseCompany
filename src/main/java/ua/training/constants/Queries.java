@@ -28,6 +28,7 @@ public interface Queries {
                                     "WHERE port_has_cruises.cruises_id = ?\n" +
                                     "ORDER BY port_has_cruises.number";
 
+
     String SHIP_CREATE = "INSERT INTO ships (cruise_name, ports_visited, departure, arrival, " +
                             "duration, ship_class, passenger_capacity, staff) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     String SHIP_FIND_BY_ID = "SELECT * FROM ships WHERE id = ?";
@@ -35,6 +36,8 @@ public interface Queries {
     String SHIP_UPDATE = "UPDATE ships SET cruise_name = ?, ports_visited = ?, departure = ?, arrival = ?, " +
                             "duration = ?, ship_class = ?, passenger_capacity = ?, staff = ? WHERE id = ?";
     String SHIP_DELETE = "DELETE FROM ships WHERE id = ?";
+    String SHIP_COUNT = "SELECT count(*) FROM ships";
+    String SHIP_FIND_ALL_PER_PAGE = "SELECT * FROM ships LIMIT 4 OFFSET ?";
     String SHIP_ADD_BONUS_TO_SHIP = "INSERT INTO ship_bonuses (ship_id, bonus) VALUES (?, ?)";
     String SHIP_DELETE_BONUS_FROM_SHIP = "DELETE FROM ship_bonuses WHERE ship_id = ? AND bonus = ?";
     String SHIP_ADD_TO_USER = "INSERT INTO users_has_ships (users_id, ships_id) VALUES (?, ?)";

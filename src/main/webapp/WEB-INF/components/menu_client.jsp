@@ -10,7 +10,7 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/company/client"><fmt:message key="home_link"/> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/company/client/show-cruises"><fmt:message key="cruises_link"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/company/client/show-cruises?page=1"><fmt:message key="cruises_link"/></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}client/logout">

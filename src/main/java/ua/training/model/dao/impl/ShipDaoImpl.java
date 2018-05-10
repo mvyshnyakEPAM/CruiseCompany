@@ -24,6 +24,20 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
+    public int countAllShips() {
+        try(Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(Queries.SHIP_COUNT);
+            int ships = 0;
+            while (resultSet.next()) {
+                ships = resultSet.getInt(1);
+            }
+            return ships;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void create(Ship entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_CREATE)) {
             ps.setString(1, entity.getCruiseName());
@@ -99,6 +113,22 @@ public class ShipDaoImpl implements ShipDao {
                 ship = extractEntityFromResultSet(resultSet);
             }
             return Optional.ofNullable(ship);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Ship> getAllShipsPerPage(int pageNumber) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_ALL_PER_PAGE)) {
+            ps.setInt(1, pageNumber * 4 - 4);
+            ResultSet resultSet = ps.executeQuery();
+            List<Ship> ships = new ArrayList<>();
+            while (resultSet.next()) {
+                Ship ship = extractEntityFromResultSet(resultSet);
+                ships.add(ship);
+            }
+            return ships;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

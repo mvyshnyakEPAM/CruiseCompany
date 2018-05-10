@@ -32,6 +32,13 @@
         </c:forEach>
         </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <c:forEach var="number" begin="1" end="${requestScope.numberOfPages}">
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/client/show-cruises?page=${number}">${number}</a></li>
+            </c:forEach>
+        </ul>
+    </nav>
 </div>
 
 <jsp:include page="/WEB-INF/components/footer.jsp"/>

@@ -35,4 +35,24 @@ public class ShipService {
             return ships;
         }
     }
+
+    public List<Ship> getCruisesPerPage(int pageNumber) {
+        Connection connection = ConnectionPool.getConnection();
+        try(ShipDao shipDao = daoFactory.createShipDao(connection);
+            PortDao portDao = daoFactory.createPortDao(connection)) {
+            List<Ship> ships = shipDao.getAllShipsPerPage(pageNumber);
+            for (Ship ship : ships) {
+                ship.setPorts(portDao.getAllPortsByShip(ship.getId()));
+            }
+            return ships;
+        }
+    }
+
+    public int getNumberOfPages() {
+        Connection connection = ConnectionPool.getConnection();
+        try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
+            int numberOfShips = shipDao.countAllShips();
+            return (int) Math.ceil(numberOfShips / 4.0);
+        }
+    }
 }
