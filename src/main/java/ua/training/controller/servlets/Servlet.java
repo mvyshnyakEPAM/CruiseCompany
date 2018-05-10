@@ -41,7 +41,7 @@ public class Servlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Command command = commandFactory.getCommand(request.getRequestURI());
+        Command command = commandFactory.getCommand(request);
         ServletAction action = command.execute(request);
         action.execute(request, response);
     }

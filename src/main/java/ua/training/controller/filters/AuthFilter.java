@@ -1,8 +1,8 @@
 package ua.training.controller.filters;
 
 import ua.training.constants.Attributes;
-import ua.training.constants.Pages;
 import ua.training.constants.RegExp;
+import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.User;
 
 import javax.servlet.FilterChain;
@@ -39,8 +39,7 @@ public class AuthFilter extends BaseFilter {
         if (isAccessAllowed(userRole, request.getRequestURI())) {
             filterChain.doFilter(request, response);
         } else {
-            session.setAttribute(Attributes.ROLE, User.Role.GUEST);
-            response.sendRedirect(Pages.INDEX);
+            response.sendRedirect(ControllerUtil.getUserPage(userRole));
         }
     }
 

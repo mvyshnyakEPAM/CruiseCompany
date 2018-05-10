@@ -1,8 +1,8 @@
 package ua.training.model.dao.impl;
 
+import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.ShipDao;
-import ua.training.constants.Queries;
 import ua.training.model.entities.Ship;
 
 import java.sql.*;
@@ -41,10 +41,63 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
+    public void addShipToUser(int shipId, int userId) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_ADD_TO_USER)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, shipId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Ship> getAllShipsByUser(int userId) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_ALL_BY_USER)) {
+            ps.setInt(1, userId);
+            ResultSet resultSet = ps.executeQuery();
+            List<Ship> ships = new ArrayList<>();
+            while (resultSet.next()) {
+                Ship ship = extractEntityFromResultSet(resultSet);
+                ships.add(ship);
+            }
+            return ships;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addBonusToShip(int shipId, String bonus) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_ADD_BONUS_TO_SHIP)) {
+            ps.setInt(1, shipId);
+            ps.setString(2, bonus);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteBonusFromShip(int shipId, String bonus) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_DELETE_BONUS_FROM_SHIP)) {
+            ps.setInt(1, shipId);
+            ps.setString(2, bonus);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Optional<Ship> findById(int id) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_BY_ID)) {
             ps.setInt(1, id);
-            Ship ship = extractEntityFromResultSet(ps.executeQuery());
+            ResultSet resultSet = ps.executeQuery();
+            Ship ship = null;
+            while (resultSet.next()) {
+                ship = extractEntityFromResultSet(resultSet);
+            }
             return Optional.ofNullable(ship);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -52,7 +105,7 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public Optional<List<Ship>> findAll() {
+    public List<Ship> findAll() {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.SHIP_FIND_ALL);
             List<Ship> ships = new ArrayList<>();
@@ -60,7 +113,7 @@ public class ShipDaoImpl implements ShipDao {
                 Ship ship = extractEntityFromResultSet(resultSet);
                 ships.add(ship);
             }
-            return Optional.of(ships);
+            return ships;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -107,11 +160,12 @@ public class ShipDaoImpl implements ShipDao {
         return new Ship.ShipBuilder()
                 .setId(resultSet.getInt(TableColumns.ID))
                 .setCruiseName(resultSet.getString(TableColumns.SHIP_CRUISE_NAME))
+                .setPrice(resultSet.getBigDecimal("price"))
                 .setPortsVisited(resultSet.getInt(TableColumns.SHIP_PORTS_VISITED))
                 .setDeparture(LocalDate.parse(resultSet.getString(TableColumns.SHIP_DEPARTURE),
-                        DateTimeFormatter.ISO_DATE))
+                        DateTimeFormatter.ofPattern("dd.MM.yyyy")))
                 .setArrival(LocalDate.parse(resultSet.getString(TableColumns.SHIP_ARRIVAL),
-                        DateTimeFormatter.ISO_DATE))
+                        DateTimeFormatter.ofPattern("dd.MM.yyyy")))
                 .setCruiseDuration(resultSet.getInt(TableColumns.SHIP_DURATION))
                 .setShipClass(Ship.Class.valueOf(resultSet.getString(TableColumns.SHIP_CLASS)))
                 .setPassengerCapacity(resultSet.getInt(TableColumns.SHIP_PASSENGER_CAPACITY))

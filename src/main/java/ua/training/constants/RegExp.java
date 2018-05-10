@@ -5,7 +5,7 @@ package ua.training.constants;
  * 04.05.2018
  */
 public interface RegExp {
-    String CLIENT_URL = "(/company/(client|language)|/company/client.*/(logout))";
+    String CLIENT_URL = "(/company/(client|language)|/company/client.*/(logout|show-cruises))";
     String ADMIN_URL = "(/company/(admin|language)|/company/admin.*/(logout))";
     String GUEST_URL = "/company/(login-page|login|registration-page|register|language)";
 

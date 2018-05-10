@@ -1,13 +1,17 @@
 package ua.training.controller.commands;
 
+import ua.training.constants.Attributes;
+import ua.training.constants.Commands;
+import ua.training.controller.commands.client.ShowCruisesCommand;
 import ua.training.controller.commands.redirect.AdminPageCommand;
 import ua.training.controller.commands.redirect.ClientPageCommand;
 import ua.training.controller.commands.redirect.LoginPageCommand;
 import ua.training.controller.commands.redirect.RegistrationPageCommand;
-import ua.training.constants.Commands;
-import ua.training.constants.Pages;
 import ua.training.controller.servlets.actions.Redirect;
+import ua.training.controller.util.ControllerUtil;
+import ua.training.model.entities.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +31,7 @@ public class CommandFactory {
         commands.put(Commands.LOGIN, new LoginCommand());
         commands.put(Commands.LOGOUT, new LogoutCommand());
         commands.put(Commands.LANGUAGE, new LanguageCommand());
+        commands.put(Commands.SHOW_CRUISES, new ShowCruisesCommand());
     }
 
     private static class CommandFactoryHolder {
@@ -37,8 +42,11 @@ public class CommandFactory {
         return CommandFactoryHolder.INSTANCE;
     }
 
-    public Command getCommand(String uri) {
-        return commands.getOrDefault(extractCommand(uri), r -> new Redirect(Pages.INDEX));
+    public Command getCommand(HttpServletRequest request) {
+        String uri = request.getRequestURI();
+        User.Role role = (User.Role) request.getSession().getAttribute(Attributes.ROLE);
+        return commands.getOrDefault(extractCommand(uri),
+                r -> new Redirect(ControllerUtil.getUserPage(role)));
     }
 
     private static String extractCommand(String uri) {

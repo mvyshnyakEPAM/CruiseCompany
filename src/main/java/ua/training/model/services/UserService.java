@@ -1,5 +1,6 @@
 package ua.training.model.services;
 
+import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.model.dao.UserDao;
 import ua.training.model.dao.cp.ConnectionPool;
 import ua.training.model.dao.factory.DaoFactory;
@@ -23,8 +24,11 @@ public class UserService {
         return Holder.INSTANCE;
     }
 
-    public void signUp(User user) {
-
+    public void signUp(User user) throws LoginAlreadyExistsException {
+        Connection connection = ConnectionPool.getConnection();
+        try(UserDao userDao = daoFactory.createUserDao(connection)) {
+            userDao.create(user);
+        }
     }
 
     public Optional<User> signIn(String login, String password) {

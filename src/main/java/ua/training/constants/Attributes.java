@@ -9,6 +9,7 @@ public interface Attributes {
     String REFERER = "referer";
     String USER = "user";
     String MESSAGE = "message";
+    String MESSAGES = "messages";
     String LOGGED_USERS = "loggedUsers";
     String ROLE = "role";
     String LOGIN_MISMATCH = "loginMismatch";

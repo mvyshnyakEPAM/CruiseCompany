@@ -1,8 +1,8 @@
 package ua.training.model.dao.impl;
 
+import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.ExcursionDao;
-import ua.training.constants.Queries;
 import ua.training.model.entities.Excursion;
 
 import java.sql.*;
@@ -34,10 +34,41 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
+    public void addExcursionToUser(int excursionId, int userID) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_ADD_TO_USER)) {
+            ps.setInt(1, excursionId);
+            ps.setInt(2, userID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Excursion> getAllExcursionsByUser(int userId) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_ALL_BY_USER)) {
+            ps.setInt(1, userId);
+            ResultSet resultSet = ps.executeQuery();
+            List<Excursion> excursions = new ArrayList<>();
+            while (resultSet.next()) {
+                Excursion excursion = extractEntityFromResultSet(resultSet);
+                excursions.add(excursion);
+            }
+            return excursions;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Optional<Excursion> findById(int id) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_BY_ID)) {
             ps.setInt(1, id);
-            Excursion excursion = extractEntityFromResultSet(ps.executeQuery());
+            ResultSet resultSet = ps.executeQuery();
+            Excursion excursion = null;
+            while (resultSet.next()) {
+                excursion = extractEntityFromResultSet(resultSet);
+            }
             return Optional.ofNullable(excursion);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -45,7 +76,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public Optional<List<Excursion>> findAll() {
+    public List<Excursion> findAll() {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.EXCURSION_FIND_ALL);
             List<Excursion> excursions = new ArrayList<>();
@@ -53,7 +84,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
                 Excursion excursion = extractEntityFromResultSet(resultSet);
                 excursions.add(excursion);
             }
-            return Optional.of(excursions);
+            return excursions;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

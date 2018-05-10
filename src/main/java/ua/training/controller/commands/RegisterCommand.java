@@ -1,33 +1,35 @@
 package ua.training.controller.commands;
 
-import ua.training.constants.Attributes;
-import ua.training.constants.Messages;
-import ua.training.constants.Parameters;
-import ua.training.constants.URLs;
+import ua.training.constants.*;
+import ua.training.controller.exceptions.LoginAlreadyExistsException;
+import ua.training.controller.servlets.actions.Forward;
 import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
+import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.User;
 import ua.training.model.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Максим
  * 29.04.2018
  */
 public class RegisterCommand implements Command {
-    private UserService userService = UserService.getInstance();
+    UserService userService = UserService.getInstance();
 
     @Override
     public ServletAction execute(HttpServletRequest request) {
         try {
             String login = request.getParameter(Parameters.LOGIN);
             String password = request.getParameter(Parameters.PASSWORD);
+            Map<String, String> messages = new HashMap<>();
 
-            if (isDataValid(request.getSession(), login, password)) {
-                return new Redirect(URLs.REGISTRATION);
+            if (!ControllerUtil.isDataValid(messages, login, password)) {
+                request.setAttribute(Attributes.MESSAGES, messages);
+                return new Forward(Pages.REGISTRATION);
             }
 
             User user = new User.UserBuilder()
@@ -38,22 +40,9 @@ public class RegisterCommand implements Command {
 
             userService.signUp(user);
             return new Redirect(URLs.LOGIN);
-        } catch (Exception e) {
+        } catch (LoginAlreadyExistsException e) {
             request.setAttribute(Attributes.MESSAGE, Messages.REGISTRATION_FAIL);
         }
-        return new Redirect(URLs.REGISTRATION);
-    }
-
-    private boolean isDataValid(HttpSession session, String login, String password) {
-        boolean valid = true;
-        if (!(Optional.ofNullable(login).isPresent() && login.matches(""))) {
-            session.setAttribute("loginError", "invalid_login_input_message");
-            valid = false;
-        }
-        if (!(Optional.ofNullable(password).isPresent() && password.matches(""))) {
-            session.setAttribute("passwordError", "invalid_password_input_message");
-            valid = false;
-        }
-        return valid;
+        return new Forward(Pages.REGISTRATION);
     }
 }

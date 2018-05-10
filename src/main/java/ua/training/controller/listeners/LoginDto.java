@@ -47,4 +47,19 @@ public class LoginDto implements HttpSessionBindingListener {
         loggedUsers.remove(login);
         context.setAttribute(Attributes.LOGGED_USERS, loggedUsers);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LoginDto loginDto = (LoginDto) o;
+
+        return login != null ? login.equals(loginDto.login) : loginDto.login == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return login != null ? login.hashCode() : 0;
+    }
 }

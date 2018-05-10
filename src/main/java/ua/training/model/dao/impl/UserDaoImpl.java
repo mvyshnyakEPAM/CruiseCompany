@@ -1,6 +1,7 @@
 package ua.training.model.dao.impl;
 
 import ua.training.constants.TableColumns;
+import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.model.dao.UserDao;
 import ua.training.constants.Queries;
 import ua.training.model.entities.User;
@@ -22,12 +23,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void create(User entity) {
+    public void create(User entity) throws LoginAlreadyExistsException {
         try(PreparedStatement ps = connection.prepareStatement(Queries.USER_CREATE)) {
             ps.setString(1, entity.getLogin());
             ps.setString(2, entity.getPassword());
             ps.setString(3, entity.getRole().name());
             ps.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            throw new LoginAlreadyExistsException(e.getMessage(), entity.getLogin());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -60,7 +63,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<List<User>> findAll() {
+    public List<User> findAll() {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.USER_FIND_ALL);
             List<User> users = new ArrayList<>();
@@ -68,7 +71,7 @@ public class UserDaoImpl implements UserDao {
                 User user = extractEntityFromResultSet(resultSet);
                 users.add(user);
             }
-            return Optional.of(users);
+            return users;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -1,8 +1,8 @@
 package ua.training.model.dao.impl;
 
+import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.PortDao;
-import ua.training.constants.Queries;
 import ua.training.model.entities.Port;
 
 import java.sql.*;
@@ -33,10 +33,42 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
+    public void addPortToShip(int portId, int shipId, int number) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_ADD_TO_SHIP)) {
+            ps.setInt(1, portId);
+            ps.setInt(2, shipId);
+            ps.setInt(3, number);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Port> getAllPortsByShip(int shipId) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_FIND_ALL_BY_SHIP)) {
+            ps.setInt(1, shipId);
+            ResultSet resultSet = ps.executeQuery();
+            List<Port> ports = new ArrayList<>();
+            while (resultSet.next()) {
+                Port port = extractEntityFromResultSet(resultSet);
+                ports.add(port);
+            }
+            return ports;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Optional<Port> findById(int id) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_FIND_BY_ID)) {
             ps.setInt(1, id);
-            Port port = extractEntityFromResultSet(ps.executeQuery());
+            ResultSet resultSet = ps.executeQuery();
+            Port port = null;
+            while (resultSet.next()) {
+                port = extractEntityFromResultSet(resultSet);
+            }
             return Optional.ofNullable(port);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -44,7 +76,7 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
-    public Optional<List<Port>> findAll() {
+    public List<Port> findAll() {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.PORT_FIND_ALL);
             List<Port> ports = new ArrayList<>();
@@ -52,7 +84,7 @@ public class PortDaoImpl implements PortDao {
                 Port port = extractEntityFromResultSet(resultSet);
                 ports.add(port);
             }
-            return Optional.of(ports);
+            return ports;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

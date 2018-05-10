@@ -1,10 +1,9 @@
 package ua.training.controller.util;
 
-import ua.training.constants.Attributes;
-import ua.training.constants.Messages;
-import ua.training.constants.RegExp;
+import ua.training.constants.*;
+import ua.training.model.entities.User;
 
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -13,16 +12,26 @@ import java.util.Optional;
  */
 @SuppressWarnings("unchecked")
 public class ControllerUtil {
-    public static boolean isDataValid(HttpSession session, String login, String password) {
+    public static boolean isDataValid(Map<String, String> messages, String login, String password) {
         boolean valid = true;
         if (!(Optional.ofNullable(login).isPresent() && login.matches(RegExp.LOGIN))) {
-            session.setAttribute(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
+            messages.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
             valid = false;
         }
         if (!(Optional.ofNullable(password).isPresent() && password.matches(RegExp.PASSWORD))) {
-            session.setAttribute(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
+            messages.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
             valid = false;
         }
         return valid;
+    }
+
+    public static String getUserPage(User.Role role) {
+        if (role == User.Role.CLIENT) {
+            return URLs.CLIENT;
+        } else if (role == User.Role.ADMIN) {
+            return URLs.ADMIN;
+        } else {
+            return Pages.INDEX;
+        }
     }
 }

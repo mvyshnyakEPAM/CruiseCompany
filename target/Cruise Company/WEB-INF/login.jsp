@@ -11,12 +11,19 @@
                 <h4 class="text-center font-weight-bold"><fmt:message key="signin_form_message"/></h4>
                 <div class="form-group">
                     <input type="text" name="login" class="form-control" pattern="^[A-Za-z0-9_-]{3,16}$" placeholder="<fmt:message key="login_input_message"/>" required>
+                    <c:if test="${not empty requestScope.messages}">
+                        <fmt:message key="${requestScope.messages['loginMismatch']}"/>
+                    </c:if>
                     <div class="invalid-feedback">
                         <fmt:message key="invalid_login_input_message"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" pattern="^[A-Za-z0-9_-]{3,18}$" placeholder="<fmt:message key="password_input_message"/>" required>
+                    <c:if test="${not empty requestScope.messages}">
+                        <fmt:message key="${requestScope.messages['passwordMismatch']}"/>
+                    </c:if>
+                    ${requestScope.message}
                     <div class="invalid-feedback">
                         <fmt:message key="invalid_password_input_message"/>
                     </div>
