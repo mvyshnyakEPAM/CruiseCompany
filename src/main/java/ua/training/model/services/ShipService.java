@@ -24,25 +24,25 @@ public class ShipService {
         return ShipServiceHolder.INSTANCE;
     }
     
-    public List<Ship> getAllCruises() {
+    public List<Ship> getAllCruises(String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
             PortDao portDao = daoFactory.createPortDao(connection)) {
-            List<Ship> ships = shipDao.findAll();
+            List<Ship> ships = shipDao.findAll(locale);
             for (Ship ship : ships) {
-                ship.setPorts(portDao.getAllPortsByShip(ship.getId()));
+                ship.setPorts(portDao.getAllPortsByShip(ship.getId(), locale));
             }
             return ships;
         }
     }
 
-    public List<Ship> getCruisesPerPage(int pageNumber) {
+    public List<Ship> getCruisesPerPage(int pageNumber, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
             PortDao portDao = daoFactory.createPortDao(connection)) {
-            List<Ship> ships = shipDao.getAllShipsPerPage(pageNumber);
+            List<Ship> ships = shipDao.getAllShipsPerPage(pageNumber, locale);
             for (Ship ship : ships) {
-                ship.setPorts(portDao.getAllPortsByShip(ship.getId()));
+                ship.setPorts(portDao.getAllPortsByShip(ship.getId(), locale));
             }
             return ships;
         }

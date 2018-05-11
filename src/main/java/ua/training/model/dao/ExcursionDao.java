@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ExcursionDao extends GenericDao<Excursion> {
     void addExcursionToUser(int excursionId, int userId);
-    List<Excursion> getAllExcursionsByUser(int userId);
+    List<Excursion> getAllExcursionsByUser(int userId, String locale);
 }

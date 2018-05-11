@@ -66,13 +66,13 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public List<Ship> getAllShipsByUser(int userId) {
+    public List<Ship> getAllShipsByUser(int userId, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_ALL_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet resultSet = ps.executeQuery();
             List<Ship> ships = new ArrayList<>();
             while (resultSet.next()) {
-                Ship ship = extractEntityFromResultSet(resultSet);
+                Ship ship = extractEntityFromResultSet(resultSet, locale);
                 ships.add(ship);
             }
             return ships;
@@ -104,13 +104,13 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public Optional<Ship> findById(int id) {
+    public Optional<Ship> findById(int id, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_BY_ID)) {
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             Ship ship = null;
             while (resultSet.next()) {
-                ship = extractEntityFromResultSet(resultSet);
+                ship = extractEntityFromResultSet(resultSet, locale);
             }
             return Optional.ofNullable(ship);
         } catch (SQLException e) {
@@ -119,13 +119,13 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public List<Ship> getAllShipsPerPage(int pageNumber) {
+    public List<Ship> getAllShipsPerPage(int pageNumber, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_ALL_PER_PAGE)) {
             ps.setInt(1, pageNumber * 4 - 4);
             ResultSet resultSet = ps.executeQuery();
             List<Ship> ships = new ArrayList<>();
             while (resultSet.next()) {
-                Ship ship = extractEntityFromResultSet(resultSet);
+                Ship ship = extractEntityFromResultSet(resultSet, locale);
                 ships.add(ship);
             }
             return ships;
@@ -135,12 +135,12 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public List<Ship> findAll() {
+    public List<Ship> findAll(String locale) {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.SHIP_FIND_ALL);
             List<Ship> ships = new ArrayList<>();
             while (resultSet.next()) {
-                Ship ship = extractEntityFromResultSet(resultSet);
+                Ship ship = extractEntityFromResultSet(resultSet, locale);
                 ships.add(ship);
             }
             return ships;
@@ -186,10 +186,10 @@ public class ShipDaoImpl implements ShipDao {
         }
     }
 
-    private Ship extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
+    private Ship extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Ship.ShipBuilder()
-                .setId(resultSet.getInt(TableColumns.ID))
-                .setCruiseName(resultSet.getString(TableColumns.SHIP_CRUISE_NAME))
+                .setId(resultSet.getInt(TableColumns.SHIP_ID))
+                .setCruiseName(resultSet.getString(TableColumns.SHIP_NAME + "_" + locale))
                 .setPrice(resultSet.getBigDecimal("price"))
                 .setPortsVisited(resultSet.getInt(TableColumns.SHIP_PORTS_VISITED))
                 .setDeparture(LocalDate.parse(resultSet.getString(TableColumns.SHIP_DEPARTURE),

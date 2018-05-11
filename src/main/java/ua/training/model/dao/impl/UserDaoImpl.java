@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findById(int id) {
+    public Optional<User> findById(int id, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.USER_FIND_BY_ID)) {
             ps.setInt(1, id);
             User user = extractEntityFromResultSet(ps.executeQuery());
@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> findAll(String locale) {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.USER_FIND_ALL);
             List<User> users = new ArrayList<>();
@@ -111,7 +111,7 @@ public class UserDaoImpl implements UserDao {
 
     private User extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
         return new User.UserBuilder()
-                .setId(resultSet.getInt(TableColumns.ID))
+                .setId(resultSet.getInt(TableColumns.USER_ID))
                 .setLogin(resultSet.getString(TableColumns.USER_LOGIN))
                 .setPassword(resultSet.getString(TableColumns.USER_PASSWORD))
                 .setRole(User.Role.valueOf(resultSet.getString(TableColumns.USER_ROLE)))

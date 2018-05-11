@@ -3,6 +3,7 @@ package ua.training.controller.listeners;
 import ua.training.constants.Attributes;
 import ua.training.model.entities.User;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent event) {
+        ServletContext context = event.getSession().getServletContext();
+        event.getSession().setAttribute(Attributes.LANGUAGE, context.getInitParameter("language"));
         event.getSession().setAttribute(Attributes.ROLE, User.Role.GUEST);
     }
 

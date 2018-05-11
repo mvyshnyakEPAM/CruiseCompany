@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface ShipDao extends GenericDao<Ship> {
     int countAllShips();
-    List<Ship> getAllShipsPerPage(int pageNumber);
+    List<Ship> getAllShipsPerPage(int pageNumber, String locale);
+    List<Ship> getAllShipsByUser(int userId, String locale);
     void addShipToUser(int shipId, int userId);
-    List<Ship> getAllShipsByUser(int userId);
     void addBonusToShip(int shipId, String bonus);
     void deleteBonusFromShip(int shipId, String bonus);
 }

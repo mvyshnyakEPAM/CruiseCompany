@@ -45,13 +45,13 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public List<Excursion> getAllExcursionsByUser(int userId) {
+    public List<Excursion> getAllExcursionsByUser(int userId, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_ALL_BY_USER)) {
             ps.setInt(1, userId);
             ResultSet resultSet = ps.executeQuery();
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {
-                Excursion excursion = extractEntityFromResultSet(resultSet);
+                Excursion excursion = extractEntityFromResultSet(resultSet, locale);
                 excursions.add(excursion);
             }
             return excursions;
@@ -61,13 +61,13 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public Optional<Excursion> findById(int id) {
+    public Optional<Excursion> findById(int id, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_BY_ID)) {
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             Excursion excursion = null;
             while (resultSet.next()) {
-                excursion = extractEntityFromResultSet(resultSet);
+                excursion = extractEntityFromResultSet(resultSet, locale);
             }
             return Optional.ofNullable(excursion);
         } catch (SQLException e) {
@@ -76,12 +76,12 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public List<Excursion> findAll() {
+    public List<Excursion> findAll(String locale) {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.EXCURSION_FIND_ALL);
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {
-                Excursion excursion = extractEntityFromResultSet(resultSet);
+                Excursion excursion = extractEntityFromResultSet(resultSet, locale);
                 excursions.add(excursion);
             }
             return excursions;
@@ -121,10 +121,10 @@ public class ExcursionDaoImpl implements ExcursionDao {
         }
     }
 
-    private Excursion extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
+    private Excursion extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Excursion.ExcursionBuilder()
-                .setId(resultSet.getInt(TableColumns.ID))
-                .setName(resultSet.getString(TableColumns.EXCURSION_NAME))
+                .setId(resultSet.getInt(TableColumns.EXCURSION_ID))
+                .setName(resultSet.getString(TableColumns.EXCURSION_NAME + "_" + locale))
                 .setPrice(resultSet.getBigDecimal(TableColumns.EXCURSION_PRICE))
                 .build();
     }

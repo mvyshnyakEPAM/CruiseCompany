@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Ship {
     public enum Class {
-        STANDART, PREMIUM, LUX
+        STANDARD, PREMIUM, LUX
     }
 
     public enum  Bonus {

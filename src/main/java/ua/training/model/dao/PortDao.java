@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface PortDao extends GenericDao<Port> {
     void addPortToShip(int portId, int shipId, int number);
-    List<Port> getAllPortsByShip(int shipId);
+    List<Port> getAllPortsByShip(int shipId, String locale);
 }

@@ -11,8 +11,8 @@ import java.util.Optional;
  */
 public interface GenericDao<T> extends AutoCloseable{
     void create(T entity) throws LoginAlreadyExistsException;
-    Optional<T> findById(int id);
-    List<T> findAll();
+    Optional<T> findById(int id, String locale);
+    List<T> findAll(String locale);
     void update(T entity);
     void delete(int id);
     void close();

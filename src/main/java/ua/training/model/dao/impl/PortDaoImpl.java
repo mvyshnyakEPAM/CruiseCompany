@@ -45,13 +45,13 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
-    public List<Port> getAllPortsByShip(int shipId) {
+    public List<Port> getAllPortsByShip(int shipId, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_FIND_ALL_BY_SHIP)) {
             ps.setInt(1, shipId);
             ResultSet resultSet = ps.executeQuery();
             List<Port> ports = new ArrayList<>();
             while (resultSet.next()) {
-                Port port = extractEntityFromResultSet(resultSet);
+                Port port = extractEntityFromResultSet(resultSet, locale);
                 ports.add(port);
             }
             return ports;
@@ -61,13 +61,13 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
-    public Optional<Port> findById(int id) {
+    public Optional<Port> findById(int id, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_FIND_BY_ID)) {
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             Port port = null;
             while (resultSet.next()) {
-                port = extractEntityFromResultSet(resultSet);
+                port = extractEntityFromResultSet(resultSet, locale);
             }
             return Optional.ofNullable(port);
         } catch (SQLException e) {
@@ -76,12 +76,12 @@ public class PortDaoImpl implements PortDao {
     }
 
     @Override
-    public List<Port> findAll() {
+    public List<Port> findAll(String locale) {
         try(Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(Queries.PORT_FIND_ALL);
             List<Port> ports = new ArrayList<>();
             while (resultSet.next()) {
-                Port port = extractEntityFromResultSet(resultSet);
+                Port port = extractEntityFromResultSet(resultSet, locale);
                 ports.add(port);
             }
             return ports;
@@ -121,11 +121,11 @@ public class PortDaoImpl implements PortDao {
         }
     }
 
-    private Port extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
+    private Port extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Port.PortBuilder()
-                .setId(resultSet.getInt(TableColumns.ID))
-                .setName(resultSet.getString(TableColumns.PORT_NAME))
-                .setCountry(resultSet.getString(TableColumns.PORT_COUNTRY))
+                .setId(resultSet.getInt(TableColumns.PORT_ID))
+                .setName(resultSet.getString(TableColumns.PORT_NAME + "_" + locale))
+                .setCountry(resultSet.getString(TableColumns.PORT_COUNTRY + "_" + locale))
                 .build();
     }
 }
