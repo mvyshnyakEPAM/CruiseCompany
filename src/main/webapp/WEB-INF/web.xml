@@ -1,21 +1,34 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
   <display-name>Archetype Created Web Application</display-name>
 
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <jsp-config>
+    <taglib>
+      <taglib-uri>customtags</taglib-uri>
+      <taglib-location>WEB-INF/tld/custom.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+
   <context-param>
     <param-name>language</param-name>
     <param-value>en</param-value>
   </context-param>
 
-  <welcome-file-list>
-    <welcome-file>/WEB-INF/index.jsp</welcome-file>
-  </welcome-file-list>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/error/404.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/error/500.jsp</location>
+  </error-page>
 
   <listener>
     <listener-class>ua.training.controller.listeners.SessionListener</listener-class>
@@ -39,15 +52,5 @@
   <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <filter>
-    <filter-name>AuthFilter</filter-name>
-    <filter-class>ua.training.controller.filters.AuthFilter</filter-class>
-  </filter>
-
-  <filter-mapping>
-    <filter-name>AuthFilter</filter-name>
-    <url-pattern>/company/*</url-pattern>
   </filter-mapping>
 </web-app>

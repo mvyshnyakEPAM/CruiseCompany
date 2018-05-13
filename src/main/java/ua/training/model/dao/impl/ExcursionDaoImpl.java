@@ -24,9 +24,10 @@ public class ExcursionDaoImpl implements ExcursionDao {
     @Override
     public void create(Excursion entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_CREATE)) {
-            ps.setString(1, entity.getName());
-            ps.setBigDecimal(2, entity.getPrice());
-            ps.setInt(3, entity.getPort().getId());
+            ps.setString(1, entity.getNameEn());
+            ps.setString(2, entity.getNameUa());
+            ps.setInt(3, entity.getPrice());
+            ps.setInt(4, entity.getPort().getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -93,9 +94,10 @@ public class ExcursionDaoImpl implements ExcursionDao {
     @Override
     public void update(Excursion entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_UPDATE)) {
-            ps.setString(1, entity.getName());
-            ps.setBigDecimal(2, entity.getPrice());
-            ps.setInt(3, entity.getId());
+            ps.setString(1, entity.getNameEn());
+            ps.setString(2, entity.getNameUa());
+            ps.setInt(3, entity.getPrice());
+            ps.setInt(4, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -125,7 +127,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
         return new Excursion.ExcursionBuilder()
                 .setId(resultSet.getInt(TableColumns.EXCURSION_ID))
                 .setName(resultSet.getString(TableColumns.EXCURSION_NAME + "_" + locale))
-                .setPrice(resultSet.getBigDecimal(TableColumns.EXCURSION_PRICE))
+                .setPrice(resultSet.getInt(TableColumns.EXCURSION_PRICE))
                 .build();
     }
 }

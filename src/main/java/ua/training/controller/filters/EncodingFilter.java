@@ -1,24 +1,31 @@
 package ua.training.controller.filters;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
 import java.io.IOException;
 
 /**
  * Максим
  * 01.04.2018
  */
-public class EncodingFilter extends BaseFilter {
+public class EncodingFilter implements Filter {
     @Override
-    public void doFilter(HttpServletRequest request,
-                         HttpServletResponse response,
+    public void init(FilterConfig filterConfig) throws ServletException {
+        /*NOP*/
+    }
+
+    @Override
+    public void doFilter(ServletRequest request,
+                         ServletResponse response,
                          FilterChain filterChain) throws IOException, ServletException {
         response.setContentType("text/html");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+        /*NOP*/
     }
 }

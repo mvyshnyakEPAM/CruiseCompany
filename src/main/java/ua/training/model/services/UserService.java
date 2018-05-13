@@ -1,5 +1,6 @@
 package ua.training.model.services;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.model.dao.UserDao;
 import ua.training.model.dao.cp.ConnectionPool;
@@ -34,6 +35,7 @@ public class UserService {
     public Optional<User> signIn(String login, String password) {
         Connection connection = ConnectionPool.getConnection();
         try(UserDao userDao = daoFactory.createUserDao(connection)) {
+            password = DigestUtils.md2Hex(password);
             Optional<User> user = userDao.getUserByLogin(login);
             if (user.isPresent() && password.equals(user.get().getPassword())) {
                 return user;

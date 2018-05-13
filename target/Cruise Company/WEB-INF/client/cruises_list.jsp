@@ -21,12 +21,12 @@
         <tbody>
         <c:forEach var="cruise" items="${requestScope.cruises}">
             <tr>
-                <td>${cruise.cruiseName}</td>
+                <td>${cruise.name}</td>
                 <td>${cruise.ports}</td>
-                <td>${cruise.departure}</td>
-                <td>${cruise.arrival}</td>
+                <td><ctg:format-date date="${cruise.departure}" locale="${sessionScope.language}"/></td>
+                <td><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.language}"/></td>
                 <td>${cruise.cruiseDuration}</td>
-                <td>${cruise.shipClass}</td>
+                <td><fmt:message key="${cruise.shipClass.key}"/> </td>
                 <td>${cruise.price}</td>
             </tr>
         </c:forEach>

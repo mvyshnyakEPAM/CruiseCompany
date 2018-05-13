@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * Максим
  * 05.05.2018
  */
+
 public class AddBonusCommand implements Command {
     private ShipService shipService = new ShipService();
     @Override

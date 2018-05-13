@@ -1,8 +1,11 @@
 package ua.training.controller.util;
 
 import ua.training.constants.*;
+import ua.training.controller.commands.AccessRequired;
+import ua.training.controller.commands.Command;
 import ua.training.model.entities.User;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
@@ -33,5 +36,13 @@ public class ControllerUtil {
         } else {
             return Pages.INDEX;
         }
+    }
+
+    public static boolean isAccessAllowed(Command command, User.Role role, String uri) {
+        Class<?> commandClass = command.getClass();
+        AccessRequired accessRequired = commandClass.getAnnotation(AccessRequired.class);
+        return accessRequired != null &&
+                Arrays.asList(accessRequired.roles()).contains(role) &&
+                accessRequired.regExp().matches(uri);
     }
 }

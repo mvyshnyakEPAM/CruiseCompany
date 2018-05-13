@@ -24,8 +24,10 @@ public class PortDaoImpl implements PortDao {
     @Override
     public void create(Port entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_CREATE)) {
-            ps.setString(1, entity.getName());
-            ps.setString(2, entity.getCountry());
+            ps.setString(1, entity.getNameEn());
+            ps.setString(2, entity.getNameUa());
+            ps.setString(3, entity.getCountryEn());
+            ps.setString(4, entity.getCountryUa());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -93,9 +95,11 @@ public class PortDaoImpl implements PortDao {
     @Override
     public void update(Port entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.PORT_UPDATE)) {
-            ps.setString(1, entity.getName());
-            ps.setString(2, entity.getCountry());
-            ps.setInt(3, entity.getId());
+            ps.setString(1, entity.getNameEn());
+            ps.setString(2, entity.getNameUa());
+            ps.setString(3, entity.getCountryEn());
+            ps.setString(4, entity.getCountryUa());
+            ps.setInt(5, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

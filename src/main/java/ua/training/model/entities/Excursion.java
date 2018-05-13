@@ -1,6 +1,5 @@
 package ua.training.model.entities;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -10,7 +9,9 @@ import java.util.List;
 public class Excursion {
     private int id;
     private String name;
-    private BigDecimal price;
+    private String nameEn;
+    private String nameUa;
+    private int price;
 
     private Port port;
     private List<User> users;
@@ -31,11 +32,27 @@ public class Excursion {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameUa() {
+        return nameUa;
+    }
+
+    public void setNameUa(String nameUa) {
+        this.nameUa = nameUa;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -58,7 +75,9 @@ public class Excursion {
     public static final class ExcursionBuilder {
         private int id;
         private String name;
-        private BigDecimal price;
+        private String nameEn;
+        private String nameUa;
+        private int price;
 
         private Port port;
         private List<User> users;
@@ -73,7 +92,17 @@ public class Excursion {
             return this;
         }
 
-        public ExcursionBuilder setPrice(BigDecimal price) {
+        public ExcursionBuilder setNameEn(String nameEn) {
+            this.nameEn = nameEn;
+            return this;
+        }
+
+        public ExcursionBuilder setNameUa(String nameUa) {
+            this.nameUa = nameUa;
+            return this;
+        }
+
+        public ExcursionBuilder setPrice(int price) {
             this.price = price;
             return this;
         }
@@ -92,6 +121,8 @@ public class Excursion {
             Excursion excursion = new Excursion();
             excursion.setId(id);
             excursion.setName(name);
+            excursion.setNameEn(nameEn);
+            excursion.setNameUa(nameUa);
             excursion.setPrice(price);
             excursion.setPort(port);
             excursion.setUsers(users);

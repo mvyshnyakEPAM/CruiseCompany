@@ -1,6 +1,8 @@
 package ua.training.model.entities;
 
-import java.math.BigDecimal;
+import ua.training.model.entities.enums.Bonus;
+import ua.training.model.entities.enums.ShipClass;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,20 +11,16 @@ import java.util.List;
  * 27.04.2018
  */
 public class Ship {
-    public enum Class {
-        STANDARD, PREMIUM, LUX
-    }
-
-    public enum  Bonus {
-    }
     private int id;
-    private String cruiseName;
-    private BigDecimal price;
+    private String name;
+    private String nameEn;
+    private String nameUa;
+    private int price;
     private int portsVisited;
     private LocalDate departure;
     private LocalDate arrival;
     private int cruiseDuration;
-    private Class shipClass;
+    private ShipClass shipClass;
     private int passengerCapacity;
     private int staff;
 
@@ -38,19 +36,35 @@ public class Ship {
         this.id = id;
     }
 
-    public String getCruiseName() {
-        return cruiseName;
+    public String getName() {
+        return name;
     }
 
-    public void setCruiseName(String cruiseName) {
-        this.cruiseName = cruiseName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameUa() {
+        return nameUa;
+    }
+
+    public void setNameUa(String nameUa) {
+        this.nameUa = nameUa;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -86,11 +100,11 @@ public class Ship {
         this.cruiseDuration = cruiseDuration;
     }
 
-    public Class getShipClass() {
+    public ShipClass getShipClass() {
         return shipClass;
     }
 
-    public void setShipClass(Class shipClass) {
+    public void setShipClass(ShipClass shipClass) {
         this.shipClass = shipClass;
     }
 
@@ -136,13 +150,15 @@ public class Ship {
 
     public static final class ShipBuilder {
         private int id;
-        private String cruiseName;
-        private BigDecimal price;
+        private String name;
+        private String nameEn;
+        private String nameUa;
+        private int price;
         private int portsVisited;
         private LocalDate departure;
         private LocalDate arrival;
         private int cruiseDuration;
-        private Class shipClass;
+        private ShipClass shipClass;
         private int passengerCapacity;
         private int staff;
 
@@ -155,12 +171,22 @@ public class Ship {
             return this;
         }
 
-        public ShipBuilder setCruiseName(String cruiseName) {
-            this.cruiseName = cruiseName;
+        public ShipBuilder setName(String name) {
+            this.name = name;
             return this;
         }
 
-        public ShipBuilder setPrice(BigDecimal price) {
+        public ShipBuilder setNameEn(String nameEn) {
+            this.nameEn = nameEn;
+            return this;
+        }
+
+        public ShipBuilder setNameUa(String nameUa) {
+            this.nameUa = nameUa;
+            return this;
+        }
+
+        public ShipBuilder setPrice(int price) {
             this.price = price;
             return this;
         }
@@ -185,7 +211,7 @@ public class Ship {
             return this;
         }
 
-        public ShipBuilder setShipClass(Class shipClass) {
+        public ShipBuilder setShipClass(ShipClass shipClass) {
             this.shipClass = shipClass;
             return this;
         }
@@ -218,7 +244,9 @@ public class Ship {
         public Ship build() {
             Ship ship = new Ship();
             ship.setId(id);
-            ship.setCruiseName(cruiseName);
+            ship.setName(name);
+            ship.setNameEn(nameEn);
+            ship.setNameUa(nameUa);
             ship.setPrice(price);
             ship.setPortsVisited(portsVisited);
             ship.setDeparture(departure);

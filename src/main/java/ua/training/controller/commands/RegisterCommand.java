@@ -1,5 +1,6 @@
 package ua.training.controller.commands;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import ua.training.constants.*;
 import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.controller.servlets.actions.Forward;
@@ -17,6 +18,7 @@ import java.util.Map;
  * Максим
  * 29.04.2018
  */
+@AccessRequired(roles = {User.Role.GUEST}, regExp = RegExp.COMMAND_REGISTER)
 public class RegisterCommand implements Command {
     UserService userService = UserService.getInstance();
 
@@ -34,7 +36,7 @@ public class RegisterCommand implements Command {
 
             User user = new User.UserBuilder()
                     .setLogin(login)
-                    .setPassword(password)
+                    .setPassword(DigestUtils.md5Hex(password))
                     .setRole(User.Role.CLIENT)
                     .build();
 
