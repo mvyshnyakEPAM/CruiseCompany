@@ -19,7 +19,7 @@ import java.util.Optional;
  * Максим
  * 29.04.2018
  */
-@AccessRequired(roles = {User.Role.GUEST}, regExp = RegExp.COMMAND_LOGIN)
+@AccessRequired(roles = {User.Role.GUEST}, path = CommandPaths.LOGIN)
 public class LoginCommand implements Command {
     UserService userService = UserService.getInstance();
 

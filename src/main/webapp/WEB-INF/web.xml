@@ -16,7 +16,7 @@
   </jsp-config>
 
   <context-param>
-    <param-name>language</param-name>
+    <param-name>locale</param-name>
     <param-value>en</param-value>
   </context-param>
 

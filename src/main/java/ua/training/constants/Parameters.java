@@ -8,4 +8,5 @@ public interface Parameters {
     String LOCALE = "locale";
     String LOGIN = "login";
     String PASSWORD = "password";
+    String PAGE = "page";
 }

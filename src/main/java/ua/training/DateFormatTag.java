@@ -1,5 +1,8 @@
 package ua.training;
 
+import ua.training.constants.Locales;
+import ua.training.constants.Patterns;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -25,10 +28,10 @@ public class DateFormatTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {
         try {
-            if (locale.equals("ua")) {
-                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+            if (locale.equals(Locales.UA)) {
+                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_UA)));
             } else {
-                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern("MM.dd.yyyy")));
+                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_EN)));
             }
         } catch (IOException e) {
             throw new JspException(e);

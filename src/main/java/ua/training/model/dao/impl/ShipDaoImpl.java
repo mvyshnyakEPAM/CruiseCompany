@@ -1,5 +1,6 @@
 package ua.training.model.dao.impl;
 
+import ua.training.constants.Patterns;
 import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.ShipDao;
@@ -195,12 +196,12 @@ public class ShipDaoImpl implements ShipDao {
         return new Ship.ShipBuilder()
                 .setId(resultSet.getInt(TableColumns.SHIP_ID))
                 .setName(resultSet.getString(TableColumns.SHIP_NAME + "_" + locale))
-                .setPrice(resultSet.getInt("price"))
+                .setPrice(resultSet.getInt(TableColumns.SHIP_PRICE))
                 .setPortsVisited(resultSet.getInt(TableColumns.SHIP_PORTS_VISITED))
                 .setDeparture(LocalDate.parse(resultSet.getString(TableColumns.SHIP_DEPARTURE),
-                        DateTimeFormatter.ofPattern("dd.MM.yyyy")))
+                        DateTimeFormatter.ofPattern(Patterns.DATE_UA)))
                 .setArrival(LocalDate.parse(resultSet.getString(TableColumns.SHIP_ARRIVAL),
-                        DateTimeFormatter.ofPattern("dd.MM.yyyy")))
+                        DateTimeFormatter.ofPattern(Patterns.DATE_UA)))
                 .setCruiseDuration(resultSet.getInt(TableColumns.SHIP_DURATION))
                 .setShipClass(ShipClass.valueOf(resultSet.getString(TableColumns.SHIP_CLASS)))
                 .setPassengerCapacity(resultSet.getInt(TableColumns.SHIP_PASSENGER_CAPACITY))

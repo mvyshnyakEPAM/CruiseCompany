@@ -46,8 +46,8 @@ public class CommandFactory {
         String uri = request.getRequestURI();
         User.Role role = (User.Role) request.getSession().getAttribute(Attributes.ROLE);
         Command command = commands.get(extractCommand(uri));
-        return command != null && ControllerUtil.isAccessAllowed(command, role, uri) ? command :
-                r -> new Redirect(ControllerUtil.getUserPage(role));
+        return command != null && ControllerUtil.isAccessAllowed(command, role, request.getPathInfo()) ?
+                command : r -> new Redirect(ControllerUtil.getUserPage(role));
     }
 
     private static String extractCommand(String uri) {

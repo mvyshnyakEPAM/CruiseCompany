@@ -14,4 +14,6 @@ public interface Attributes {
     String ROLE = "role";
     String LOGIN_MISMATCH = "loginMismatch";
     String PASSWORD_MISMATCH = "passwordMismatch";
+    String NUMBER_OF_PAGES = "numberOfPages";
+    String CRUISES = "cruises";
 }

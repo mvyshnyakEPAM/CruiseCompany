@@ -9,4 +9,5 @@ public interface URLs {
     String LOGIN = "/company/login-page";
     String CLIENT = "/company/client";
     String ADMIN = "/company/admin";
+    String CRUISE_LIST = "/company/client/show-cruises?page=";
 }

@@ -7,7 +7,6 @@ import ua.training.model.entities.User;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Максим
@@ -17,11 +16,11 @@ import java.util.Optional;
 public class ControllerUtil {
     public static boolean isDataValid(Map<String, String> messages, String login, String password) {
         boolean valid = true;
-        if (!(Optional.ofNullable(login).isPresent() && login.matches(RegExp.LOGIN))) {
+        if (!(login != null && login.matches(RegExp.LOGIN))) {
             messages.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
             valid = false;
         }
-        if (!(Optional.ofNullable(password).isPresent() && password.matches(RegExp.PASSWORD))) {
+        if (!(password != null && password.matches(RegExp.PASSWORD))) {
             messages.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
             valid = false;
         }
@@ -38,11 +37,11 @@ public class ControllerUtil {
         }
     }
 
-    public static boolean isAccessAllowed(Command command, User.Role role, String uri) {
+    public static boolean isAccessAllowed(Command command, User.Role role, String path) {
         Class<?> commandClass = command.getClass();
         AccessRequired accessRequired = commandClass.getAnnotation(AccessRequired.class);
         return accessRequired != null &&
                 Arrays.asList(accessRequired.roles()).contains(role) &&
-                accessRequired.regExp().matches(uri);
+                path.matches(accessRequired.path());
     }
 }

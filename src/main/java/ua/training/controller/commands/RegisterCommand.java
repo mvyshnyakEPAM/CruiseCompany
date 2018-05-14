@@ -18,7 +18,7 @@ import java.util.Map;
  * Максим
  * 29.04.2018
  */
-@AccessRequired(roles = {User.Role.GUEST}, regExp = RegExp.COMMAND_REGISTER)
+@AccessRequired(roles = {User.Role.GUEST}, path = CommandPaths.REGISTER)
 public class RegisterCommand implements Command {
     UserService userService = UserService.getInstance();
 

@@ -13,7 +13,7 @@
                 <a class="nav-link" href="#"><fmt:message key="cruises_link"/></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/logout">
+        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/admin/logout">
             <div class="col-auto pl-0">
                 <input type="hidden" name="pageRole" value="admin"/>
                 <button class="btn btn-warning font-weight-bold" type="submit"><fmt:message key="logout_button"/></button>

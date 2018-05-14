@@ -12,6 +12,7 @@ public interface TableColumns {
 
     String SHIP_ID = "ship_id";
     String SHIP_NAME = "ship_name";
+    String SHIP_PRICE = "price";
     String SHIP_PORTS_VISITED = "ports_visited";
     String SHIP_DEPARTURE = "departure";
     String SHIP_ARRIVAL = "arrival";

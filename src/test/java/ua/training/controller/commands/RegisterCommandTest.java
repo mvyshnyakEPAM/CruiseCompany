@@ -1,5 +1,6 @@
 package ua.training.controller.commands;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -72,7 +73,7 @@ public class RegisterCommandTest {
         registerCommand.userService = Mockito.mock(UserService.class);
         User user = new User.UserBuilder()
                 .setLogin("user")
-                .setPassword("123")
+                .setPassword(DigestUtils.md5Hex("123"))
                 .setRole(User.Role.CLIENT)
                 .build();
 
@@ -98,7 +99,7 @@ public class RegisterCommandTest {
         registerCommand.userService = Mockito.mock(UserService.class);
         User user = new User.UserBuilder()
                 .setLogin("user")
-                .setPassword("123")
+                .setPassword(DigestUtils.md5Hex("123"))
                 .setRole(User.Role.CLIENT)
                 .build();
 

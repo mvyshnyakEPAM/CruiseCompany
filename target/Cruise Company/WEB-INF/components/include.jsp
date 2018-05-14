@@ -2,5 +2,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="ctg" uri="customtags" %>
-<fmt:setLocale value="${not empty sessionScope.language ? sessionScope.language : initParam.language}" />
+<fmt:setLocale value="${not empty sessionScope.language ? sessionScope.language : initParam.locale}" />
 <fmt:setBundle basename="messages"/>
