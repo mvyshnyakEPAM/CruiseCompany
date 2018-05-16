@@ -14,4 +14,5 @@ public interface CommandPaths {
     String LOGOUT = "/(client|admin)/logout";
     String LANGUAGE = "/language";
     String SHOW_CRUISES = "/client/show-cruises";
+    String SHOW_CRUISE_INFO = "/client/show-cruise-info";
 }

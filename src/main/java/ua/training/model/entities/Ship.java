@@ -22,6 +22,7 @@ public class Ship {
     private int cruiseDuration;
     private ShipClass shipClass;
     private int passengerCapacity;
+    private int freePlaces;
     private int staff;
 
     private List<Port> ports;
@@ -116,6 +117,14 @@ public class Ship {
         this.passengerCapacity = passengerCapacity;
     }
 
+    public int getFreePlaces() {
+        return freePlaces;
+    }
+
+    public void setFreePlaces(int freePlaces) {
+        this.freePlaces = freePlaces;
+    }
+
     public int getStaff() {
         return staff;
     }
@@ -160,6 +169,7 @@ public class Ship {
         private int cruiseDuration;
         private ShipClass shipClass;
         private int passengerCapacity;
+        private int freePlaces;
         private int staff;
 
         private List<Port> ports;
@@ -221,6 +231,11 @@ public class Ship {
             return this;
         }
 
+        public ShipBuilder setFreePlaces(int freePlaces) {
+            this.freePlaces = freePlaces;
+            return this;
+        }
+
         public ShipBuilder setStaff(int staff) {
             this.staff = staff;
             return this;
@@ -254,6 +269,7 @@ public class Ship {
             ship.setCruiseDuration(cruiseDuration);
             ship.setShipClass(shipClass);
             ship.setPassengerCapacity(passengerCapacity);
+            ship.setFreePlaces(freePlaces);
             ship.setStaff(staff);
             ship.setPorts(ports);
             ship.setUsers(users);

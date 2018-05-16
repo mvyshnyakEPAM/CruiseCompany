@@ -112,12 +112,14 @@ public class Port {
             return this;
         }
 
-        public void setNameEn(String nameEn) {
+        public PortBuilder setNameEn(String nameEn) {
             this.nameEn = nameEn;
+            return this;
         }
 
-        public void setNameUa(String nameUa) {
+        public PortBuilder setNameUa(String nameUa) {
             this.nameUa = nameUa;
+            return this;
         }
 
         public PortBuilder setCountry(String country) {
@@ -125,12 +127,14 @@ public class Port {
             return this;
         }
 
-        public void setCountryEn(String countryEn) {
+        public PortBuilder setCountryEn(String countryEn) {
             this.countryEn = countryEn;
+            return this;
         }
 
-        public void setCountryUa(String countryUa) {
+        public PortBuilder setCountryUa(String countryUa) {
             this.countryUa = countryUa;
+            return this;
         }
 
         public PortBuilder setShips(List<Ship> ships) {

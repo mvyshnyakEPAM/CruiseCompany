@@ -11,4 +11,5 @@ public interface Pages {
     String CLIENT = "/WEB-INF/client/client.jsp";
     String ADMIN = "/WEB-INF/admin/admin.jsp";
     String CRUISE_LIST = "/WEB-INF/client/cruises_list.jsp";
+    String CRUISE_INFO = "/WEB-INF/client/cruise_info.jsp";
 }

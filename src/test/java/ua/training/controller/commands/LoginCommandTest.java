@@ -75,6 +75,7 @@ public class LoginCommandTest {
         HttpSession session = Mockito.mock(HttpSession.class);
         loginCommand.userService = Mockito.mock(UserService.class);
         User user = new User.UserBuilder()
+                .setId(1)
                 .setLogin("user")
                 .setPassword("123")
                 .setRole(User.Role.CLIENT)
@@ -91,7 +92,7 @@ public class LoginCommandTest {
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(request).getSession();
         Mockito.verify(loginCommand.userService).signIn("user", "123");
-        Mockito.verify(session).setAttribute(Attributes.USER, new LoginDto("user"));
+        Mockito.verify(session).setAttribute(Attributes.USER, new LoginDto(1, "user"));
         Mockito.verify(session).setAttribute(Attributes.ROLE, user.getRole());
         Mockito.verifyNoMoreInteractions(request, session, loginCommand.userService);
     }

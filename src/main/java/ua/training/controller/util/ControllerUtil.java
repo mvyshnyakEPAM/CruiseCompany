@@ -3,9 +3,13 @@ package ua.training.controller.util;
 import ua.training.constants.*;
 import ua.training.controller.commands.AccessRequired;
 import ua.training.controller.commands.Command;
+import ua.training.model.entities.Excursion;
 import ua.training.model.entities.User;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,5 +47,9 @@ public class ControllerUtil {
         return accessRequired != null &&
                 Arrays.asList(accessRequired.roles()).contains(role) &&
                 path.matches(accessRequired.path());
+    }
+
+    public static Map<String, List<Excursion>> getCart(HttpSession session) {
+        return (HashMap<String, List<Excursion>>) session.getAttribute("excursions");
     }
 }

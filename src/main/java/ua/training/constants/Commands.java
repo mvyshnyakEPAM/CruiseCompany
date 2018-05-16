@@ -14,4 +14,5 @@ public interface Commands {
     String LOGOUT = "logout";
     String LANGUAGE = "language";
     String SHOW_CRUISES = "show-cruises";
+    String SHOW_CRUISE_INFO = "show-cruise-info";
 }

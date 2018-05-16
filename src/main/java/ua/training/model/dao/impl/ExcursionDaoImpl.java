@@ -46,6 +46,37 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
+    public Optional<Excursion> getExcursionByName(String name, String locale) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_BY_NAME)) {
+            ps.setString(1, name);
+            ResultSet resultSet = ps.executeQuery();
+            Excursion excursion = null;
+            while (resultSet.next()) {
+                excursion = extractEntityFromResultSet(resultSet, locale);
+            }
+            return Optional.ofNullable(excursion);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Excursion> getAllExcursionsByPort(int portId, String locale) {
+        try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_ALL_BY_PORT)) {
+            ps.setInt(1, portId);
+            ResultSet resultSet = ps.executeQuery();
+            List<Excursion> excursions = new ArrayList<>();
+            while (resultSet.next()) {
+                Excursion excursion = extractEntityFromResultSet(resultSet, locale);
+                excursions.add(excursion);
+            }
+            return excursions;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public List<Excursion> getAllExcursionsByUser(int userId, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_ALL_BY_USER)) {
             ps.setInt(1, userId);
@@ -127,6 +158,8 @@ public class ExcursionDaoImpl implements ExcursionDao {
         return new Excursion.ExcursionBuilder()
                 .setId(resultSet.getInt(TableColumns.EXCURSION_ID))
                 .setName(resultSet.getString(TableColumns.EXCURSION_NAME + "_" + locale))
+                .setNameEn(resultSet.getString(TableColumns.EXCURSION_NAME_EN))
+                .setNameUa(resultSet.getString(TableColumns.EXCURSION_NAME_UA))
                 .setPrice(resultSet.getInt(TableColumns.EXCURSION_PRICE))
                 .build();
     }

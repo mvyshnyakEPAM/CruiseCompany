@@ -38,7 +38,7 @@ public class LoginCommand implements Command {
         HttpSession session = request.getSession();
         Optional<User> user = userService.signIn(login, password);
         if (user.isPresent()) {
-            session.setAttribute(Attributes.USER, new LoginDto(login));
+            session.setAttribute(Attributes.USER, new LoginDto(user.get().getId(), login));
             session.setAttribute(Attributes.ROLE, user.get().getRole());
             return new Redirect(ControllerUtil.getUserPage(user.get().getRole()));
         }

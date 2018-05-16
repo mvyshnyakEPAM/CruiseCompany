@@ -2,7 +2,7 @@ package ua.training.controller.commands;
 
 import ua.training.constants.Attributes;
 import ua.training.constants.Commands;
-import ua.training.controller.commands.client.ShowCruisesCommand;
+import ua.training.controller.commands.client.*;
 import ua.training.controller.commands.redirect.AdminPageCommand;
 import ua.training.controller.commands.redirect.ClientPageCommand;
 import ua.training.controller.commands.redirect.LoginPageCommand;
@@ -32,6 +32,12 @@ public class CommandFactory {
         commands.put(Commands.LOGOUT, new LogoutCommand());
         commands.put(Commands.LANGUAGE, new LanguageCommand());
         commands.put(Commands.SHOW_CRUISES, new ShowCruisesCommand());
+        commands.put(Commands.SHOW_CRUISE_INFO, new ShowCruiseInfoCommand());
+        commands.put("add-excursion", new AddExcursionCommand());
+        commands.put("remove-excursion", new RemoveExcursionCommand());
+        commands.put("pay-cruise", new PayCruiseCommand());
+        commands.put("show-my-cruises", new ShowMyCruisesCommand());
+        commands.put("show-my-excursions", new ShowMyExcursionsCommand());
     }
 
     private static class CommandFactoryHolder {

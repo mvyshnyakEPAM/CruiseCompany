@@ -129,6 +129,8 @@ public class PortDaoImpl implements PortDao {
         return new Port.PortBuilder()
                 .setId(resultSet.getInt(TableColumns.PORT_ID))
                 .setName(resultSet.getString(TableColumns.PORT_NAME + "_" + locale))
+                .setNameEn(resultSet.getString(TableColumns.PORT_NAME_EN))
+                .setNameUa(resultSet.getString(TableColumns.PORT_NAME_UA))
                 .setCountry(resultSet.getString(TableColumns.PORT_COUNTRY + "_" + locale))
                 .build();
     }

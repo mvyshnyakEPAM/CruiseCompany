@@ -26,14 +26,14 @@ public class ShowCruisesCommand implements Command {
         int numberOfPages = shipService.getNumberOfPages();
         try {
             int pageNumber = Integer.parseInt(request.getParameter(Parameters.PAGE));
-            if (numberOfPages > 0 && numberOfPages >= pageNumber) {
+            if (pageNumber > 0 && numberOfPages >= pageNumber) {
                 List<Ship> cruises = shipService.getCruisesPerPage(pageNumber, locale);
                 request.setAttribute(Attributes.NUMBER_OF_PAGES, numberOfPages);
                 request.setAttribute(Attributes.CRUISES, cruises);
                 return new Forward(Pages.CRUISE_LIST);
             } else {
                 return new Redirect(URLs.CRUISE_LIST +
-                        (numberOfPages > 0 ? numberOfPages : 1));
+                        (pageNumber > 0 ? numberOfPages : 1));
             }
         } catch (NullPointerException | NumberFormatException e) {
             return new Redirect(URLs.CRUISE_LIST + 1);
