@@ -11,16 +11,10 @@
     right: 16px;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-body.modal-open {
+/*body.modal-open {
     width: 100% !important;
     padding-right: 0 !important;
-}
+}*/
 
 #wrapper {
     min-height: 100%;
@@ -32,6 +26,7 @@ body.modal-open {
     padding-bottom: 100px;
     /* Height of the footer element */
 }
+
 #footer {
     background: #ffab62;
     width: 100%;
@@ -41,11 +36,11 @@ body.modal-open {
     left: 0;
 }
 
-html {
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-y: scroll
+    overflow-y: auto;
 }
 
 form {
@@ -64,3 +59,11 @@ form {
     padding-left:0;
 }
 
+.carousel {
+    max-width: 1200px;
+    max-height: 600px;
+}
+
+.slides {
+    padding-top: 60px;
+}

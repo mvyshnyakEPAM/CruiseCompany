@@ -2,6 +2,10 @@ package ua.training.controller.commands;
 
 import ua.training.constants.Attributes;
 import ua.training.constants.Commands;
+import ua.training.controller.commands.admin.AddBonusCommand;
+import ua.training.controller.commands.admin.RemoveBonusCommand;
+import ua.training.controller.commands.admin.ShowShipBonusesCommand;
+import ua.training.controller.commands.admin.ShowShipsCommand;
 import ua.training.controller.commands.client.*;
 import ua.training.controller.commands.redirect.AdminPageCommand;
 import ua.training.controller.commands.redirect.ClientPageCommand;
@@ -38,6 +42,10 @@ public class CommandFactory {
         commands.put("pay-cruise", new PayCruiseCommand());
         commands.put("show-my-cruises", new ShowMyCruisesCommand());
         commands.put("show-my-excursions", new ShowMyExcursionsCommand());
+        commands.put("show-ships", new ShowShipsCommand());
+        commands.put("show-ship-bonuses", new ShowShipBonusesCommand());
+        commands.put("add-bonus", new AddBonusCommand());
+        commands.put("remove-bonus", new RemoveBonusCommand());
     }
 
     private static class CommandFactoryHolder {

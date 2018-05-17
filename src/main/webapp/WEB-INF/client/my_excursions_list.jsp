@@ -11,6 +11,7 @@
             <thead>
             <tr class="bg-primary text-white">
                 <th>Excursion</th>
+                <th>Port</th>
                 <th>Price</th>
             </tr>
             </thead>
@@ -18,6 +19,7 @@
             <c:forEach var="excursion" items="${requestScope.myExcursions}">
                 <tr>
                     <td>${excursion.name}</td>
+                    <td>${excursion.port}</td>
                     <td>${excursion.price}</td>
                 </tr>
             </c:forEach>

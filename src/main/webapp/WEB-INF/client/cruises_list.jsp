@@ -30,7 +30,7 @@
                     <td>${cruise.cruiseDuration}</td>
                     <td><fmt:message key="${cruise.shipClass.key}"/> </td>
                     <td>${cruise.price}</td>
-                    <td><a href="${pageContext.request.contextPath}/company/client/show-cruise-info?cruise=${cruise.name}" class="btn btn-warning font-weight-bold">Details</a> </td>
+                    <td><a href="${pageContext.request.contextPath}/company/client/show-cruise-info?cruise=${cruise.nameEn}" class="btn btn-warning font-weight-bold">Details</a> </td>
                 </tr>
             </c:forEach>
             </tbody>

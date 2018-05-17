@@ -1,0 +1,14 @@
+2018-05-17 12:04:42.736 [http-nio-8080-exec-3] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91logged successfully.
+2018-05-17 13:11:00.787 [http-nio-8080-exec-5] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:19:49.061 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:21:10.055 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:22:24.805 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:25:54.968 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:28:53.726 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:36:12.798 [http-nio-8080-exec-9] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:37:38.805 [http-nio-8080-exec-3] INFO  ua.training.controller.commands.LogoutCommand - CLIENT Dentris91 logged out.
+2018-05-17 13:37:47.777 [http-nio-8080-exec-5] INFO  ua.training.controller.commands.LoginCommand - ADMIN Nagorn09 logged successfully.
+2018-05-17 13:38:03.620 [http-nio-8080-exec-9] INFO  ua.training.controller.commands.LogoutCommand - ADMIN Nagorn09 logged out.
+2018-05-17 13:38:09.948 [http-nio-8080-exec-6] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:40:31.459 [http-nio-8080-exec-2] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-17 13:45:12.531 [http-nio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.

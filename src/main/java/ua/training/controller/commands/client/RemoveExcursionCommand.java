@@ -9,7 +9,6 @@ import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.Excursion;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.User;
-import ua.training.model.services.ExcursionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,7 +22,6 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
 @AccessRequired(roles = {User.Role.CLIENT}, path = "/client/remove-excursion")
 public class RemoveExcursionCommand implements Command {
-    private ExcursionService excursionService = ExcursionService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
         String excursionName = request.getParameter("excursion");

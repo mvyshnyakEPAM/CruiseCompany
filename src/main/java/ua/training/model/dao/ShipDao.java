@@ -12,8 +12,8 @@ import java.util.Optional;
  */
 public interface ShipDao extends GenericDao<Ship> {
     int countAllShips();
-    int getFreePlacesAmount(String name);
-    Optional<Ship> getShipByName(String name, String locale);
+    int getFreePlacesAmount(String shipName);
+    Optional<Ship> getShipByName(String shipName, String locale);
     List<Ship> getAllShipsPerPage(int pageNumber, String locale);
     List<Ship> getAllShipsByUser(int userId, String locale);
     List<Bonus> getAllBonusesByShip(int shipId);

@@ -4,6 +4,7 @@ import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.ExcursionDao;
 import ua.training.model.entities.Excursion;
+import ua.training.model.entities.Port;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -68,6 +69,8 @@ public class ExcursionDaoImpl implements ExcursionDao {
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {
                 Excursion excursion = extractEntityFromResultSet(resultSet, locale);
+                Port port = PortDaoImpl.extractEntityFromResultSet(resultSet, locale);
+                excursion.setPort(port);
                 excursions.add(excursion);
             }
             return excursions;
@@ -84,6 +87,8 @@ public class ExcursionDaoImpl implements ExcursionDao {
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {
                 Excursion excursion = extractEntityFromResultSet(resultSet, locale);
+                Port port = PortDaoImpl.extractEntityFromResultSet(resultSet, locale);
+                excursion.setPort(port);
                 excursions.add(excursion);
             }
             return excursions;
@@ -154,7 +159,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
         }
     }
 
-    private Excursion extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
+    public static Excursion extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Excursion.ExcursionBuilder()
                 .setId(resultSet.getInt(TableColumns.EXCURSION_ID))
                 .setName(resultSet.getString(TableColumns.EXCURSION_NAME + "_" + locale))

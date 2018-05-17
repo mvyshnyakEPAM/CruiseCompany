@@ -40,9 +40,9 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public int getFreePlacesAmount(String name) {
+    public int getFreePlacesAmount(String shipName) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_GET_FREE_PLACES)) {
-            ps.setString(1, name);
+            ps.setString(1, shipName);
             ResultSet resultSet = ps.executeQuery();
             int freePlaces = 0;
             while (resultSet.next()) {
@@ -154,9 +154,9 @@ public class ShipDaoImpl implements ShipDao {
     }
 
     @Override
-    public Optional<Ship> getShipByName(String name, String locale) {
+    public Optional<Ship> getShipByName(String shipName, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_FIND_BY_NAME)) {
-            ps.setString(1, name);
+            ps.setString(1, shipName);
             ResultSet resultSet = ps.executeQuery();
             Ship ship = null;
             while (resultSet.next()) {
@@ -239,7 +239,7 @@ public class ShipDaoImpl implements ShipDao {
         }
     }
 
-    private Ship extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
+    public static Ship extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Ship.ShipBuilder()
                 .setId(resultSet.getInt(TableColumns.SHIP_ID))
                 .setName(resultSet.getString(TableColumns.SHIP_NAME + "_" + locale))

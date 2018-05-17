@@ -6,8 +6,40 @@
 
 <!-- Nav tabs -->
 <div id="content">
-    ${requestScope.price}
-        <a href="${pageContext.request.contextPath}/company/client/pay-cruise" class="btn btn-warning font-weight-bold">Pay</a>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr class="bg-primary text-white">
+                <th>Cruise Name</th>
+                <th>Bonuses</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Duration</th>
+                <th>Class</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${sessionScope.cruise.name}</td>
+                    <td>
+                        <c:forEach var="bonus" items="${sessionScope.cruise.bonuses}">
+                            <fmt:message key="${bonus.key}"/>;
+                        </c:forEach>
+                    </td>
+                    <td><ctg:format-date date="${sessionScope.cruise.departure}" locale="${sessionScope.language}"/></td>
+                    <td><ctg:format-date date="${sessionScope.cruise.arrival}" locale="${sessionScope.language}"/></td>
+                    <td>${sessionScope.cruise.cruiseDuration}</td>
+                    <td><fmt:message key="${sessionScope.cruise.shipClass.key}"/> </td>
+                    <td>${requestScope.price}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/company/client/pay-cruise" class="btn btn-warning font-weight-bold">Pay</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="container">
         <div class="row no-gutter">
             <c:forEach var="port" items="${sessionScope.cruise.ports}">
@@ -51,6 +83,7 @@
                     <thead>
                     <tr class="bg-primary text-white">
                         <th>Excursion</th>
+                        <th>Port</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
@@ -60,6 +93,7 @@
                     <c:forEach var="excursion" items="${entry.value}">
                         <tr>
                             <td>${excursion.name}</td>
+                            <td>${excursion.port}</td>
                             <td>${excursion.price}</td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/company/client/remove-excursion?excursion=${excursion.nameEn}" class="btn btn-warning font-weight-bold">Remove</a>
@@ -68,8 +102,8 @@
                     </c:forEach>
                 </tbody>
             </table>
+            </c:forEach>
         </div>
-        </c:forEach>
     </div>
     <%--<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <c:forEach var="port" items="${sessionScope.cruise.ports}">

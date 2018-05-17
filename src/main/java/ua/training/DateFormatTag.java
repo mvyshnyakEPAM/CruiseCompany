@@ -29,9 +29,11 @@ public class DateFormatTag extends TagSupport {
     public int doStartTag() throws JspException {
         try {
             if (locale.equals(Locales.UA)) {
-                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_UA)));
+                pageContext.getOut()
+                        .write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_UA)));
             } else {
-                pageContext.getOut().write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_EN)));
+                pageContext.getOut()
+                        .write(date.format(DateTimeFormatter.ofPattern(Patterns.DATE_EN)));
             }
         } catch (IOException e) {
             throw new JspException(e);

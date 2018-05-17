@@ -109,7 +109,7 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    private User extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
+    public static User extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
         return new User.UserBuilder()
                 .setId(resultSet.getInt(TableColumns.USER_ID))
                 .setLogin(resultSet.getString(TableColumns.USER_LOGIN))

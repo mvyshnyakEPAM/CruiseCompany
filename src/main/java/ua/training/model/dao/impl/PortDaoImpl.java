@@ -125,7 +125,7 @@ public class PortDaoImpl implements PortDao {
         }
     }
 
-    private Port extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
+    public static Port extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Port.PortBuilder()
                 .setId(resultSet.getInt(TableColumns.PORT_ID))
                 .setName(resultSet.getString(TableColumns.PORT_NAME + "_" + locale))

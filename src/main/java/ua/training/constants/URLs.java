@@ -10,4 +10,5 @@ public interface URLs {
     String CLIENT = "/company/client";
     String ADMIN = "/company/admin";
     String CRUISE_LIST = "/company/client/show-cruises?page=";
+    String SHIP_LIST = "/company/admin/show-ships?page=";
 }

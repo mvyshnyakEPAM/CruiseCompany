@@ -13,11 +13,13 @@ import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.Excursion;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.User;
-import ua.training.model.services.ShipService;
+import ua.training.model.services.CruiseService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * Максим
@@ -27,19 +29,19 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 @AccessRequired(roles = {User.Role.CLIENT}, path = CommandPaths.SHOW_CRUISE_INFO)
 public class ShowCruiseInfoCommand implements Command {
-    ShipService shipService = ShipService.getInstance();
+    CruiseService cruiseService = CruiseService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
         String cruiseName = request.getParameter("cruise");
         HttpSession session = request.getSession();
 
-        boolean freePlacesAvailable = shipService.freePlacesAvailable(cruiseName);
+        boolean freePlacesAvailable = cruiseService.freePlacesAvailable(cruiseName);
         if (!freePlacesAvailable) {
             return new Redirect(URLs.CRUISE_LIST);
         }
 
         String locale = (String)session.getAttribute(Attributes.LANGUAGE);
-        Optional<Ship> ship = shipService.getCruiseByName(cruiseName, locale);
+        Optional<Ship> ship = cruiseService.getCruiseByName(cruiseName, locale);
 
         if (ship.isPresent()) {
             Map<String, List<Excursion>> basket = ControllerUtil.getCart(session);

@@ -1,5 +1,7 @@
 package ua.training.controller.commands;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.*;
 import ua.training.controller.listeners.LoginDto;
 import ua.training.controller.servlets.actions.Forward;
@@ -21,6 +23,7 @@ import java.util.Optional;
  */
 @AccessRequired(roles = {User.Role.GUEST}, path = CommandPaths.LOGIN)
 public class LoginCommand implements Command {
+    private final static Logger logger = LogManager.getLogger(LoginCommand.class);
     UserService userService = UserService.getInstance();
 
     @Override
@@ -40,10 +43,12 @@ public class LoginCommand implements Command {
         if (user.isPresent()) {
             session.setAttribute(Attributes.USER, new LoginDto(user.get().getId(), login));
             session.setAttribute(Attributes.ROLE, user.get().getRole());
+            logger.info(user.get().getRole() + " " + user.get().getLogin() + " logged successfully.");
             return new Redirect(ControllerUtil.getUserPage(user.get().getRole()));
         }
 
         request.setAttribute(Attributes.MESSAGE, Messages.LOGIN_FAIL);
+        logger.info("Sign in fail with login: " + login + ".");
         return new Forward(Pages.LOGIN);
     }
 }

@@ -5,23 +5,28 @@ package ua.training.constants;
  * 26.04.2018
  */
 public interface Queries {
-    String EXCURSION_CREATE = "INSERT INTO excursion (name_en, name_ua, price, port_id) VALUES (?, ?, ?, ?)";
+    String EXCURSION_CREATE = "INSERT INTO excursion (excursion_name_en, excursion_name_ua, price, port_id) VALUES (?, ?, ?, ?)";
     String EXCURSION_FIND_BY_ID = "SELECT * FROM excursion WHERE id = ?";
-    String EXCURSION_FIND_BY_NAME = "SELECT * FROM excursion WHERE name_en = ?";
+    String EXCURSION_FIND_BY_NAME = "SELECT * FROM excursion WHERE excursion_name_en = ?";
     String EXCURSION_FIND_ALL = "SELECT * FROM excursion";
-    String EXCURSION_UPDATE = "UPDATE excursion SET name_en = ?, name_ua = ?, price = ? WHERE excursion_id = ?";
+    String EXCURSION_UPDATE = "UPDATE excursion SET excursion_name_en = ?, excursion_name_ua = ?, price = ? WHERE excursion_id = ?";
     String EXCURSION_DELETE = "DELETE FROM excursion WHERE excursion_id = ?";
     String EXCURSION_ADD_TO_USER = "INSERT INTO excursion_has_user (excursion_id, user_id) VALUES (?, ?)";
-    String EXCURSION_FIND_ALL_BY_PORT = "SELECT * FROM excursion WHERE port_id = ?";
+    String EXCURSION_FIND_ALL_BY_PORT = "SELECT * FROM excursion\n" +
+                                        " INNER JOIN port\n" +
+                                        " USING(port_id)\n" +
+                                        "WHERE port_id = ?";
     String EXCURSION_FIND_ALL_BY_USER = "SELECT * FROM excursion\n" +
                                         " INNER JOIN excursion_has_user\n" +
                                         " USING (excursion_id)\n" +
+                                        " INNER JOIN port\n" +
+                                        " USING (port_id)\n" +
                                         "WHERE excursion_has_user.user_id = ?";
 
-    String PORT_CREATE = "INSERT INTO port (name_en, name_ua, country_en, country_ua) VALUES (?, ?, ?, ?)";
+    String PORT_CREATE = "INSERT INTO port (port_name_en, port_name_ua, country_en, country_ua) VALUES (?, ?, ?, ?)";
     String PORT_FIND_BY_ID = "SELECT * FROM port WHERE port_id = ?";
     String PORT_FIND_ALL = "SELECT * FROM port";
-    String PORT_UPDATE = "UPDATE port SET name_en = ?, name_ua = ?, country_en = ?, country_ua = ? WHERE port_id = ?";
+    String PORT_UPDATE = "UPDATE port SET port_name_en = ?, port_name_ua = ?, country_en = ?, country_ua = ? WHERE port_id = ?";
     String PORT_DELETE = "DELETE FROM port WHERE port_id = ?";
     String PORT_ADD_TO_SHIP = "INSERT INTO port_has_ship (port_id, ship_id, number) VALUES (?, ?, ?)";
     String PORT_FIND_ALL_BY_SHIP = "SELECT * FROM port\n" +
@@ -33,10 +38,10 @@ public interface Queries {
     String SHIP_CREATE = "INSERT INTO ship (ship_name_en, ship_name_ua, price, ports_visited, departure, arrival, " +
                             "cruise_duration, ship_class, passenger_capacity, free_places, staff) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String SHIP_FIND_BY_ID = "SELECT * FROM ship WHERE ship_id = ?";
-    String SHIP_FIND_BY_NAME = "SELECT * FROM ship WHERE name_en = ?";
-    String SHIP_GET_FREE_PLACES = "SELECT free_places FROM ship WHERE name_en = ?";
+    String SHIP_FIND_BY_NAME = "SELECT * FROM ship WHERE ship_name_en = ?";
+    String SHIP_GET_FREE_PLACES = "SELECT free_places FROM ship WHERE ship_name_en = ?";
     String SHIP_FIND_ALL = "SELECT * FROM ship";
-    String SHIP_UPDATE = "UPDATE ship SET name_en = ?, name_ua = ?, price = ?, ports_visited = ?, departure = ?, arrival = ?, " +
+    String SHIP_UPDATE = "UPDATE ship SET ship_name_en = ?, ship_name_ua = ?, price = ?, ports_visited = ?, departure = ?, arrival = ?, " +
                             "cruise_duration = ?, ship_class = ?, passenger_capacity = ?, free_places = ?, staff = ? WHERE ship_id = ?";
     String SHIP_DELETE = "DELETE FROM ship WHERE ship_id = ?";
     String SHIP_COUNT = "SELECT count(*) FROM ship";
