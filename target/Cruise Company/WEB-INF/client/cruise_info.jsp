@@ -6,7 +6,43 @@
 
 <!-- Nav tabs -->
 <div id="content">
-    <div class="container">
+    <%--<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="pills-cruise-tab" data-toggle="pill" href="#pills-cruise" role="tab" aria-controls="pills-cruise" aria-selected="false">Cruise</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-ship-tab" data-toggle="pill" href="#pills-ship" role="tab" aria-controls="pills-ship" aria-selected="false">Ship</a>
+        </li>
+    </ul>
+    <div class="tab-content justify-content-center" id="pills-tabContent">
+        <div class="tab-pane fade" id="pills-cruise" role="tabpanel" aria-labelledby="pills-cruise-tab">
+
+        </div>
+        <div class="tab-pane fade" id="pills-ship" role="tabpanel" aria-labelledby="pills-ship-tab">
+
+        </div>
+    </div>--%>
+    <div class="container" style="width: 500px; height: 150px" >
+        <table class="table table-bordered table-sm">
+            <thead>
+            <tr class="bg-primary text-white">
+                <th>Price</th>
+                <th>Free Places</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${requestScope.price}</td>
+                    <td>${sessionScope.cruise.freePlaces}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/company/client/pay-cruise" class="btn btn-warning font-weight-bold">Pay</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <%--<div class="container">
         <table class="table table-bordered">
             <thead>
             <tr class="bg-primary text-white">
@@ -39,7 +75,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>--%>
     <div class="container">
         <div class="row no-gutter">
             <c:forEach var="port" items="${sessionScope.cruise.ports}">
@@ -76,34 +112,33 @@
                 </div>
             </c:forEach>
         </div>
-        <div class="container">
-            <c:forEach var="entry" items="${sessionScope.excursions}">
-            <table class="table table-bordered">
-                <c:if test="${not empty entry.value}">
-                    <thead>
-                    <tr class="bg-primary text-white">
-                        <th>Excursion</th>
-                        <th>Port</th>
-                        <th>Price</th>
-                        <th>Action</th>
+    </div>
+    <br>
+    <div class="container">
+        <table class="table-md table-bordered table-sm">
+            <c:if test="${not empty requestScope.excursions}">
+                <thead>
+                <tr class="bg-primary text-white">
+                    <th>Excursion</th>
+                    <th>Port</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+            </c:if>
+            <tbody>
+                <c:forEach var="excursion" items="${requestScope.excursions}">
+                    <tr>
+                        <td>${excursion.name}</td>
+                        <td>${excursion.port}</td>
+                        <td>${excursion.price}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/company/client/remove-excursion?excursion=${excursion.nameEn}" class="btn btn-warning font-weight-bold">Remove</a>
+                        </td>
                     </tr>
-                    </thead>
-                </c:if>
-                <tbody>
-                    <c:forEach var="excursion" items="${entry.value}">
-                        <tr>
-                            <td>${excursion.name}</td>
-                            <td>${excursion.port}</td>
-                            <td>${excursion.price}</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/company/client/remove-excursion?excursion=${excursion.nameEn}" class="btn btn-warning font-weight-bold">Remove</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-            </c:forEach>
-        </div>
+                </c:forEach>
+            </tbody>
+        </table>
     </div>
     <%--<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <c:forEach var="port" items="${sessionScope.cruise.ports}">

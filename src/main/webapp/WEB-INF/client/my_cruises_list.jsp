@@ -17,6 +17,7 @@
                 <th>Duration</th>
                 <th>Class</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                     <td>${cruise.cruiseDuration}</td>
                     <td><fmt:message key="${cruise.shipClass.key}"/> </td>
                     <td>${cruise.price}</td>
+                    <td><a href="${pageContext.request.contextPath}/company/client/show-my-excursions?shipName=${cruise.nameEn}" class="btn btn-warning font-weight-bold">Excursions</a></td>
                 </tr>
             </c:forEach>
             </tbody>

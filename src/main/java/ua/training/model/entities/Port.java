@@ -163,6 +163,36 @@ public class Port {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Port port = (Port) o;
+
+        if (name != null ? !name.equals(port.name) : port.name != null) return false;
+        if (nameEn != null ? !nameEn.equals(port.nameEn) : port.nameEn != null) return false;
+        if (nameUa != null ? !nameUa.equals(port.nameUa) : port.nameUa != null) return false;
+        if (country != null ? !country.equals(port.country) : port.country != null) return false;
+        if (countryEn != null ? !countryEn.equals(port.countryEn) : port.countryEn != null) return false;
+        if (countryUa != null ? !countryUa.equals(port.countryUa) : port.countryUa != null) return false;
+        if (ships != null ? !ships.equals(port.ships) : port.ships != null) return false;
+        return excursions != null ? excursions.equals(port.excursions) : port.excursions == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (nameEn != null ? nameEn.hashCode() : 0);
+        result = 31 * result + (nameUa != null ? nameUa.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (countryEn != null ? countryEn.hashCode() : 0);
+        result = 31 * result + (countryUa != null ? countryUa.hashCode() : 0);
+        result = 31 * result + (ships != null ? ships.hashCode() : 0);
+        result = 31 * result + (excursions != null ? excursions.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return name;
     }

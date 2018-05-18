@@ -36,10 +36,11 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public void addExcursionToUser(int excursionId, int userID) {
+    public void addExcursionToUser(int excursionId, int userID, String shipName) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_ADD_TO_USER)) {
             ps.setInt(1, excursionId);
             ps.setInt(2, userID);
+            ps.setString(3, shipName);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -54,6 +55,8 @@ public class ExcursionDaoImpl implements ExcursionDao {
             Excursion excursion = null;
             while (resultSet.next()) {
                 excursion = extractEntityFromResultSet(resultSet, locale);
+                Port port = PortDaoImpl.extractEntityFromResultSet(resultSet, locale);
+                excursion.setPort(port);
             }
             return Optional.ofNullable(excursion);
         } catch (SQLException e) {
@@ -69,8 +72,6 @@ public class ExcursionDaoImpl implements ExcursionDao {
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {
                 Excursion excursion = extractEntityFromResultSet(resultSet, locale);
-                Port port = PortDaoImpl.extractEntityFromResultSet(resultSet, locale);
-                excursion.setPort(port);
                 excursions.add(excursion);
             }
             return excursions;
@@ -80,9 +81,10 @@ public class ExcursionDaoImpl implements ExcursionDao {
     }
 
     @Override
-    public List<Excursion> getAllExcursionsByUser(int userId, String locale) {
+    public List<Excursion> getAllExcursionsByUserAndCruise(int userId, String shipName, String locale) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.EXCURSION_FIND_ALL_BY_USER)) {
             ps.setInt(1, userId);
+            ps.setString(2, shipName);
             ResultSet resultSet = ps.executeQuery();
             List<Excursion> excursions = new ArrayList<>();
             while (resultSet.next()) {

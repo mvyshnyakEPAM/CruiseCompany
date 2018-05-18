@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Максим
@@ -19,7 +19,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent event) {
         ServletContext context = event.getSession().getServletContext();
-        event.getSession().setAttribute("excursions", new HashMap<String, List<Excursion>>());
+        event.getSession().setAttribute("cart", new HashMap<String, Set<Excursion>>());
         event.getSession().setAttribute(Attributes.LANGUAGE, context.getInitParameter(Parameters.LOCALE));
         event.getSession().setAttribute(Attributes.ROLE, User.Role.GUEST);
     }

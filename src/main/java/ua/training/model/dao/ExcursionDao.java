@@ -10,8 +10,8 @@ import java.util.Optional;
  * 06.05.2018
  */
 public interface ExcursionDao extends GenericDao<Excursion> {
-    void addExcursionToUser(int excursionId, int userId);
+    void addExcursionToUser(int excursionId, int userId, String shipName);
     Optional<Excursion> getExcursionByName(String name, String locale);
-    List<Excursion> getAllExcursionsByUser(int userId, String locale);
+    List<Excursion> getAllExcursionsByUserAndCruise(int userId, String shipName, String locale);
     List<Excursion> getAllExcursionsByPort(int portId, String locale);
 }

@@ -17,9 +17,9 @@ import ua.training.model.services.CruiseService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Максим
@@ -44,17 +44,18 @@ public class ShowCruiseInfoCommand implements Command {
         Optional<Ship> ship = cruiseService.getCruiseByName(cruiseName, locale);
 
         if (ship.isPresent()) {
-            Map<String, List<Excursion>> basket = ControllerUtil.getCart(session);
-            List<Excursion> excursions = basket.get(ship.get().getNameEn());
+            Map<String, Set<Excursion>> basket = ControllerUtil.getCart(session);
+            Set<Excursion> excursions = basket.get(ship.get().getNameEn());
             int price = calculatePrice(ship.get().getPrice(), excursions);
             session.setAttribute("cruise", ship.get());
             request.setAttribute("price", price);
+            request.setAttribute("excursions", excursions);
             return new Forward(Pages.CRUISE_INFO);
         }
         return new Redirect(URLs.CRUISE_LIST);
     }
 
-    private int calculatePrice(int cruisePrice, List<Excursion> excursions) {
+    private int calculatePrice(int cruisePrice, Set<Excursion> excursions) {
         return excursions == null ? cruisePrice :
                 cruisePrice + excursions.stream().mapToInt(Excursion::getPrice).sum();
     }

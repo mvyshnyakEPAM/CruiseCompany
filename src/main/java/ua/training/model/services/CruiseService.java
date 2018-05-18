@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Максим
@@ -76,32 +77,28 @@ public class CruiseService {
     public List<Ship> getAllCruisesByUser(int userId, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
-            PortDao portDao = daoFactory.createPortDao(connection);
-            ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {
+            PortDao portDao = daoFactory.createPortDao(connection)) {
             List<Ship> ships = shipDao.getAllShipsByUser(userId, locale);
             for (Ship ship : ships) {
                 ship.setPorts(portDao.getAllPortsByShip(ship.getId(), locale));
-                for (Port port : ship.getPorts()) {
-                    port.setExcursions(excursionDao.getAllExcursionsByPort(port.getId(), locale));
-                }
                 ship.setBonuses(shipDao.getAllBonusesByShip(ship.getId()));
             }
             return ships;
         }
     }
 
-    public boolean payCruise(int userId, Ship ship, List<Excursion> excursions) {
+    public boolean payCruise(int userId, Ship ship, Set<Excursion> excursions) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
             ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {
             connection.setAutoCommit(false);
-            for (Excursion excursion : excursions) {
-                excursionDao.addExcursionToUser(excursion.getId(), userId);
-            }
-            shipDao.addShipToUser(ship.getId(), userId);
             if (freePlacesAvailable(ship.getNameEn())) {
+                shipDao.addShipToUser(ship.getId(), userId);
                 ship.setFreePlaces(ship.getFreePlaces() - 1);
                 shipDao.update(ship);
+                for (Excursion excursion : excursions) {
+                    excursionDao.addExcursionToUser(excursion.getId(), userId, ship.getNameEn());
+                }
                 connection.commit();
                 return true;
             } else {

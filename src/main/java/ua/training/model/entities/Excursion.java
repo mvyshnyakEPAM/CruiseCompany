@@ -129,4 +129,30 @@ public class Excursion {
             return excursion;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Excursion excursion = (Excursion) o;
+
+        if (price != excursion.price) return false;
+        if (name != null ? !name.equals(excursion.name) : excursion.name != null) return false;
+        if (nameEn != null ? !nameEn.equals(excursion.nameEn) : excursion.nameEn != null) return false;
+        if (nameUa != null ? !nameUa.equals(excursion.nameUa) : excursion.nameUa != null) return false;
+        if (port != null ? !port.equals(excursion.port) : excursion.port != null) return false;
+        return users != null ? users.equals(excursion.users) : excursion.users == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (nameEn != null ? nameEn.hashCode() : 0);
+        result = 31 * result + (nameUa != null ? nameUa.hashCode() : 0);
+        result = 31 * result + price;
+        result = 31 * result + (port != null ? port.hashCode() : 0);
+        result = 31 * result + (users != null ? users.hashCode() : 0);
+        return result;
+    }
 }

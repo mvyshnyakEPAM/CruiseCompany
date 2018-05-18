@@ -31,10 +31,10 @@ public class ExcursionService {
         }
     }
 
-    public List<Excursion> getAllExcursionsByUser(int userId, String locale) {
+    public List<Excursion> getAllExcursionsByUserAndCruise(int userId, String shipName, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {
-            return excursionDao.getAllExcursionsByUser(userId, locale);
+            return excursionDao.getAllExcursionsByUserAndCruise(userId, shipName, locale);
         }
     }
 }

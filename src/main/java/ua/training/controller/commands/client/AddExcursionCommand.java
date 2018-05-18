@@ -32,10 +32,10 @@ public class AddExcursionCommand implements Command {
         Optional<Excursion> excursion = excursionService.getExcursionByName(excursionName, locale);
         Ship ship = (Ship) session.getAttribute("cruise");
         if (excursion.isPresent()) {
-            Map<String, List<Excursion>> bucket = ControllerUtil.getCart(session);
-            bucket.putIfAbsent(ship.getNameEn(), new ArrayList<>());
+            Map<String, Set<Excursion>> bucket = ControllerUtil.getCart(session);
+            bucket.putIfAbsent(ship.getNameEn(), new HashSet<>());
             bucket.get(ship.getNameEn()).add(excursion.get());
-            session.setAttribute("excursions", bucket);
+            session.setAttribute("cart", bucket);
         }
         return new Redirect(request.getHeader(Attributes.REFERER));
     }

@@ -12,8 +12,8 @@ import ua.training.model.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Максим
@@ -28,9 +28,9 @@ public class RemoveExcursionCommand implements Command {
         HttpSession session = request.getSession();
         Ship ship = (Ship) session.getAttribute("cruise");
 
-        Map<String, List<Excursion>> bucket = ControllerUtil.getCart(session);
+        Map<String, Set<Excursion>> bucket = ControllerUtil.getCart(session);
         bucket.get(ship.getNameEn()).removeIf(e -> e.getNameEn().equals(excursionName));
-        session.setAttribute("excursions", bucket);
+        session.setAttribute("cart", bucket);
         return new Redirect(request.getHeader(Attributes.REFERER));
     }
 }

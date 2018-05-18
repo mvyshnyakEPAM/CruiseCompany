@@ -7,11 +7,14 @@ package ua.training.constants;
 public interface Queries {
     String EXCURSION_CREATE = "INSERT INTO excursion (excursion_name_en, excursion_name_ua, price, port_id) VALUES (?, ?, ?, ?)";
     String EXCURSION_FIND_BY_ID = "SELECT * FROM excursion WHERE id = ?";
-    String EXCURSION_FIND_BY_NAME = "SELECT * FROM excursion WHERE excursion_name_en = ?";
+    String EXCURSION_FIND_BY_NAME = "SELECT * FROM excursion\n" +
+                                    " INNER JOIN port\n" +
+                                    " USING (port_id)\n" +
+                                    "WHERE excursion_name_en = ?";
     String EXCURSION_FIND_ALL = "SELECT * FROM excursion";
     String EXCURSION_UPDATE = "UPDATE excursion SET excursion_name_en = ?, excursion_name_ua = ?, price = ? WHERE excursion_id = ?";
     String EXCURSION_DELETE = "DELETE FROM excursion WHERE excursion_id = ?";
-    String EXCURSION_ADD_TO_USER = "INSERT INTO excursion_has_user (excursion_id, user_id) VALUES (?, ?)";
+    String EXCURSION_ADD_TO_USER = "INSERT INTO excursion_has_user (excursion_id, user_id, ship_name) VALUES (?, ?, ?)";
     String EXCURSION_FIND_ALL_BY_PORT = "SELECT * FROM excursion\n" +
                                         " INNER JOIN port\n" +
                                         " USING(port_id)\n" +
@@ -21,7 +24,7 @@ public interface Queries {
                                         " USING (excursion_id)\n" +
                                         " INNER JOIN port\n" +
                                         " USING (port_id)\n" +
-                                        "WHERE excursion_has_user.user_id = ?";
+                                        "WHERE excursion_has_user.user_id = ? AND excursion_has_user.ship_name = ?";
 
     String PORT_CREATE = "INSERT INTO port (port_name_en, port_name_ua, country_en, country_ua) VALUES (?, ?, ?, ?)";
     String PORT_FIND_BY_ID = "SELECT * FROM port WHERE port_id = ?";

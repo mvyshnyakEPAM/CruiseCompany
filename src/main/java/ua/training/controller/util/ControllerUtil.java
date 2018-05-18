@@ -9,8 +9,8 @@ import ua.training.model.entities.User;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Максим
@@ -49,7 +49,7 @@ public class ControllerUtil {
                 path.matches(accessRequired.path());
     }
 
-    public static Map<String, List<Excursion>> getCart(HttpSession session) {
-        return (HashMap<String, List<Excursion>>) session.getAttribute("excursions");
+    public static Map<String, Set<Excursion>> getCart(HttpSession session) {
+        return (HashMap<String, Set<Excursion>>) session.getAttribute("cart");
     }
 }

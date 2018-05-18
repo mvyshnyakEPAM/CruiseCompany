@@ -26,8 +26,10 @@ public class ShowMyExcursionsCommand implements Command {
         HttpSession session = request.getSession();
         int userId = ((LoginDto) request.getSession()
                 .getAttribute(Attributes.USER)).getId();
+        String shipName = request.getParameter("shipName");
         String locale = (String) session.getAttribute(Attributes.LANGUAGE);
-        List<Excursion> excursions = excursionService.getAllExcursionsByUser(userId, locale);
+        List<Excursion> excursions = excursionService
+                .getAllExcursionsByUserAndCruise(userId, shipName, locale);
         request.setAttribute("myExcursions", excursions);
         return new Forward("/WEB-INF/client/my_excursions_list.jsp");
     }
