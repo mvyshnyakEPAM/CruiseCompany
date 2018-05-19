@@ -23,7 +23,7 @@
                     <td>${ship.passengerCapacity}</td>
                     <td>${ship.staff}</td>
                     <td><fmt:message key="${ship.shipClass.key}"/> </td>
-                    <td><a href="${pageContext.request.contextPath}/company/show-ship-bonuses?ship=${ship.nameEn}" class="btn btn-warning font-weight-bold"><fmt:message key="action_bonuses"/></a></td>
+                    <td><a href="${pageContext.request.contextPath}/company/ship-bonuses?ship=${ship.nameEn}" class="btn btn-warning font-weight-bold"><fmt:message key="action_bonuses"/></a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -31,7 +31,7 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <c:forEach var="number" begin="1" end="${requestScope.numberOfPages}">
-                    <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/show-ships?page=${number}">${number}</a></li>
+                    <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/ships?page=${number}">${number}</a></li>
                 </c:forEach>
             </ul>
         </nav>

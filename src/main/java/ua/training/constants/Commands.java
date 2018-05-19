@@ -7,12 +7,20 @@ package ua.training.constants;
 public interface Commands {
     String LOGIN_PAGE = "login-page";
     String REGISTRATION_PAGE = "registration-page";
-    String CLIENT_PAGE = "client";
-    String ADMIN_PAGE = "admin";
     String REGISTER = "register";
     String LOGIN = "login";
     String LOGOUT = "logout";
     String LANGUAGE = "language";
-    String SHOW_CRUISES = "show-cruises";
-    String SHOW_CRUISE_INFO = "show-cruise-info";
+    String CRUISES = "cruises";
+    String CRUISE_INFO = "cruise-info";
+    String MAIN = "main";
+    String ADD_EXCURSION = "add-excursion";
+    String REMOVE_EXCURSION = "remove-excursion";
+    String PAY_CRUISE = "pay-cruise";
+    String MY_CRUISES = "my-cruises";
+    String MY_EXCURSIONS = "my-excursions";
+    String SHIPS = "ships";
+    String SHIP_BONUSES = "ship-bonuses";
+    String ADD_BONUS = "add-bonus";
+    String REMOVE_BONUS = "remove-bonus";
 }

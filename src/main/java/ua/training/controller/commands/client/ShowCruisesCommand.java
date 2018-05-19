@@ -23,7 +23,7 @@ public class ShowCruisesCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
-        String locale = (String) request.getSession().getAttribute(Attributes.LANGUAGE);
+        String locale = (String) request.getSession().getAttribute(Attributes.LOCALE);
         int numberOfPages = cruiseService.getNumberOfPages();
         try {
             String page = request.getParameter(Parameters.PAGE);

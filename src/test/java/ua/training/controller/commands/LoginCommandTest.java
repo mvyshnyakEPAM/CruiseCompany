@@ -6,7 +6,7 @@ import org.mockito.Mockito;
 import ua.training.constants.Attributes;
 import ua.training.constants.Messages;
 import ua.training.constants.Parameters;
-import ua.training.controller.listeners.LoginDto;
+import ua.training.controller.listeners.ActiveUser;
 import ua.training.model.entities.User;
 import ua.training.model.services.UserService;
 
@@ -35,7 +35,7 @@ public class LoginCommandTest {
         HttpSession session = Mockito.mock(HttpSession.class);
         loginCommand.userService = Mockito.mock(UserService.class);
         Map<String, String> map = new HashMap<>();
-        map.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
+        map.put(Attributes.LOGIN_MISMATCH_MESSAGE, Messages.LOGIN_MISMATCH);
 
         Mockito.when(request.getParameter(Parameters.LOGIN)).thenReturn(null);
         Mockito.when(request.getParameter(Parameters.PASSWORD)).thenReturn("123");
@@ -55,7 +55,7 @@ public class LoginCommandTest {
         HttpSession session = Mockito.mock(HttpSession.class);
         loginCommand.userService = Mockito.mock(UserService.class);
         Map<String, String> map = new HashMap<>();
-        map.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
+        map.put(Attributes.PASSWORD_MISMATCH_MESSAGE, Messages.PASSWORD_MISMATCH);
 
         Mockito.when(request.getParameter(Parameters.LOGIN)).thenReturn("user");
         Mockito.when(request.getParameter(Parameters.PASSWORD)).thenReturn(null);
@@ -92,7 +92,7 @@ public class LoginCommandTest {
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(request).getSession();
         Mockito.verify(loginCommand.userService).signIn("user", "123");
-        Mockito.verify(session).setAttribute(Attributes.USER, new LoginDto(1, "user"));
+        Mockito.verify(session).setAttribute(Attributes.USER, new ActiveUser(1, "user"));
         Mockito.verify(session).setAttribute(Attributes.ROLE, user.getRole());
         Mockito.verifyNoMoreInteractions(request, session, loginCommand.userService);
     }
@@ -115,7 +115,7 @@ public class LoginCommandTest {
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(request).getSession();
         Mockito.verify(loginCommand.userService).signIn("user", "123");
-        Mockito.verify(request).setAttribute(Attributes.MESSAGE, Messages.LOGIN_FAIL);
+        Mockito.verify(request).setAttribute(Attributes.MESSAGE_INFO, Messages.LOGIN_FAIL);
         Mockito.verifyNoMoreInteractions(request, session, loginCommand.userService);
     }
 }

@@ -26,8 +26,8 @@
                 <div class="col-xl-9" style="border:1px solid #333; font-size: small">
                     <div style="padding: 5px">
                         <img src="<c:url value='/resources/images/logo_en_lg1.png'/>" class="img-resp" align="left">
-                        <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${cruise.departure}" locale="${sessionScope.language}"/><br>
-                        <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.language}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${cruise.departure}" locale="${sessionScope.locale}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.locale}"/><br>
                         <span style="font-weight: bold"><fmt:message key="ship_route"/>: </span>${cruise.ports}<br>
                         <span style="font-weight: bold"><fmt:message key="ship_passenger_capacity"/>: </span>${cruise.passengerCapacity}<br>
                         <span style="font-weight: bold"><fmt:message key="ship_staff"/>: </span>${cruise.staff}
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </p>
-                        <p><a href="${pageContext.request.contextPath}/company/show-my-excursions?shipName=${cruise.nameEn}" class="btn btn-sm btn-warning font-weight-bold"><fmt:message key="action_excursions"/></a></p>
+                        <p><a href="${pageContext.request.contextPath}/company/my-excursions?shipName=${cruise.nameEn}" class="btn btn-sm btn-warning font-weight-bold"><fmt:message key="action_excursions"/></a></p>
                     </div>
                 </div>
             </div>

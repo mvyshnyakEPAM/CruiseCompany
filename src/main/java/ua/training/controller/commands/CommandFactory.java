@@ -2,6 +2,7 @@ package ua.training.controller.commands;
 
 import ua.training.constants.Attributes;
 import ua.training.constants.Commands;
+import ua.training.constants.RegExp;
 import ua.training.controller.commands.admin.AddBonusCommand;
 import ua.training.controller.commands.admin.RemoveBonusCommand;
 import ua.training.controller.commands.admin.ShowShipBonusesCommand;
@@ -33,18 +34,18 @@ public class CommandFactory {
         commands.put(Commands.LOGIN, new LoginCommand());
         commands.put(Commands.LOGOUT, new LogoutCommand());
         commands.put(Commands.LANGUAGE, new LanguageCommand());
-        commands.put("main", new MainPageCommand());
-        commands.put(Commands.SHOW_CRUISES, new ShowCruisesCommand());
-        commands.put(Commands.SHOW_CRUISE_INFO, new ShowCruiseInfoCommand());
-        commands.put("add-excursion", new AddExcursionCommand());
-        commands.put("remove-excursion", new RemoveExcursionCommand());
-        commands.put("pay-cruise", new PayCruiseCommand());
-        commands.put("show-my-cruises", new ShowMyCruisesCommand());
-        commands.put("show-my-excursions", new ShowMyExcursionsCommand());
-        commands.put("show-ships", new ShowShipsCommand());
-        commands.put("show-ship-bonuses", new ShowShipBonusesCommand());
-        commands.put("add-bonus", new AddBonusCommand());
-        commands.put("remove-bonus", new RemoveBonusCommand());
+        commands.put(Commands.MAIN, new MainPageCommand());
+        commands.put(Commands.CRUISES, new ShowCruisesCommand());
+        commands.put(Commands.CRUISE_INFO, new ShowCruiseInfoCommand());
+        commands.put(Commands.ADD_EXCURSION, new AddExcursionCommand());
+        commands.put(Commands.REMOVE_EXCURSION, new RemoveExcursionCommand());
+        commands.put(Commands.PAY_CRUISE, new PayCruiseCommand());
+        commands.put(Commands.MY_CRUISES, new ShowMyCruisesCommand());
+        commands.put(Commands.MY_EXCURSIONS, new ShowMyExcursionsCommand());
+        commands.put(Commands.SHIPS, new ShowShipsCommand());
+        commands.put(Commands.SHIP_BONUSES, new ShowShipBonusesCommand());
+        commands.put(Commands.ADD_BONUS, new AddBonusCommand());
+        commands.put(Commands.REMOVE_BONUS, new RemoveBonusCommand());
     }
 
     private static class CommandFactoryHolder {
@@ -64,6 +65,6 @@ public class CommandFactory {
     }
 
     private static String extractCommand(String uri) {
-        return uri.replaceAll(".*/company/", "");
+        return uri.replaceAll(RegExp.EXTRACT_COMMAND, "");
     }
 }

@@ -34,7 +34,7 @@ public class RegisterCommandTest {
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         registerCommand.userService = Mockito.mock(UserService.class);
         Map<String, String> map = new HashMap<>();
-        map.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
+        map.put(Attributes.LOGIN_MISMATCH_MESSAGE, Messages.LOGIN_MISMATCH);
 
         Mockito.when(request.getParameter(Parameters.LOGIN)).thenReturn(null);
         Mockito.when(request.getParameter(Parameters.PASSWORD)).thenReturn("123");
@@ -53,7 +53,7 @@ public class RegisterCommandTest {
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         registerCommand.userService = Mockito.mock(UserService.class);
         Map<String, String> map = new HashMap<>();
-        map.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
+        map.put(Attributes.PASSWORD_MISMATCH_MESSAGE, Messages.PASSWORD_MISMATCH);
 
         Mockito.when(request.getParameter(Parameters.LOGIN)).thenReturn("user");
         Mockito.when(request.getParameter(Parameters.PASSWORD)).thenReturn(null);
@@ -88,7 +88,7 @@ public class RegisterCommandTest {
         Mockito.verify(request).getParameter(Parameters.LOGIN);
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(registerCommand.userService).signUp(user);
-        Mockito.verify(request).setAttribute(Attributes.MESSAGE, Messages.REGISTRATION_FAIL);
+        Mockito.verify(request).setAttribute(Attributes.MESSAGE_INFO, Messages.REGISTRATION_FAIL);
         Mockito.verifyNoMoreInteractions(request, registerCommand.userService);
     }
 

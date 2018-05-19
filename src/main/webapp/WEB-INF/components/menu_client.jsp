@@ -10,10 +10,10 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/company/main"><fmt:message key="home_link"/> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/company/show-cruises?page=1"><fmt:message key="cruises_link"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/company/cruises?page=1"><fmt:message key="cruises_link"/></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/company/show-my-cruises"><fmt:message key="my_cruises_link"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/company/my-cruises"><fmt:message key="my_cruises_link"/></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/logout">

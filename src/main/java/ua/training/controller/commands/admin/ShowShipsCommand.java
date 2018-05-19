@@ -24,7 +24,7 @@ public class ShowShipsCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
-        String locale = (String) request.getSession().getAttribute(Attributes.LANGUAGE);
+        String locale = (String) request.getSession().getAttribute(Attributes.LOCALE);
         int numberOfPages = cruiseService.getNumberOfPages();
         try {
             int pageNumber = Integer.parseInt(request.getParameter(Parameters.PAGE));

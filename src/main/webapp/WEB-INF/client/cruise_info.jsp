@@ -17,8 +17,8 @@
                 <div style="padding: 5px">
                     <img src="<c:url value='/resources/images/logo_en_lg1.png'/>" class="img-resp" align="left">
                     <span style="font-weight: bold"><fmt:message key="ship_ports_visited"/>: </span> ${sessionScope.cruise.portsVisited}<br>
-                    <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${sessionScope.cruise.departure}" locale="${sessionScope.language}"/><br>
-                    <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${sessionScope.cruise.arrival}" locale="${sessionScope.language}"/><br>
+                    <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${sessionScope.cruise.departure}" locale="${sessionScope.locale}"/><br>
+                    <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${sessionScope.cruise.arrival}" locale="${sessionScope.locale}"/><br>
                     <span style="font-weight: bold"><fmt:message key="ship_passenger_capacity"/>:  </span>${sessionScope.cruise.passengerCapacity}<br>
                     <span style="font-weight: bold"><fmt:message key="ship_staff"/>: </span>${sessionScope.cruise.staff}<br>
                     <button type="button" class="btn btn-warning btn-sm font-weight-bold" data-toggle="modal" data-target=".bd-example-modal-sm"><fmt:message key="action_bonuses"/></button>

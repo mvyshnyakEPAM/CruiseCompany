@@ -1,6 +1,7 @@
 package ua.training.controller.commands.client;
 
 import ua.training.constants.Attributes;
+import ua.training.constants.Messages;
 import ua.training.constants.Pages;
 import ua.training.constants.URLs;
 import ua.training.controller.commands.AccessRequired;
@@ -36,12 +37,12 @@ public class ShowCruiseInfoCommand implements Command {
 
         boolean freePlacesAvailable = cruiseService.freePlacesAvailable(cruiseName);
         if (!freePlacesAvailable) {
-            request.setAttribute("buyResult", "Свободных мест нет.");
+            request.setAttribute("buyResult", Messages.NO_FREE_PLACES);
             request.setAttribute("alert", "danger");
             return new Forward("/WEB-INF/client/buy_result.jsp");
         }
 
-        String locale = (String)session.getAttribute(Attributes.LANGUAGE);
+        String locale = (String)session.getAttribute(Attributes.LOCALE);
         Optional<Ship> ship = cruiseService.getCruiseByName(cruiseName, locale);
 
         if (ship.isPresent()) {

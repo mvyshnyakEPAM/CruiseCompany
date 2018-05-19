@@ -20,7 +20,7 @@ public class SessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent event) {
         ServletContext context = event.getSession().getServletContext();
         event.getSession().setAttribute("cart", new HashMap<String, Set<Excursion>>());
-        event.getSession().setAttribute(Attributes.LANGUAGE, context.getInitParameter(Parameters.LOCALE));
+        event.getSession().setAttribute(Attributes.LOCALE, context.getInitParameter(Parameters.LOCALE));
         event.getSession().setAttribute(Attributes.ROLE, User.Role.GUEST);
     }
 

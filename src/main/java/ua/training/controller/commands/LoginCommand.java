@@ -3,7 +3,7 @@ package ua.training.controller.commands;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.constants.*;
-import ua.training.controller.listeners.LoginDto;
+import ua.training.controller.listeners.ActiveUser;
 import ua.training.controller.servlets.actions.Forward;
 import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
@@ -40,15 +40,16 @@ public class LoginCommand implements Command {
 
         HttpSession session = request.getSession();
         Optional<User> user = userService.signIn(login, password);
+
         if (user.isPresent()) {
-            session.setAttribute(Attributes.USER, new LoginDto(user.get().getId(), login));
+            session.setAttribute(Attributes.USER, new ActiveUser(user.get().getId(), login));
             session.setAttribute(Attributes.ROLE, user.get().getRole());
-            logger.info(user.get().getRole() + " " + user.get().getLogin() + " logged successfully.");
+            logger.info(String.format(Messages.LOG_SUCCESSFUL_LOGIN, user.get().getRole(), login));
             return new Redirect(ControllerUtil.getRedirectPath(user.get().getRole()));
         }
 
-        request.setAttribute(Attributes.MESSAGE, Messages.LOGIN_FAIL);
-        logger.info("Sign in fail with login: " + login + ".");
+        request.setAttribute(Attributes.MESSAGE_INFO, Messages.LOGIN_FAIL);
+        logger.info(String.format(Messages.LOG_FAIL_LOGIN, login));
         return new Forward(Pages.LOGIN);
     }
 }

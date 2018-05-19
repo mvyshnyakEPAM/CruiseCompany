@@ -19,8 +19,8 @@
                         <img src="<c:url value='/resources/images/logo_en_lg1.png'/>" class="img-resp" align="left">
                         <span style="font-weight: bold"><fmt:message key="ship_ports_visited"/>: </span> ${cruise.portsVisited}<br>
                         <span style="font-weight: bold"><fmt:message key="ship_cruise_duration"/>: </span> ${cruise.cruiseDuration} <fmt:message key="ship_days"/><br>
-                        <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${cruise.departure}" locale="${sessionScope.language}"/><br>
-                        <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.language}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${cruise.departure}" locale="${sessionScope.locale}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.locale}"/><br>
                         <span style="font-weight: bold"><fmt:message key="ship_route"/>: </span>${cruise.ports}<br>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                     <div style="padding: 5px; font-size: large">
                         <p style="font-weight: bold">${cruise.freePlaces} <fmt:message key="ship_places"/></p>
                         <p style="font-weight: bold"><fmt:formatNumber type="currency" currencySymbol="$" value="${cruise.price}" /></p>
-                        <p><a href="${pageContext.request.contextPath}/company/show-cruise-info?cruise=${cruise.nameEn}" class="btn btn-warning font-weight-bold"><fmt:message key="ship_details"/></a></p>
+                        <p><a href="${pageContext.request.contextPath}/company/cruise-info?cruise=${cruise.nameEn}" class="btn btn-warning font-weight-bold"><fmt:message key="ship_details"/></a></p>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <c:forEach var="number" begin="1" end="${requestScope.numberOfPages}">
-                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/show-cruises?page=${number}">${number}</a></li>
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/cruises?page=${number}">${number}</a></li>
             </c:forEach>
         </ul>
     </nav>

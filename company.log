@@ -264,3 +264,10 @@
 2018-05-19 22:30:58.893 [http-bio-8080-exec-10] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
 2018-05-19 22:33:02.254 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
 2018-05-19 22:34:22.941 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-19 22:55:22.802 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-19 23:31:50.444 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-20 00:02:46.829 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Sentril logged successfully.
+2018-05-20 00:06:47.856 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Sentril logged successfully.
+2018-05-20 00:09:17.866 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Sentril logged successfully.
+2018-05-20 00:12:34.234 [http-bio-8080-exec-6] INFO  ua.training.controller.commands.LoginCommand - CLIENT Sentril logged successfully.
+2018-05-20 00:14:59.993 [http-bio-8080-exec-7] INFO  ua.training.controller.commands.LoginCommand - CLIENT Sentril logged successfully.

@@ -40,12 +40,12 @@ public class RegisterCommand implements Command {
                     .setRole(User.Role.CLIENT)
                     .build();
             userService.signUp(user);
-            logger.info(user.getRole() + " " + user.getLogin() + " successfully registered.");
-            request.setAttribute(Attributes.MESSAGE, Messages.SUCCESSFUL_REGISTRATION);
-            return new Forward("/WEB-INF/successful_registration.jsp");
+            logger.info(String.format(Messages.LOG_SUCCESSFUL_REGISTRATION, user.getRole(), login));
+            request.setAttribute(Attributes.MESSAGE_INFO, Messages.SUCCESSFUL_REGISTRATION);
+            return new Forward(Pages.SUCCESSFUL_REGISTRATION);
         } catch (LoginAlreadyExistsException e) {
-            logger.error("Registration fail. Login " + e.getLogin() + " already exists.");
-            request.setAttribute(Attributes.MESSAGE, Messages.REGISTRATION_FAIL);
+            logger.error(String.format(Messages.LOG_FAIL_REGISTRATION, e.getLogin()));
+            request.setAttribute(Attributes.MESSAGE_INFO, Messages.REGISTRATION_FAIL);
         }
         return new Forward(Pages.REGISTRATION);
     }

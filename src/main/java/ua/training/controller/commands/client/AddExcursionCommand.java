@@ -28,7 +28,7 @@ public class AddExcursionCommand implements Command {
         String excursionName = request.getParameter("excursion");
         HttpSession session = request.getSession();
 
-        String locale = (String) session.getAttribute(Attributes.LANGUAGE);
+        String locale = (String) session.getAttribute(Attributes.LOCALE);
         Optional<Excursion> excursion = excursionService.getExcursionByName(excursionName, locale);
         Ship ship = (Ship) session.getAttribute("cruise");
         if (excursion.isPresent()) {

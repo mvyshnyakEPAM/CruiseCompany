@@ -18,11 +18,11 @@ public class ControllerUtil {
     public static boolean isDataValid(Map<String, String> messages, String login, String password) {
         boolean valid = true;
         if (Objects.isNull(login) || !login.matches(RegExp.LOGIN)) {
-            messages.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
+            messages.put(Attributes.LOGIN_MISMATCH_MESSAGE, Messages.LOGIN_MISMATCH);
             valid = false;
         }
         if (Objects.isNull(password) || !password.matches(RegExp.PASSWORD)) {
-            messages.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
+            messages.put(Attributes.PASSWORD_MISMATCH_MESSAGE, Messages.PASSWORD_MISMATCH);
             valid = false;
         }
         return valid;

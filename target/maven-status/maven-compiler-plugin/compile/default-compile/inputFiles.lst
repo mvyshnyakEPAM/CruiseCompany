@@ -6,13 +6,13 @@ D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\mod
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Patterns.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\client\ShowCruisesCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\client\ShowMyExcursionsCommand.java
-D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\listeners\LoginDto.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\client\ShowMyCruisesCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\exceptions\CruiseAlreadyBoughtException.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Configs.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\redirect\LoginPageCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\LogoutCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\entities\enums\ShipClass.java
+D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\listeners\ActiveUser.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Messages.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\impl\UserDaoImpl.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\cp\ConnectionPool.java
@@ -30,7 +30,6 @@ D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\con
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\PortDao.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\Command.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\LoginCommand.java
-D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\CommandPaths.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Queries.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Attributes.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\UserDao.java

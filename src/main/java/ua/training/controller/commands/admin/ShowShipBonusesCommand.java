@@ -28,7 +28,7 @@ public class ShowShipBonusesCommand implements Command {
     @Override
     public ServletAction execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String locale = (String) session.getAttribute(Attributes.LANGUAGE);
+        String locale = (String) session.getAttribute(Attributes.LOCALE);
         String shipName = request.getParameter("ship");
         Optional<Ship> ship = cruiseService.getShipByName(shipName, locale);
         if (ship.isPresent()) {

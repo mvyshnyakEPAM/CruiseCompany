@@ -3,7 +3,7 @@ package ua.training.controller.commands.client;
 import ua.training.constants.Attributes;
 import ua.training.controller.commands.AccessRequired;
 import ua.training.controller.commands.Command;
-import ua.training.controller.listeners.LoginDto;
+import ua.training.controller.listeners.ActiveUser;
 import ua.training.controller.servlets.actions.Forward;
 import ua.training.controller.servlets.actions.ServletAction;
 import ua.training.model.entities.Excursion;
@@ -24,10 +24,10 @@ public class ShowMyExcursionsCommand implements Command {
     @Override
     public ServletAction execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        int userId = ((LoginDto) request.getSession()
+        int userId = ((ActiveUser) request.getSession()
                 .getAttribute(Attributes.USER)).getId();
         String shipName = request.getParameter("shipName");
-        String locale = (String) session.getAttribute(Attributes.LANGUAGE);
+        String locale = (String) session.getAttribute(Attributes.LOCALE);
         List<Excursion> excursions = excursionService
                 .getAllExcursionsByUserAndCruise(userId, shipName, locale);
         request.setAttribute("myExcursions", excursions);

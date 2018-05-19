@@ -15,11 +15,11 @@ import java.util.Optional;
  */
 
 @SuppressWarnings("unchecked")
-public class LoginDto implements HttpSessionBindingListener {
+public class ActiveUser implements HttpSessionBindingListener {
     private int id;
     private String login;
 
-    public LoginDto(int id, String login) {
+    public ActiveUser(int id, String login) {
         this.id = id;
         this.login = login;
     }
@@ -59,9 +59,9 @@ public class LoginDto implements HttpSessionBindingListener {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        LoginDto loginDto = (LoginDto) o;
+        ActiveUser activeUser = (ActiveUser) o;
 
-        return login != null ? login.equals(loginDto.login) : loginDto.login == null;
+        return login != null ? login.equals(activeUser.login) : activeUser.login == null;
     }
 
     @Override
