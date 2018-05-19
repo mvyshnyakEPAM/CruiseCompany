@@ -13,6 +13,8 @@ import ua.training.model.services.CruiseService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +22,7 @@ import java.util.Optional;
  * Максим
  * 05.05.2018
  */
-@AccessRequired(roles = {User.Role.ADMIN}, path = "/admin/show-ship-bonuses")
+@AccessRequired(roles = {User.Role.ADMIN})
 public class ShowShipBonusesCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override
@@ -30,10 +32,12 @@ public class ShowShipBonusesCommand implements Command {
         String shipName = request.getParameter("ship");
         Optional<Ship> ship = cruiseService.getShipByName(shipName, locale);
         if (ship.isPresent()) {
-            List<Bonus> bonuses = cruiseService.getAllBonusesByShip(ship.get().getId());
+            List<Bonus> shipBonuses = cruiseService.getAllBonusesByShip(ship.get().getId());
             session.setAttribute("ship", ship.get());
-            request.setAttribute("shipBonuses", bonuses);
-            request.setAttribute("bonuses", Bonus.values());
+            request.setAttribute("shipBonuses", shipBonuses);
+            List<Bonus> bonuses = new ArrayList<>(Arrays.asList(Bonus.values()));
+            bonuses.removeAll(shipBonuses);
+            request.setAttribute("bonuses", bonuses);
             return new Forward("/WEB-INF/admin/ship_bonuses_list.jsp");
         }
         return new Redirect(Attributes.REFERER);

@@ -1,8 +1,10 @@
 package ua.training.controller.commands.client;
 
 import ua.training.constants.Attributes;
+import ua.training.constants.Messages;
 import ua.training.controller.commands.AccessRequired;
 import ua.training.controller.commands.Command;
+import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
 import ua.training.controller.listeners.LoginDto;
 import ua.training.controller.servlets.actions.Forward;
 import ua.training.controller.servlets.actions.ServletAction;
@@ -21,7 +23,7 @@ import java.util.Set;
  * 08.05.2018
  */
 
-@AccessRequired(roles = {User.Role.CLIENT}, path = "/client/pay-cruise")
+@AccessRequired(roles = {User.Role.CLIENT})
 public class PayCruiseCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override
@@ -32,9 +34,11 @@ public class PayCruiseCommand implements Command {
         Set<Excursion> excursions = ControllerUtil.getCart(session).get(ship.getNameEn());
         try {
             boolean bought = cruiseService.payCruise(userId, ship, excursions);
-            request.setAttribute("buyResult", bought ? "Успешная покупка" : "Свободных мест нет.");
-        } catch (Exception e) {
-            request.setAttribute("buyResult", "Вы уже купили данный круиз.");
+            request.setAttribute("buyResult", bought ? Messages.SUCCESSFUL_PURCHASE : Messages.NO_PLACES);
+            request.setAttribute("alert", bought ? "success" : "danger");
+        } catch (CruiseAlreadyBoughtException e) {
+            request.setAttribute("buyResult", Messages.CRUISE_ALREADY_BOUGHT);
+            request.setAttribute("alert", "warning");
         }
         return new Forward("/WEB-INF/client/buy_result.jsp");
     }

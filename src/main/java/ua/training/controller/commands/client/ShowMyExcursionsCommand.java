@@ -18,7 +18,7 @@ import java.util.List;
  * Максим
  * 08.05.2018
  */
-@AccessRequired(roles = {User.Role.CLIENT}, path = "/client/show-my-excursions")
+@AccessRequired(roles = {User.Role.CLIENT})
 public class ShowMyExcursionsCommand implements Command {
     private ExcursionService excursionService = ExcursionService.getInstance();
     @Override

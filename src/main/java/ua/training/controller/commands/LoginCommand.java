@@ -21,7 +21,7 @@ import java.util.Optional;
  * Максим
  * 29.04.2018
  */
-@AccessRequired(roles = {User.Role.GUEST}, path = CommandPaths.LOGIN)
+@AccessRequired(roles = {User.Role.GUEST})
 public class LoginCommand implements Command {
     private final static Logger logger = LogManager.getLogger(LoginCommand.class);
     UserService userService = UserService.getInstance();
@@ -44,7 +44,7 @@ public class LoginCommand implements Command {
             session.setAttribute(Attributes.USER, new LoginDto(user.get().getId(), login));
             session.setAttribute(Attributes.ROLE, user.get().getRole());
             logger.info(user.get().getRole() + " " + user.get().getLogin() + " logged successfully.");
-            return new Redirect(ControllerUtil.getUserPage(user.get().getRole()));
+            return new Redirect(ControllerUtil.getRedirectPath(user.get().getRole()));
         }
 
         request.setAttribute(Attributes.MESSAGE, Messages.LOGIN_FAIL);

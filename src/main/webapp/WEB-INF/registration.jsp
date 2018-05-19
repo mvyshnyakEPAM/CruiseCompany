@@ -10,6 +10,7 @@
         <section class="col-12 col-sm-6 col-md-3">
             <form class="needs-validation form-container" novalidate method="post" action="${pageContext.request.contextPath}/company/register">
                 <h4 class="text-center font-weight-bold"><fmt:message key="signup_form_message"/></h4>
+                <br>
                 <div class="form-group">
                     <input type="text" name="login" class="form-control" pattern="^[A-Za-z0-9_-]{3,16}$" placeholder="<fmt:message key="login_input_message"/>" required>
                     <c:if test="${not empty requestScope.messages}">
@@ -24,7 +25,9 @@
                     <c:if test="${not empty requestScope.messages}">
                         <fmt:message key="${requestScope.messages['passwordMismatch']}"/>
                     </c:if>
-                    ${requestScope.message}
+                    <c:if test="${not empty requestScope.message}">
+                        <span style="font-size: small; color: red;"><fmt:message key="${requestScope.message}"/></span>
+                    </c:if>
                     <div class="invalid-feedback">
                         <fmt:message key="invalid_password_input_message"/>
                     </div>

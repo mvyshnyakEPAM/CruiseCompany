@@ -1,7 +1,6 @@
 package ua.training.controller.commands.client;
 
 import ua.training.constants.Attributes;
-import ua.training.constants.CommandPaths;
 import ua.training.constants.Pages;
 import ua.training.constants.URLs;
 import ua.training.controller.commands.AccessRequired;
@@ -27,7 +26,7 @@ import java.util.Set;
  */
 
 @SuppressWarnings("unchecked")
-@AccessRequired(roles = {User.Role.CLIENT}, path = CommandPaths.SHOW_CRUISE_INFO)
+@AccessRequired(roles = {User.Role.CLIENT})
 public class ShowCruiseInfoCommand implements Command {
     CruiseService cruiseService = CruiseService.getInstance();
     @Override
@@ -37,7 +36,9 @@ public class ShowCruiseInfoCommand implements Command {
 
         boolean freePlacesAvailable = cruiseService.freePlacesAvailable(cruiseName);
         if (!freePlacesAvailable) {
-            return new Redirect(URLs.CRUISE_LIST);
+            request.setAttribute("buyResult", "Свободных мест нет.");
+            request.setAttribute("alert", "danger");
+            return new Forward("/WEB-INF/client/buy_result.jsp");
         }
 
         String locale = (String)session.getAttribute(Attributes.LANGUAGE);

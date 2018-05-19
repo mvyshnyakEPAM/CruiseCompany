@@ -3,7 +3,6 @@ package ua.training.controller.commands;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ua.training.constants.Attributes;
-import ua.training.constants.CommandPaths;
 import ua.training.constants.Pages;
 import ua.training.controller.listeners.LoginDto;
 import ua.training.controller.servlets.actions.Redirect;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Максим
  * 29.04.2018
  */
-@AccessRequired(roles = {User.Role.CLIENT, User.Role.ADMIN}, path = CommandPaths.LOGOUT)
+@AccessRequired(roles = {User.Role.CLIENT, User.Role.ADMIN})
 public class LogoutCommand implements Command {
     private final static Logger logger = LogManager.getLogger(LogoutCommand.class);
     @Override

@@ -7,10 +7,7 @@ import ua.training.model.entities.Excursion;
 import ua.training.model.entities.User;
 
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Максим
@@ -20,33 +17,30 @@ import java.util.Set;
 public class ControllerUtil {
     public static boolean isDataValid(Map<String, String> messages, String login, String password) {
         boolean valid = true;
-        if (!(login != null && login.matches(RegExp.LOGIN))) {
+        if (Objects.isNull(login) || !login.matches(RegExp.LOGIN)) {
             messages.put(Attributes.LOGIN_MISMATCH, Messages.LOGIN_MISMATCH);
             valid = false;
         }
-        if (!(password != null && password.matches(RegExp.PASSWORD))) {
+        if (Objects.isNull(password) || !password.matches(RegExp.PASSWORD)) {
             messages.put(Attributes.PASSWORD_MISMATCH, Messages.PASSWORD_MISMATCH);
             valid = false;
         }
         return valid;
     }
 
-    public static String getUserPage(User.Role role) {
-        if (role == User.Role.CLIENT) {
-            return URLs.CLIENT;
-        } else if (role == User.Role.ADMIN) {
-            return URLs.ADMIN;
-        } else {
-            return Pages.INDEX;
-        }
+    public static String getRedirectPath(User.Role role) {
+        return role == User.Role.GUEST ? Pages.INDEX : "/company/main";
     }
 
-    public static boolean isAccessAllowed(Command command, User.Role role, String path) {
+    public static String getUserPage (User.Role role) {
+        return role == User.Role.CLIENT ? Pages.CLIENT : Pages.ADMIN;
+    }
+
+    public static boolean isAccessAllowed(Command command, User.Role role) {
         Class<?> commandClass = command.getClass();
         AccessRequired accessRequired = commandClass.getAnnotation(AccessRequired.class);
-        return accessRequired != null &&
-                Arrays.asList(accessRequired.roles()).contains(role) &&
-                path.matches(accessRequired.path());
+        return Objects.nonNull(accessRequired) &&
+                Arrays.asList(accessRequired.roles()).contains(role);
     }
 
     public static Map<String, Set<Excursion>> getCart(HttpSession session) {

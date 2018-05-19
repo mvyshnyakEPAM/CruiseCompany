@@ -194,6 +194,6 @@ public class Port {
 
     @Override
     public String toString() {
-        return name;
+        return name + " (" + country + ")";
     }
 }

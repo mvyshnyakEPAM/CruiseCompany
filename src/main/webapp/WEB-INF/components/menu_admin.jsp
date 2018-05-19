@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="${pageContext.request.contextPath}/company/admin"><fmt:message key="home_link"/> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/company/main"><fmt:message key="home_link"/> <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/company/admin/show-ships"><fmt:message key="cruises_link"/></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="${pageContext.request.contextPath}/company/show-ships?page=1"><fmt:message key="ships_link"/></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/admin/logout">
+        <form class="form-inline my-2 my-lg-0" method="post" action="${pageContext.request.contextPath}/company/logout">
             <div class="col-auto pl-0">
                 <input type="hidden" name="pageRole" value="admin"/>
                 <button class="btn btn-warning font-weight-bold" type="submit"><fmt:message key="logout_button"/></button>

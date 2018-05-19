@@ -12,12 +12,13 @@ import ua.training.model.services.CruiseService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Максим
  * 05.05.2018
  */
-@AccessRequired(roles = {User.Role.CLIENT}, path = CommandPaths.SHOW_CRUISES)
+@AccessRequired(roles = {User.Role.CLIENT})
 public class ShowCruisesCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override
@@ -25,7 +26,8 @@ public class ShowCruisesCommand implements Command {
         String locale = (String) request.getSession().getAttribute(Attributes.LANGUAGE);
         int numberOfPages = cruiseService.getNumberOfPages();
         try {
-            int pageNumber = Integer.parseInt(request.getParameter(Parameters.PAGE));
+            String page = request.getParameter(Parameters.PAGE);
+            int pageNumber = Objects.isNull(page) ? 1 : Integer.parseInt(page);
             if (pageNumber > 0 && numberOfPages >= pageNumber) {
                 List<Ship> cruises = cruiseService.getCruisesPerPage(pageNumber, locale);
                 request.setAttribute(Attributes.NUMBER_OF_PAGES, numberOfPages);

@@ -20,7 +20,7 @@ import java.util.*;
  * 15.05.2018
  */
 @SuppressWarnings("unchecked")
-@AccessRequired(roles = {User.Role.CLIENT}, path = "/client/add-excursion")
+@AccessRequired(roles = {User.Role.CLIENT})
 public class AddExcursionCommand implements Command {
     private ExcursionService excursionService = ExcursionService.getInstance();
     @Override

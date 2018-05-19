@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Максим
  * 05.05.2018
  */
-@AccessRequired(roles = {User.Role.ADMIN}, path = "/admin/add-bonus")
+@AccessRequired(roles = {User.Role.ADMIN})
 public class AddBonusCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override

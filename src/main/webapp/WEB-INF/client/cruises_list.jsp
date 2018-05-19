@@ -6,43 +6,42 @@
 
 <!-- Nav tabs -->
 <div id="content">
-    <div class="container">
-        <table class="table table-bordered">
-            <thead>
-            <tr class="bg-primary text-white">
-                <th>Cruise Name</th>
-                <th>Route</th>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <th>Duration</th>
-                <th>Class</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="cruise" items="${requestScope.cruises}">
-                <tr>
-                    <td>${cruise.name}</td>
-                    <td>${cruise.ports}</td>
-                    <td><ctg:format-date date="${cruise.departure}" locale="${sessionScope.language}"/></td>
-                    <td><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.language}"/></td>
-                    <td>${cruise.cruiseDuration}</td>
-                    <td><fmt:message key="${cruise.shipClass.key}"/> </td>
-                    <td>${cruise.price}</td>
-                    <td><a href="${pageContext.request.contextPath}/company/client/show-cruise-info?cruise=${cruise.nameEn}" class="btn btn-warning font-weight-bold">Details</a> </td>
-                </tr>
+    <c:forEach var="cruise" items="${requestScope.cruises}">
+        <div class="container" id="cruise-info">
+            <div class="row">
+                <div class="col-xl-12" align="center" style="border:1px solid #333; font-weight: bold; font-size: larger; padding: 5px">
+                        ${cruise.name} (<fmt:message key="${cruise.shipClass.key}"/>)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-9" style="border:1px solid #333; font-size: small">
+                    <div style="padding: 5px">
+                        <img src="<c:url value='/resources/images/logo_en_lg1.png'/>" class="img-resp" align="left">
+                        <span style="font-weight: bold"><fmt:message key="ship_ports_visited"/>: </span> ${cruise.portsVisited}<br>
+                        <span style="font-weight: bold"><fmt:message key="ship_cruise_duration"/>: </span> ${cruise.cruiseDuration} <fmt:message key="ship_days"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_departure"/>: </span><ctg:format-date date="${cruise.departure}" locale="${sessionScope.language}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_arrival"/>: </span><ctg:format-date date="${cruise.arrival}" locale="${sessionScope.language}"/><br>
+                        <span style="font-weight: bold"><fmt:message key="ship_route"/>: </span>${cruise.ports}<br>
+                    </div>
+                </div>
+                <div class="col-xl-3" align="center" style="border:1px solid #333; vertical-align: text-bottom">
+                    <div style="padding: 5px; font-size: large">
+                        <p style="font-weight: bold">${cruise.freePlaces} <fmt:message key="ship_places"/></p>
+                        <p style="font-weight: bold"><fmt:formatNumber type="currency" currencySymbol="$" value="${cruise.price}" /></p>
+                        <p><a href="${pageContext.request.contextPath}/company/show-cruise-info?cruise=${cruise.nameEn}" class="btn btn-warning font-weight-bold"><fmt:message key="ship_details"/></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </c:forEach>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <c:forEach var="number" begin="1" end="${requestScope.numberOfPages}">
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/show-cruises?page=${number}">${number}</a></li>
             </c:forEach>
-            </tbody>
-        </table>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <c:forEach var="number" begin="1" end="${requestScope.numberOfPages}">
-                    <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/company/client/show-cruises?page=${number}">${number}</a></li>
-                </c:forEach>
-            </ul>
-        </nav>
-    </div>
+        </ul>
+    </nav>
 </div>
 
 <jsp:include page="/WEB-INF/components/footer.jsp"/>

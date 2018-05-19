@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import ua.training.constants.*;
 import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.controller.servlets.actions.Forward;
-import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
 import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.User;
@@ -20,7 +19,7 @@ import java.util.Map;
  * Максим
  * 29.04.2018
  */
-@AccessRequired(roles = {User.Role.GUEST}, path = CommandPaths.REGISTER)
+@AccessRequired(roles = {User.Role.GUEST})
 public class RegisterCommand implements Command {
     private final static Logger logger = LogManager.getLogger(RegisterCommand.class);
     UserService userService = UserService.getInstance();
@@ -42,7 +41,8 @@ public class RegisterCommand implements Command {
                     .build();
             userService.signUp(user);
             logger.info(user.getRole() + " " + user.getLogin() + " successfully registered.");
-            return new Redirect(URLs.LOGIN);
+            request.setAttribute(Attributes.MESSAGE, Messages.SUCCESSFUL_REGISTRATION);
+            return new Forward("/WEB-INF/successful_registration.jsp");
         } catch (LoginAlreadyExistsException e) {
             logger.error("Registration fail. Login " + e.getLogin() + " already exists.");
             request.setAttribute(Attributes.MESSAGE, Messages.REGISTRATION_FAIL);

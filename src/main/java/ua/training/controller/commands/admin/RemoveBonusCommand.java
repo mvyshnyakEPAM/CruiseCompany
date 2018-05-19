@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Максим
  * 05.05.2018
  */
-@AccessRequired(roles = {User.Role.ADMIN}, path = "/admin/remove-bonus")
+@AccessRequired(roles = {User.Role.ADMIN})
 public class RemoveBonusCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override

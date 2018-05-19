@@ -1,5 +1,6 @@
 package ua.training.model.dao;
 
+import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.enums.Bonus;
 
@@ -17,7 +18,7 @@ public interface ShipDao extends GenericDao<Ship> {
     List<Ship> getAllShipsPerPage(int pageNumber, String locale);
     List<Ship> getAllShipsByUser(int userId, String locale);
     List<Bonus> getAllBonusesByShip(int shipId);
-    void addShipToUser(int shipId, int userId);
+    void addShipToUser(int shipId, int userId) throws CruiseAlreadyBoughtException;
     void addBonusToShip(int shipId, String bonus);
     void deleteBonusFromShip(int shipId, String bonus);
 }

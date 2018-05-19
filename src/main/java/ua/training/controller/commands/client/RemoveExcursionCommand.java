@@ -20,7 +20,7 @@ import java.util.Set;
  * 16.05.2018
  */
 @SuppressWarnings("unchecked")
-@AccessRequired(roles = {User.Role.CLIENT}, path = "/client/remove-excursion")
+@AccessRequired(roles = {User.Role.CLIENT})
 public class RemoveExcursionCommand implements Command {
     @Override
     public ServletAction execute(HttpServletRequest request) {

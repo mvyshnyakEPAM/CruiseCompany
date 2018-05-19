@@ -9,21 +9,21 @@
         <table class="table table-bordered">
             <thead>
             <tr class="bg-primary text-white">
-                <th>Bonus</th>
-                <th>Action</th>
+                <th><fmt:message key="col_bonus"/></th>
+                <th><fmt:message key="col_action"/></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="bonus" items="${requestScope.shipBonuses}">
                 <tr>
                     <td><fmt:message key="${bonus.key}"/></td>
-                    <td><a href="${pageContext.request.contextPath}/company/admin/remove-bonus?ship=${sessionScope.ship.id}&&bonus=${bonus}" class="btn btn-warning font-weight-bold">Remove</a> </td>
+                    <td><a href="${pageContext.request.contextPath}/company/remove-bonus?ship=${sessionScope.ship.id}&&bonus=${bonus}" class="btn btn-warning font-weight-bold"><fmt:message key="action_remove"/></a> </td>
                 </tr>
             </c:forEach>
             <tr>
                 <td></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#bonuses">Add</button>
+                    <button type="button" class="btn btn-warning font-weight-bold btn-block" data-toggle="modal" data-target="#bonuses"><fmt:message key="action_add"/></button>
                     <div class="modal fade bd-example-modal-lg modal-open" id="bonuses" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -31,8 +31,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                         <tr class="bg-primary text-white">
-                                            <th>Bonus</th>
-                                            <th>Action</th>
+                                            <th><fmt:message key="col_bonus"/></th>
+                                            <th><fmt:message key="col_action"/></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -40,7 +40,7 @@
                                             <tr>
                                                 <td><fmt:message key="${bonus.key}"/></td>
                                                 <td>
-                                                    <a href="${pageContext.request.contextPath}/company/admin/add-bonus?bonus=${bonus}" class="btn btn-warning font-weight-bold">Add</a>
+                                                    <a href="${pageContext.request.contextPath}/company/add-bonus?bonus=${bonus}" class="btn btn-warning font-weight-bold"><fmt:message key="action_add"/></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

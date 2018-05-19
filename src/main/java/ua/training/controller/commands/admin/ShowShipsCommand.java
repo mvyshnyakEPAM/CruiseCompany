@@ -19,7 +19,7 @@ import java.util.List;
  * Максим
  * 05.05.2018
  */
-@AccessRequired(roles = {User.Role.ADMIN}, path = "/admin/show-ships")
+@AccessRequired(roles = {User.Role.ADMIN})
 public class ShowShipsCommand implements Command {
     private CruiseService cruiseService = CruiseService.getInstance();
     @Override

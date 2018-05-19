@@ -1,5 +1,6 @@
 package ua.training.model.services;
 
+import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
 import ua.training.model.dao.ExcursionDao;
 import ua.training.model.dao.PortDao;
 import ua.training.model.dao.ShipDao;
@@ -87,7 +88,8 @@ public class CruiseService {
         }
     }
 
-    public boolean payCruise(int userId, Ship ship, Set<Excursion> excursions) {
+    public boolean payCruise(int userId, Ship ship, Set<Excursion> excursions)
+            throws CruiseAlreadyBoughtException {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
             ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {

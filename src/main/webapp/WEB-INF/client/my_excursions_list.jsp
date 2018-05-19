@@ -6,16 +6,27 @@
 
 <!-- Nav tabs -->
 <div id="content">
+    <c:if test="${empty requestScope.myExcursions}">
+        <div id="content">
+            <div class="container">
+                <div class="alert alert-warning" role="alert">
+                    <fmt:message key="info_no_excursions"/>
+                </div>
+            </div>
+        </div>
+    </c:if>
     <div class="container">
         <table class="table table-bordered">
-            <thead>
-            <tr class="bg-primary text-white">
-                <th>Excursion</th>
-                <th>Port</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
+            <c:if test="${not empty requestScope.myExcursions}">
+                <thead>
+                <tr class="bg-primary text-white">
+                    <th><fmt:message key="col_excursion"/></th>
+                    <th><fmt:message key="col_port"/></th>
+                    <th><fmt:message key="col_price"/> ($)</th>
+                </tr>
+                </thead>
+                <tbody>
+            </c:if>
             <c:forEach var="excursion" items="${requestScope.myExcursions}">
                 <tr>
                     <td>${excursion.name}</td>
