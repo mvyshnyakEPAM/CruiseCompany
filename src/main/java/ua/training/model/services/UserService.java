@@ -17,6 +17,9 @@ import java.util.Optional;
 public class UserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
+    private UserService() {
+    }
+
     private final static class Holder {
         private static final UserService INSTANCE = new UserService();
     }

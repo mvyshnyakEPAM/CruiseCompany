@@ -7,7 +7,7 @@ import ua.training.model.entities.Excursion;
 import ua.training.model.entities.Port;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.enums.ShipClass;
-import ua.training.model.services.CruiseService;
+import ua.training.model.services.ShipService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +30,7 @@ public class ShowCruiseInfoCommandTest {
     }
     @Test
     public void test_ok() {
-        showCruiseInfoCommand.cruiseService = Mockito.mock(CruiseService.class);
+        showCruiseInfoCommand.shipService = Mockito.mock(ShipService.class);
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpSession session = Mockito.mock(HttpSession.class);
         List<Excursion> excursionsBarc = Arrays.asList(
@@ -76,18 +76,18 @@ public class ShowCruiseInfoCommandTest {
 
         Mockito.when(request.getParameter("cruise")).thenReturn("Cruise Fascinosa");
         Mockito.when(request.getSession()).thenReturn(session);
-        Mockito.when(showCruiseInfoCommand.cruiseService.freePlacesAvailable("Cruise Fascinosa"))
+        Mockito.when(showCruiseInfoCommand.shipService.freePlacesAvailable("Cruise Fascinosa"))
                 .thenReturn(true);
-        Mockito.when(showCruiseInfoCommand.cruiseService.getCruiseByName("Cruise Fascinosa", "en"))
+        Mockito.when(showCruiseInfoCommand.shipService.getCruiseByName("Cruise Fascinosa", "en"))
                 .thenReturn(Optional.ofNullable(ship));
 
         showCruiseInfoCommand.execute(request);
 
         Mockito.verify(request.getParameter("cruise"));
         Mockito.verify(request.getSession());
-        Mockito.verify(showCruiseInfoCommand.cruiseService.freePlacesAvailable("Cruise Fascinosa"));
-        Mockito.verify(showCruiseInfoCommand.cruiseService.getCruiseByName("Cruise Fascinosa", "en"));
+        Mockito.verify(showCruiseInfoCommand.shipService.freePlacesAvailable("Cruise Fascinosa"));
+        Mockito.verify(showCruiseInfoCommand.shipService.getCruiseByName("Cruise Fascinosa", "en"));
         Mockito.verify(session).setAttribute("cruise", ship);
-        Mockito.verifyNoMoreInteractions(showCruiseInfoCommand.cruiseService, request, session);
+        Mockito.verifyNoMoreInteractions(showCruiseInfoCommand.shipService, request, session);
     }
 }

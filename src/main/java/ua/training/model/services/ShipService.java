@@ -1,5 +1,7 @@
 package ua.training.model.services;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
 import ua.training.model.dao.ExcursionDao;
 import ua.training.model.dao.PortDao;
@@ -21,15 +23,19 @@ import java.util.Set;
  * Максим
  * 16.05.2018
  */
-public class CruiseService {
+public class ShipService {
+    private final static Logger logger = LogManager.getLogger(ShipService.class);
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
-    private final static class CruiseServiceHolder {
-        private static final CruiseService INSTANCE = new CruiseService();
+    private ShipService() {
     }
 
-    public static CruiseService getInstance() {
-        return CruiseServiceHolder.INSTANCE;
+    private final static class ShipServiceHolder {
+        private static final ShipService INSTANCE = new ShipService();
+    }
+
+    public static ShipService getInstance() {
+        return ShipServiceHolder.INSTANCE;
     }
 
     public List<Ship> getAllCruises(String locale) {
@@ -107,9 +113,11 @@ public class CruiseService {
                 connection.rollback();
             }
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             try {
                 connection.rollback();
             } catch (SQLException e1) {
+                logger.error(e.getMessage(), e);
                 throw new RuntimeException(e);
             }
         }

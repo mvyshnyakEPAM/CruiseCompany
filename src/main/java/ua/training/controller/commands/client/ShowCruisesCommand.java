@@ -8,7 +8,7 @@ import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.User;
-import ua.training.model.services.CruiseService;
+import ua.training.model.services.ShipService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,16 +20,16 @@ import java.util.Objects;
  */
 @AccessRequired(roles = {User.Role.CLIENT})
 public class ShowCruisesCommand implements Command {
-    private CruiseService cruiseService = CruiseService.getInstance();
+    private ShipService shipService = ShipService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
         String locale = (String) request.getSession().getAttribute(Attributes.LOCALE);
-        int numberOfPages = cruiseService.getNumberOfPages();
+        int numberOfPages = shipService.getNumberOfPages();
         try {
             String page = request.getParameter(Parameters.PAGE);
             int pageNumber = Objects.isNull(page) ? 1 : Integer.parseInt(page);
             if (pageNumber > 0 && numberOfPages >= pageNumber) {
-                List<Ship> cruises = cruiseService.getCruisesPerPage(pageNumber, locale);
+                List<Ship> cruises = shipService.getCruisesPerPage(pageNumber, locale);
                 request.setAttribute(Attributes.NUMBER_OF_PAGES, numberOfPages);
                 request.setAttribute(Attributes.CRUISES, cruises);
                 return new Forward(Pages.CRUISE_LIST);

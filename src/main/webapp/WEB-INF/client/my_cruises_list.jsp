@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </p>
-                        <p><a href="${pageContext.request.contextPath}/company/my-excursions?shipName=${cruise.nameEn}" class="btn btn-sm btn-warning font-weight-bold"><fmt:message key="action_excursions"/></a></p>
+                        <p><a href="${pageContext.request.contextPath}/company/my-excursions?cruise=${cruise.nameEn}" class="btn btn-sm btn-warning font-weight-bold"><fmt:message key="action_excursions"/></a></p>
                     </div>
                 </div>
             </div>

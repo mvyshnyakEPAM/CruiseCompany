@@ -1,5 +1,7 @@
 package ua.training.model.dao.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.PortDao;
@@ -15,6 +17,7 @@ import java.util.Optional;
  * 06.05.2018
  */
 public class PortDaoImpl implements PortDao {
+    private final static Logger logger = LogManager.getLogger(PortDaoImpl.class);
     private Connection connection;
 
     public PortDaoImpl(Connection connection) {
@@ -30,6 +33,7 @@ public class PortDaoImpl implements PortDao {
             ps.setString(4, entity.getCountryUa());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -42,6 +46,7 @@ public class PortDaoImpl implements PortDao {
             ps.setInt(3, number);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -58,6 +63,7 @@ public class PortDaoImpl implements PortDao {
             }
             return ports;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -73,6 +79,7 @@ public class PortDaoImpl implements PortDao {
             }
             return Optional.ofNullable(port);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -88,6 +95,7 @@ public class PortDaoImpl implements PortDao {
             }
             return ports;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -102,6 +110,7 @@ public class PortDaoImpl implements PortDao {
             ps.setInt(5, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -112,6 +121,7 @@ public class PortDaoImpl implements PortDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -121,6 +131,7 @@ public class PortDaoImpl implements PortDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }

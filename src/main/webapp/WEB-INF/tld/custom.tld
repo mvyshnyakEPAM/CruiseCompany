@@ -11,7 +11,7 @@
 
     <tag>
         <name>format-date</name>
-        <tag-class>ua.training.DateFormatTag</tag-class>
+        <tag-class>ua.training.view.DateFormatTag</tag-class>
         <body-content>empty</body-content>
 
         <attribute>

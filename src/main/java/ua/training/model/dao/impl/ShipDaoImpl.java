@@ -1,6 +1,8 @@
 package ua.training.model.dao.impl;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
@@ -21,6 +23,7 @@ import static java.sql.Date.valueOf;
  * 06.05.2018
  */
 public class ShipDaoImpl implements ShipDao {
+    private final static Logger logger = LogManager.getLogger(ShipDaoImpl.class);
     private Connection connection;
 
     public ShipDaoImpl(Connection connection) {
@@ -37,6 +40,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return ships;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -52,6 +56,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return freePlaces;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -72,6 +77,7 @@ public class ShipDaoImpl implements ShipDao {
             ps.setInt(11, entity.getStaff());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -87,6 +93,7 @@ public class ShipDaoImpl implements ShipDao {
         } catch (MySQLIntegrityConstraintViolationException e) {
             throw new CruiseAlreadyBoughtException(e.getMessage());
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -104,6 +111,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return ships;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -116,10 +124,11 @@ public class ShipDaoImpl implements ShipDao {
             ResultSet resultSet = ps.executeQuery();
             List<Bonus> bonuses = new ArrayList<>();
             while (resultSet.next()) {
-                bonuses.add(Bonus.valueOf(resultSet.getString("name")));
+                bonuses.add(Bonus.valueOf(resultSet.getString(TableColumns.BONUS_NAME)));
             }
             return bonuses;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -132,6 +141,7 @@ public class ShipDaoImpl implements ShipDao {
             ps.setString(2, bonus);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -144,6 +154,7 @@ public class ShipDaoImpl implements ShipDao {
             ps.setString(2, bonus);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -159,6 +170,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return Optional.ofNullable(ship);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -174,6 +186,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return Optional.ofNullable(ship);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -190,6 +203,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return ships;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -205,6 +219,7 @@ public class ShipDaoImpl implements ShipDao {
             }
             return ships;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -226,6 +241,7 @@ public class ShipDaoImpl implements ShipDao {
             ps.setInt(12, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -236,6 +252,7 @@ public class ShipDaoImpl implements ShipDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -245,6 +262,7 @@ public class ShipDaoImpl implements ShipDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }

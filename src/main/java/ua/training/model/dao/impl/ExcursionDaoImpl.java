@@ -1,5 +1,7 @@
 package ua.training.model.dao.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.Queries;
 import ua.training.constants.TableColumns;
 import ua.training.model.dao.ExcursionDao;
@@ -16,6 +18,7 @@ import java.util.Optional;
  * 06.05.2018
  */
 public class ExcursionDaoImpl implements ExcursionDao {
+    private final static Logger logger = LogManager.getLogger(ExcursionDaoImpl.class);
     private Connection connection;
 
     public ExcursionDaoImpl(Connection connection) {
@@ -31,6 +34,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             ps.setInt(4, entity.getPort().getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -43,6 +47,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             ps.setString(3, shipName);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -60,6 +65,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             }
             return Optional.ofNullable(excursion);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -76,6 +82,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             }
             return excursions;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -95,6 +102,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             }
             return excursions;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -110,6 +118,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             }
             return Optional.ofNullable(excursion);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -125,6 +134,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             }
             return excursions;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -138,6 +148,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             ps.setInt(4, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -148,6 +159,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -157,6 +169,7 @@ public class ExcursionDaoImpl implements ExcursionDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }

@@ -1,6 +1,8 @@
 package ua.training.controller.commands.client;
 
 import ua.training.constants.Attributes;
+import ua.training.constants.Pages;
+import ua.training.constants.Parameters;
 import ua.training.controller.commands.AccessRequired;
 import ua.training.controller.commands.Command;
 import ua.training.controller.listeners.ActiveUser;
@@ -25,12 +27,12 @@ public class ShowMyExcursionsCommand implements Command {
     public ServletAction execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
         int userId = ((ActiveUser) request.getSession()
-                .getAttribute(Attributes.USER)).getId();
-        String shipName = request.getParameter("shipName");
+                .getAttribute(Attributes.ACTIVE_USER)).getId();
+        String cruiseName = request.getParameter(Parameters.CRUISE);
         String locale = (String) session.getAttribute(Attributes.LOCALE);
         List<Excursion> excursions = excursionService
-                .getAllExcursionsByUserAndCruise(userId, shipName, locale);
-        request.setAttribute("myExcursions", excursions);
-        return new Forward("/WEB-INF/client/my_excursions_list.jsp");
+                .getAllExcursionsByUserAndCruise(userId, cruiseName, locale);
+        request.setAttribute(Attributes.MY_EXCURSIONS, excursions);
+        return new Forward(Pages.MY_EXCURSIONS);
     }
 }

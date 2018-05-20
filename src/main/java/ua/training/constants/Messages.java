@@ -21,4 +21,11 @@ public interface Messages {
     String LOG_FAIL_LOGIN = "Sign in fail with login: %s.";
     String LOG_FAIL_REGISTRATION = "Registration fail. Login %s already exists.";
     String LOG_LOGOUT = "%s %s logged out.";
+    String LOG_ADD_BONUS = "%s %s added bonus %s to %s";
+    String LOG_REMOVE_BONUS = "%s %s removed bonus %s from %s";
+    String LOG_ADD_EXCURSION = "%s %s added excursion %s to the cart.";
+    String LOG_REMOVE_EXCURSION = "%s %s removed excursion %s from the cart.";
+    String LOG_SUCCESSFUL_PURCHASE = "%s %s bought cruise %s.";
+    String LOG_NO_FREE_PLACES = "%s %s tried to buy cruise %s but there were no free places.";
+    String LOG_ALREADY_BOUGHT = "%s %s tried to buy cruise %s he(she) already has.";
 }

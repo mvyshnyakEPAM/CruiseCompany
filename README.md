@@ -1,4 +1,4 @@
-# CruiseCompany
+﻿# CruiseCompany
 ## DESCRIPTION OF THE PROJECT
 Cruise Company system. Company has several Ships. Ships have passenger - capacity, route, number of visited ports, one cruise duration, staff. Client chooses and pays cruise. Chooses Excursions upon arrival at the port for extra paying. Ship Administrator indicates bonuses for passengers, considering ticket class (pool, gym, cinema, beauty salon, etc…).
 ## INSTRUCTION FOR THE INSTALLATION OF THE PROJECT
@@ -10,6 +10,6 @@ Cruise Company system. Company has several Ships. Ships have passenger - capacit
    - Push the button Start Import
 ## INSTRUCTION FOR STARTING THE PROJECT
 1. Istall maven http://www.apache-maven.ru/install.html
-2. In project directory open PowerShell
+2. In project directory open command line
 3. Enter command "mvn tomcat7:run"
 4. Open browser and follow the link http://localhost:8080/

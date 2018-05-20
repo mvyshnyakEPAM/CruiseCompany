@@ -29,7 +29,7 @@ public class ControllerUtil {
     }
 
     public static String getRedirectPath(User.Role role) {
-        return role == User.Role.GUEST ? Pages.INDEX : "/company/main";
+        return role == User.Role.GUEST ? URLs.INDEX : URLs.MAIN;
     }
 
     public static String getUserPage (User.Role role) {
@@ -44,6 +44,6 @@ public class ControllerUtil {
     }
 
     public static Map<String, Set<Excursion>> getCart(HttpSession session) {
-        return (HashMap<String, Set<Excursion>>) session.getAttribute("cart");
+        return (HashMap<String, Set<Excursion>>) session.getAttribute(Attributes.CART);
     }
 }

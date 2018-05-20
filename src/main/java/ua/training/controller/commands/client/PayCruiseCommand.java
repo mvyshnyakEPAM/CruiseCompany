@@ -1,7 +1,11 @@
 package ua.training.controller.commands.client;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.Attributes;
+import ua.training.constants.Info;
 import ua.training.constants.Messages;
+import ua.training.constants.Pages;
 import ua.training.controller.commands.AccessRequired;
 import ua.training.controller.commands.Command;
 import ua.training.controller.exceptions.CruiseAlreadyBoughtException;
@@ -12,7 +16,7 @@ import ua.training.controller.util.ControllerUtil;
 import ua.training.model.entities.Excursion;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.User;
-import ua.training.model.services.CruiseService;
+import ua.training.model.services.ShipService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,22 +30,35 @@ import java.util.Set;
 
 @AccessRequired(roles = {User.Role.CLIENT})
 public class PayCruiseCommand implements Command {
-    private CruiseService cruiseService = CruiseService.getInstance();
+    private final static Logger logger = LogManager.getLogger(PayCruiseCommand.class);
+    private ShipService shipService = ShipService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        int userId = ((ActiveUser) session.getAttribute(Attributes.USER)).getId();
-        Ship ship = (Ship) session.getAttribute("cruise");
+        ActiveUser activeUser = ((ActiveUser) session.getAttribute(Attributes.ACTIVE_USER));
+        User.Role userRole = (User.Role) session.getAttribute(Attributes.ROLE);
+        Ship cruise = (Ship) session.getAttribute(Attributes.CRUISE);
         Set<Excursion> excursions = ControllerUtil.getCart(session)
-                .getOrDefault(ship.getNameEn(), new HashSet<>());
+                .getOrDefault(cruise.getNameEn(), new HashSet<>());
         try {
-            boolean bought = cruiseService.payCruise(userId, ship, excursions);
-            request.setAttribute("buyResult", bought ? Messages.SUCCESSFUL_PURCHASE : Messages.NO_FREE_PLACES);
-            request.setAttribute("alert", bought ? "success" : "danger");
+            boolean isBought = shipService.payCruise(activeUser.getId(), cruise, excursions);
+            if (isBought) {
+                request.setAttribute(Attributes.BUY_RESULT, Messages.SUCCESSFUL_PURCHASE);
+                request.setAttribute(Attributes.ALERT, Info.SUCCESS);
+                logger.info(Messages.SUCCESSFUL_PURCHASE,
+                        userRole, activeUser.getLogin(), cruise.getNameEn());
+            } else {
+                request.setAttribute(Attributes.BUY_RESULT, Messages.NO_FREE_PLACES);
+                request.setAttribute(Attributes.ALERT, Info.DANGER);
+                logger.info(Messages.LOG_NO_FREE_PLACES,
+                        userRole, activeUser.getLogin(), cruise.getNameEn());
+            }
         } catch (CruiseAlreadyBoughtException e) {
-            request.setAttribute("buyResult", Messages.CRUISE_ALREADY_BOUGHT);
-            request.setAttribute("alert", "warning");
+            request.setAttribute(Attributes.BUY_RESULT, Messages.CRUISE_ALREADY_BOUGHT);
+            request.setAttribute(Attributes.ALERT, Info.WARNING);
+            logger.info(Messages.LOG_ALREADY_BOUGHT,
+                    userRole, activeUser.getLogin(), cruise.getNameEn());
         }
-        return new Forward("/WEB-INF/client/buy_result.jsp");
+        return new Forward(Pages.BUY_RESULT);
     }
 }

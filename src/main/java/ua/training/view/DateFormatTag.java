@@ -1,4 +1,4 @@
-package ua.training;
+package ua.training.view;
 
 import ua.training.constants.Locales;
 import ua.training.constants.Patterns;

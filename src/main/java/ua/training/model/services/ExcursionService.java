@@ -16,6 +16,9 @@ import java.util.Optional;
 public class ExcursionService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
+    private ExcursionService() {
+    }
+
     private final static class ExcursionServiceHolder {
         private static final ExcursionService INSTANCE = new ExcursionService();
     }

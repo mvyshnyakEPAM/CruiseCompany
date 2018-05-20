@@ -92,7 +92,7 @@ public class LoginCommandTest {
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(request).getSession();
         Mockito.verify(loginCommand.userService).signIn("user", "123");
-        Mockito.verify(session).setAttribute(Attributes.USER, new ActiveUser(1, "user"));
+        Mockito.verify(session).setAttribute(Attributes.ACTIVE_USER, new ActiveUser(1, "user"));
         Mockito.verify(session).setAttribute(Attributes.ROLE, user.getRole());
         Mockito.verifyNoMoreInteractions(request, session, loginCommand.userService);
     }

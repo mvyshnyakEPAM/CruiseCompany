@@ -23,6 +23,7 @@ public interface TableColumns {
     String SHIP_PASSENGER_CAPACITY = "passenger_capacity";
     String SHIP_FREE_PLACES = "free_places";
     String SHIP_STAFF = "staff";
+    String BONUS_NAME = "name";
 
     String PORT_ID = "port_id";
     String PORT_NAME = "port_name";

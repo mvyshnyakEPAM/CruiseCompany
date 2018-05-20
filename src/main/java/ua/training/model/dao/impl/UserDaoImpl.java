@@ -1,5 +1,7 @@
 package ua.training.model.dao.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ua.training.constants.TableColumns;
 import ua.training.controller.exceptions.LoginAlreadyExistsException;
 import ua.training.model.dao.UserDao;
@@ -16,6 +18,7 @@ import java.util.Optional;
  * 06.05.2018
  */
 public class UserDaoImpl implements UserDao {
+    private final static Logger logger = LogManager.getLogger(UserDaoImpl.class);
     private Connection connection;
 
     public UserDaoImpl(Connection connection) {
@@ -32,6 +35,7 @@ public class UserDaoImpl implements UserDao {
         } catch (SQLIntegrityConstraintViolationException e) {
             throw new LoginAlreadyExistsException(e.getMessage(), entity.getLogin());
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -43,6 +47,7 @@ public class UserDaoImpl implements UserDao {
             User user = extractEntityFromResultSet(ps.executeQuery());
             return Optional.ofNullable(user);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -58,6 +63,7 @@ public class UserDaoImpl implements UserDao {
             }
             return Optional.ofNullable(user);
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -73,6 +79,7 @@ public class UserDaoImpl implements UserDao {
             }
             return users;
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -86,6 +93,7 @@ public class UserDaoImpl implements UserDao {
             ps.setInt(4, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -96,6 +104,7 @@ public class UserDaoImpl implements UserDao {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }
@@ -105,6 +114,7 @@ public class UserDaoImpl implements UserDao {
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
     }

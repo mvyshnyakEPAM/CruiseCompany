@@ -42,7 +42,7 @@ public class LoginCommand implements Command {
         Optional<User> user = userService.signIn(login, password);
 
         if (user.isPresent()) {
-            session.setAttribute(Attributes.USER, new ActiveUser(user.get().getId(), login));
+            session.setAttribute(Attributes.ACTIVE_USER, new ActiveUser(user.get().getId(), login));
             session.setAttribute(Attributes.ROLE, user.get().getRole());
             logger.info(String.format(Messages.LOG_SUCCESSFUL_LOGIN, user.get().getRole(), login));
             return new Redirect(ControllerUtil.getRedirectPath(user.get().getRole()));

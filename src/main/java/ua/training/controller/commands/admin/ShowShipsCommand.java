@@ -1,6 +1,7 @@
 package ua.training.controller.commands.admin;
 
 import ua.training.constants.Attributes;
+import ua.training.constants.Pages;
 import ua.training.constants.Parameters;
 import ua.training.constants.URLs;
 import ua.training.controller.commands.AccessRequired;
@@ -10,7 +11,7 @@ import ua.training.controller.servlets.actions.Redirect;
 import ua.training.controller.servlets.actions.ServletAction;
 import ua.training.model.entities.Ship;
 import ua.training.model.entities.User;
-import ua.training.model.services.CruiseService;
+import ua.training.model.services.ShipService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,18 +22,18 @@ import java.util.List;
  */
 @AccessRequired(roles = {User.Role.ADMIN})
 public class ShowShipsCommand implements Command {
-    private CruiseService cruiseService = CruiseService.getInstance();
+    private ShipService shipService = ShipService.getInstance();
     @Override
     public ServletAction execute(HttpServletRequest request) {
         String locale = (String) request.getSession().getAttribute(Attributes.LOCALE);
-        int numberOfPages = cruiseService.getNumberOfPages();
+        int numberOfPages = shipService.getNumberOfPages();
         try {
             int pageNumber = Integer.parseInt(request.getParameter(Parameters.PAGE));
             if (pageNumber > 0 && numberOfPages >= pageNumber) {
-                List<Ship> cruises = cruiseService.getAllShipsPerPage(pageNumber, locale);
+                List<Ship> ships = shipService.getAllShipsPerPage(pageNumber, locale);
                 request.setAttribute(Attributes.NUMBER_OF_PAGES, numberOfPages);
-                request.setAttribute("ships", cruises);
-                return new Forward("/WEB-INF/admin/ship_list.jsp");
+                request.setAttribute(Attributes.SHIPS, ships);
+                return new Forward(Pages.SHIP_LIST);
             } else {
                 return new Redirect(URLs.SHIP_LIST +
                         (pageNumber > 0 ? numberOfPages : 1));
