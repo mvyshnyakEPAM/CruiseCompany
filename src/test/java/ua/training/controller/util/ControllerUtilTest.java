@@ -17,55 +17,61 @@ public class ControllerUtilTest {
     @Test
     public void test_getUserPage_client_page_for_client() {
         String page = ControllerUtil.getUserPage(User.Role.CLIENT);
-        Assert.assertTrue(page.equals(URLs.CLIENT));
+        Assert.assertTrue(page.equals(Pages.CLIENT));
     }
 
     @Test
     public void test_getUserPage_admin_page_for_admin() {
         String page = ControllerUtil.getUserPage(User.Role.ADMIN);
-        Assert.assertTrue(page.equals(URLs.ADMIN));
-    }
-
-    @Test
-    public void test_getUserPage_guest_page_for_guest() {
-        String page = ControllerUtil.getUserPage(User.Role.GUEST);
-        Assert.assertTrue(page.equals(Pages.INDEX));
-    }
-
-    @Test
-    public void test_getUserPage_client_page_for_guest() {
-        String page = ControllerUtil.getUserPage(User.Role.GUEST);
-        Assert.assertFalse(page.equals(URLs.CLIENT));
-    }
-
-    @Test
-    public void test_getUserPage_admin_page_for_guest() {
-        String page = ControllerUtil.getUserPage(User.Role.GUEST);
-        Assert.assertFalse(page.equals(URLs.ADMIN));
-    }
-
-    @Test
-    public void test_getUserPage_guest_page_for_client() {
-        String page = ControllerUtil.getUserPage(User.Role.CLIENT);
-        Assert.assertFalse(page.equals(Pages.INDEX));
+        Assert.assertTrue(page.equals(Pages.ADMIN));
     }
 
     @Test
     public void test_getUserPage_admin_page_for_client() {
         String page = ControllerUtil.getUserPage(User.Role.CLIENT);
-        Assert.assertFalse(page.equals(URLs.ADMIN));
+        Assert.assertFalse(page.equals(Pages.ADMIN));
     }
 
     @Test
     public void test_getUserPage_client_page_for_admin() {
         String page = ControllerUtil.getUserPage(User.Role.ADMIN);
-        Assert.assertFalse(page.equals(URLs.CLIENT));
+        Assert.assertFalse(page.equals(Pages.CLIENT));
     }
 
     @Test
-    public void test_getUserPage_guest_page_for_admin() {
-        String page = ControllerUtil.getUserPage(User.Role.ADMIN);
-        Assert.assertFalse(page.equals(Pages.INDEX));
+    public void test_getRedirectPath_index_uri_for_guest() {
+        String page = ControllerUtil.getRedirectPath(User.Role.GUEST);
+        Assert.assertTrue(page.equals(URLs.INDEX));
+    }
+
+    @Test
+    public void test_getRedirectPath_main_uri_for_client() {
+        String page = ControllerUtil.getRedirectPath(User.Role.CLIENT);
+        Assert.assertTrue(page.equals(URLs.MAIN));
+    }
+
+    @Test
+    public void test_getRedirectPath_main_uri_for_admin() {
+        String page = ControllerUtil.getRedirectPath(User.Role.ADMIN);
+        Assert.assertTrue(page.equals(URLs.MAIN));
+    }
+
+    @Test
+    public void test_getRedirectPath_main_uri_for_guest() {
+        String page = ControllerUtil.getRedirectPath(User.Role.GUEST);
+        Assert.assertFalse(page.equals(URLs.MAIN));
+    }
+
+    @Test
+    public void test_getRedirectPath_index_uri_for_client() {
+        String page = ControllerUtil.getRedirectPath(User.Role.CLIENT);
+        Assert.assertFalse(page.equals(URLs.INDEX));
+    }
+
+    @Test
+    public void test_getRedirectPath_index_uri_for_admin() {
+        String page = ControllerUtil.getRedirectPath(User.Role.ADMIN);
+        Assert.assertFalse(page.equals(URLs.INDEX));
     }
 
     @Test

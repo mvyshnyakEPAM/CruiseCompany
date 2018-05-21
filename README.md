@@ -10,6 +10,6 @@ Cruise Company system. Company has several Ships. Ships have passenger - capacit
    - Push the button Start Import
 ## INSTRUCTION FOR STARTING THE PROJECT
 1. Istall maven http://www.apache-maven.ru/install.html
-2. In project directory open command line
+2. In project directory open PowerShell
 3. Enter command "mvn tomcat7:run"
 4. Open browser and follow the link http://localhost:8080/

@@ -21,6 +21,11 @@ public class ExcursionDaoImpl implements ExcursionDao {
     private final static Logger logger = LogManager.getLogger(ExcursionDaoImpl.class);
     private Connection connection;
 
+    /**
+     * Instantiates a new Excursion dao.
+     *
+     * @param connection the connection
+     */
     public ExcursionDaoImpl(Connection connection) {
         this.connection = connection;
     }
@@ -174,6 +179,14 @@ public class ExcursionDaoImpl implements ExcursionDao {
         }
     }
 
+    /**
+     * Extract entity from result set excursion.
+     *
+     * @param resultSet the result set
+     * @param locale    the locale
+     * @return the excursion
+     * @throws SQLException the sql exception
+     */
     public static Excursion extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Excursion.ExcursionBuilder()
                 .setId(resultSet.getInt(TableColumns.EXCURSION_ID))

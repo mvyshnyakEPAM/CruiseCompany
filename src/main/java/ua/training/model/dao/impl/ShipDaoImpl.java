@@ -26,6 +26,11 @@ public class ShipDaoImpl implements ShipDao {
     private final static Logger logger = LogManager.getLogger(ShipDaoImpl.class);
     private Connection connection;
 
+    /**
+     * Instantiates a new Ship dao.
+     *
+     * @param connection the connection
+     */
     public ShipDaoImpl(Connection connection) {
         this.connection = connection;
     }
@@ -227,18 +232,16 @@ public class ShipDaoImpl implements ShipDao {
     @Override
     public void update(Ship entity) {
         try(PreparedStatement ps = connection.prepareStatement(Queries.SHIP_UPDATE)) {
-            ps.setString(1, entity.getNameEn());
-            ps.setString(2, entity.getNameUa());
-            ps.setInt(3, entity.getPrice());
-            ps.setInt(4, entity.getPortsVisited());
-            ps.setDate(5, valueOf(entity.getDeparture()));
-            ps.setDate(6, valueOf(entity.getArrival()));
-            ps.setInt(7, entity.getCruiseDuration());
-            ps.setString(8, entity.getShipClass().name());
-            ps.setInt(9, entity.getPassengerCapacity());
-            ps.setInt(10, entity.getFreePlaces());
-            ps.setInt(11, entity.getStaff());
-            ps.setInt(12, entity.getId());
+            ps.setInt(1, entity.getPrice());
+            ps.setInt(2, entity.getPortsVisited());
+            ps.setDate(3, valueOf(entity.getDeparture()));
+            ps.setDate(4, valueOf(entity.getArrival()));
+            ps.setInt(5, entity.getCruiseDuration());
+            ps.setString(6, entity.getShipClass().name());
+            ps.setInt(7, entity.getPassengerCapacity());
+            ps.setInt(8, entity.getFreePlaces());
+            ps.setInt(9, entity.getStaff());
+            ps.setInt(10, entity.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
@@ -267,6 +270,14 @@ public class ShipDaoImpl implements ShipDao {
         }
     }
 
+    /**
+     * Extract entity from result set ship.
+     *
+     * @param resultSet the result set
+     * @param locale    the locale
+     * @return the ship
+     * @throws SQLException the sql exception
+     */
     public static Ship extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Ship.ShipBuilder()
                 .setId(resultSet.getInt(TableColumns.SHIP_ID))

@@ -26,6 +26,7 @@ CREATE TABLE `port_has_ship` (
   `port_id` int(11) NOT NULL,
   `ship_id` int(11) NOT NULL,
   `order_number` int(11) NOT NULL,
+  UNIQUE KEY `index3` (`port_id`,`ship_id`,`order_number`),
   KEY `fk_port_has_cruises_cruises1_idx` (`ship_id`),
   KEY `fk_port_has_cruises_port1_idx` (`port_id`),
   CONSTRAINT `fk_port_has_cruises_cruises1` FOREIGN KEY (`ship_id`) REFERENCES `ship` (`ship_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -39,7 +40,7 @@ CREATE TABLE `port_has_ship` (
 
 LOCK TABLES `port_has_ship` WRITE;
 /*!40000 ALTER TABLE `port_has_ship` DISABLE KEYS */;
-INSERT INTO `port_has_ship` VALUES (1,1,1),(1,1,6),(2,1,2),(3,1,3),(4,1,5),(5,1,4),(1,2,1),(1,2,7),(2,2,5),(6,2,2),(7,2,3),(8,2,4),(9,2,6),(10,3,1),(10,3,3),(11,3,2),(11,4,3),(12,4,1),(12,4,4),(13,4,2),(1,5,3),(3,5,2),(8,5,1),(14,6,1),(14,6,3),(15,6,2),(2,7,1),(1,7,2),(9,7,3),(2,7,4),(1,8,1),(2,8,2),(3,8,3),(6,8,4),(1,8,5);
+INSERT INTO `port_has_ship` VALUES (1,1,1),(1,1,6),(2,1,2),(3,1,3),(4,1,5),(5,1,4),(1,2,1),(1,2,5),(7,2,2),(8,2,3),(9,2,4),(10,3,1),(10,3,3),(11,3,2),(11,4,3),(12,4,1),(12,4,4),(13,4,2),(1,5,3),(3,5,2),(8,5,1),(14,6,1),(14,6,3),(15,6,2),(1,7,2),(2,7,1),(2,7,4),(9,7,3),(1,8,1),(1,8,5),(2,8,2),(3,8,3),(6,8,4);
 /*!40000 ALTER TABLE `port_has_ship` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20  0:47:31
+-- Dump completed on 2018-05-20 22:50:06

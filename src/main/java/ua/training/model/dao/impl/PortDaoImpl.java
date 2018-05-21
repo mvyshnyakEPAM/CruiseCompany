@@ -20,6 +20,11 @@ public class PortDaoImpl implements PortDao {
     private final static Logger logger = LogManager.getLogger(PortDaoImpl.class);
     private Connection connection;
 
+    /**
+     * Instantiates a new Port dao.
+     *
+     * @param connection the connection
+     */
     public PortDaoImpl(Connection connection) {
         this.connection = connection;
     }
@@ -136,6 +141,14 @@ public class PortDaoImpl implements PortDao {
         }
     }
 
+    /**
+     * Extract entity from result set port.
+     *
+     * @param resultSet the result set
+     * @param locale    the locale
+     * @return the port
+     * @throws SQLException the sql exception
+     */
     public static Port extractEntityFromResultSet(ResultSet resultSet, String locale) throws SQLException {
         return new Port.PortBuilder()
                 .setId(resultSet.getInt(TableColumns.PORT_ID))

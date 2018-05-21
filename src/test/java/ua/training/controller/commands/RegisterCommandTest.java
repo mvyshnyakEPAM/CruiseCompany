@@ -111,6 +111,7 @@ public class RegisterCommandTest {
         Mockito.verify(request).getParameter(Parameters.LOGIN);
         Mockito.verify(request).getParameter(Parameters.PASSWORD);
         Mockito.verify(registerCommand.userService).signUp(user);
+        Mockito.verify(request).setAttribute(Attributes.MESSAGE_INFO, Messages.SUCCESSFUL_REGISTRATION);
         Mockito.verifyNoMoreInteractions(request, registerCommand.userService);
     }
 }

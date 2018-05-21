@@ -25,7 +25,7 @@ import java.util.Set;
  */
 public class ShipService {
     private final static Logger logger = LogManager.getLogger(ShipService.class);
-    private DaoFactory daoFactory = DaoFactory.getInstance();
+    DaoFactory daoFactory = DaoFactory.getInstance();
 
     private ShipService() {
     }
@@ -34,10 +34,21 @@ public class ShipService {
         private static final ShipService INSTANCE = new ShipService();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ShipService getInstance() {
         return ShipServiceHolder.INSTANCE;
     }
 
+    /**
+     * Gets all cruises.
+     *
+     * @param locale the locale
+     * @return the all cruises
+     */
     public List<Ship> getAllCruises(String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
@@ -50,6 +61,13 @@ public class ShipService {
         }
     }
 
+    /**
+     * Gets cruises per page.
+     *
+     * @param pageNumber the page number
+     * @param locale     the locale
+     * @return the cruises per page
+     */
     public List<Ship> getCruisesPerPage(int pageNumber, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
@@ -62,25 +80,38 @@ public class ShipService {
         }
     }
 
+    /**
+     * Gets cruise by name.
+     *
+     * @param name   the name
+     * @param locale the locale
+     * @return the cruise by name
+     */
     public Optional<Ship> getCruiseByName(String name, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
             PortDao portDao = daoFactory.createPortDao(connection);
             ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {
-            Optional<Ship> ship = shipDao.getShipByName(name, locale);
-            if (ship.isPresent()) {
-                Ship cruise = ship.get();
-                cruise.setBonuses(shipDao.getAllBonusesByShip(cruise.getId()));
-                cruise.setPorts(portDao.getAllPortsByShip(cruise.getId(), locale));
-                for (Port port : cruise.getPorts()) {
+            Optional<Ship> cruise = shipDao.getShipByName(name, locale);
+            if (cruise.isPresent()) {
+                cruise.get().setBonuses(shipDao.getAllBonusesByShip(cruise.get().getId()));
+                cruise.get().setPorts(portDao.getAllPortsByShip(cruise.get().getId(), locale));
+                for (Port port : cruise.get().getPorts()) {
                     port.setExcursions(excursionDao.getAllExcursionsByPort(port.getId(), locale));
                 }
-                return Optional.of(cruise);
+                return cruise;
             }
             return Optional.empty();
         }
     }
 
+    /**
+     * Gets all cruises by user.
+     *
+     * @param userId the user id
+     * @param locale the locale
+     * @return the all cruises by user
+     */
     public List<Ship> getAllCruisesByUser(int userId, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection);
@@ -94,6 +125,15 @@ public class ShipService {
         }
     }
 
+    /**
+     * Adds a bought cruise and excursions to user.
+     *
+     * @param userId     the user id
+     * @param ship       the ship
+     * @param excursions the excursions
+     * @return the boolean
+     * @throws CruiseAlreadyBoughtException the cruise already bought exception
+     */
     public boolean payCruise(int userId, Ship ship, Set<Excursion> excursions)
             throws CruiseAlreadyBoughtException {
         Connection connection = ConnectionPool.getConnection();
@@ -109,8 +149,6 @@ public class ShipService {
                 }
                 connection.commit();
                 return true;
-            } else {
-                connection.rollback();
             }
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
@@ -124,6 +162,13 @@ public class ShipService {
         return false;
     }
 
+    /**
+     * Gets ship by name.
+     *
+     * @param name   the name
+     * @param locale the locale
+     * @return the ship by name
+     */
     public Optional<Ship> getShipByName(String name, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -131,6 +176,13 @@ public class ShipService {
         }
     }
 
+    /**
+     * Gets all ships per one page.
+     *
+     * @param pageNumber the page number
+     * @param locale     the locale
+     * @return the all ships per page
+     */
     public List<Ship> getAllShipsPerPage(int pageNumber, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -138,6 +190,12 @@ public class ShipService {
         }
     }
 
+    /**
+     * Gets all bonuses by ship.
+     *
+     * @param shipId the ship id
+     * @return the all bonuses by ship
+     */
     public List<Bonus> getAllBonusesByShip(int shipId) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -145,6 +203,12 @@ public class ShipService {
         }
     }
 
+    /**
+     * Adds bonus to ship.
+     *
+     * @param shipId the ship id
+     * @param bonus  the bonus
+     */
     public void addBonusToShip(int shipId, String bonus) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -152,6 +216,12 @@ public class ShipService {
         }
     }
 
+    /**
+     * Removes bonus from ship.
+     *
+     * @param shipId the ship id
+     * @param bonus  the bonus
+     */
     public void removeBonusFromShip(int shipId, String bonus) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -160,6 +230,11 @@ public class ShipService {
     }
 
 
+    /**
+     * Gets number of pages considering number of ships.
+     *
+     * @return the number of pages
+     */
     public int getNumberOfPages() {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {
@@ -168,6 +243,12 @@ public class ShipService {
         }
     }
 
+    /**
+     * Checks whether there is free places on cruise.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean freePlacesAvailable(String name) {
         Connection connection = ConnectionPool.getConnection();
         try(ShipDao shipDao = daoFactory.createShipDao(connection)) {

@@ -24,10 +24,21 @@ public class UserService {
         private static final UserService INSTANCE = new UserService();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static UserService getInstance() {
         return Holder.INSTANCE;
     }
 
+    /**
+     * Signs up user.
+     *
+     * @param user the user
+     * @throws LoginAlreadyExistsException the login already exists exception
+     */
     public void signUp(User user) throws LoginAlreadyExistsException {
         Connection connection = ConnectionPool.getConnection();
         try(UserDao userDao = daoFactory.createUserDao(connection)) {
@@ -35,6 +46,13 @@ public class UserService {
         }
     }
 
+    /**
+     * Signs in user.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the optional
+     */
     public Optional<User> signIn(String login, String password) {
         Connection connection = ConnectionPool.getConnection();
         try(UserDao userDao = daoFactory.createUserDao(connection)) {

@@ -23,6 +23,7 @@ D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\con
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\entities\enums\Bonus.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\client\RemoveExcursionCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Info.java
+D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\services\ShipService.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Parameters.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\admin\RemoveBonusCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Pages.java
@@ -30,11 +31,11 @@ D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\mod
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\exceptions\LoginAlreadyExistsException.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\PortDao.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\Command.java
+D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\view\DateFormatTag.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\LoginCommand.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Queries.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Attributes.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\UserDao.java
-D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\DateFormatTag.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\util\ControllerUtil.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\commands\CommandFactory.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\servlets\actions\Forward.java
@@ -51,7 +52,6 @@ D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\con
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\constants\Commands.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\servlets\Servlet.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\ShipDao.java
-D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\services\CruiseService.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\controller\servlets\actions\Redirect.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\factory\JDBCDaoFactory.java
 D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\java\ua\training\model\dao\impl\PortDaoImpl.java

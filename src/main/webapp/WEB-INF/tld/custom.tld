@@ -25,6 +25,4 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
 </taglib>

@@ -21,6 +21,11 @@ public class UserDaoImpl implements UserDao {
     private final static Logger logger = LogManager.getLogger(UserDaoImpl.class);
     private Connection connection;
 
+    /**
+     * Instantiates a new User dao.
+     *
+     * @param connection the connection
+     */
     public UserDaoImpl(Connection connection) {
         this.connection = connection;
     }
@@ -119,6 +124,13 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    /**
+     * Extract entity from result set user.
+     *
+     * @param resultSet the result set
+     * @return the user
+     * @throws SQLException the sql exception
+     */
     public static User extractEntityFromResultSet(ResultSet resultSet) throws SQLException {
         return new User.UserBuilder()
                 .setId(resultSet.getInt(TableColumns.USER_ID))

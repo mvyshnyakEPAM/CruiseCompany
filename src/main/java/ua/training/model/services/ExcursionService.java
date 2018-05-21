@@ -23,10 +23,22 @@ public class ExcursionService {
         private static final ExcursionService INSTANCE = new ExcursionService();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ExcursionService getInstance() {
         return ExcursionService.ExcursionServiceHolder.INSTANCE;
     }
 
+    /**
+     * Gets excursion by name.
+     *
+     * @param name   the name
+     * @param locale the locale
+     * @return the excursion by name
+     */
     public Optional<Excursion> getExcursionByName(String name, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {
@@ -34,6 +46,14 @@ public class ExcursionService {
         }
     }
 
+    /**
+     * Gets all excursions by user and cruise.
+     *
+     * @param userId   the user id
+     * @param shipName the ship name
+     * @param locale   the locale
+     * @return the all excursions by user and cruise
+     */
     public List<Excursion> getAllExcursionsByUserAndCruise(int userId, String shipName, String locale) {
         Connection connection = ConnectionPool.getConnection();
         try(ExcursionDao excursionDao = daoFactory.createExcursionDao(connection)) {

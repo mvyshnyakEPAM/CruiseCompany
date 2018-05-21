@@ -26,6 +26,7 @@ CREATE TABLE `excursion_has_user` (
   `excursion_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `ship_name` varchar(45) NOT NULL,
+  UNIQUE KEY `index3` (`excursion_id`,`user_id`,`ship_name`),
   KEY `fk_excursions_has_users_users1_idx` (`user_id`),
   KEY `fk_excursions_has_users_excursions1_idx` (`excursion_id`),
   CONSTRAINT `fk_excursions_has_users_excursions1` FOREIGN KEY (`excursion_id`) REFERENCES `excursion` (`excursion_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-20  0:47:30
+-- Dump completed on 2018-05-20 22:50:05

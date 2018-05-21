@@ -277,4 +277,48 @@ public class Ship {
             return ship;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ship ship = (Ship) o;
+
+        if (price != ship.price) return false;
+        if (portsVisited != ship.portsVisited) return false;
+        if (cruiseDuration != ship.cruiseDuration) return false;
+        if (passengerCapacity != ship.passengerCapacity) return false;
+        if (freePlaces != ship.freePlaces) return false;
+        if (staff != ship.staff) return false;
+        if (name != null ? !name.equals(ship.name) : ship.name != null) return false;
+        if (nameEn != null ? !nameEn.equals(ship.nameEn) : ship.nameEn != null) return false;
+        if (nameUa != null ? !nameUa.equals(ship.nameUa) : ship.nameUa != null) return false;
+        if (departure != null ? !departure.equals(ship.departure) : ship.departure != null) return false;
+        if (arrival != null ? !arrival.equals(ship.arrival) : ship.arrival != null) return false;
+        if (shipClass != ship.shipClass) return false;
+        if (ports != null ? !ports.equals(ship.ports) : ship.ports != null) return false;
+        if (users != null ? !users.equals(ship.users) : ship.users != null) return false;
+        return bonuses != null ? bonuses.equals(ship.bonuses) : ship.bonuses == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (nameEn != null ? nameEn.hashCode() : 0);
+        result = 31 * result + (nameUa != null ? nameUa.hashCode() : 0);
+        result = 31 * result + price;
+        result = 31 * result + portsVisited;
+        result = 31 * result + (departure != null ? departure.hashCode() : 0);
+        result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
+        result = 31 * result + cruiseDuration;
+        result = 31 * result + (shipClass != null ? shipClass.hashCode() : 0);
+        result = 31 * result + passengerCapacity;
+        result = 31 * result + freePlaces;
+        result = 31 * result + staff;
+        result = 31 * result + (ports != null ? ports.hashCode() : 0);
+        result = 31 * result + (users != null ? users.hashCode() : 0);
+        result = 31 * result + (bonuses != null ? bonuses.hashCode() : 0);
+        return result;
+    }
 }

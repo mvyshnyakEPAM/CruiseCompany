@@ -52,10 +52,21 @@ public class CommandFactory {
         private static final CommandFactory INSTANCE = new CommandFactory();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static CommandFactory getInstance() {
         return CommandFactoryHolder.INSTANCE;
     }
 
+    /**
+     * Gets command.
+     *
+     * @param request the request
+     * @return the command
+     */
     public Command getCommand(HttpServletRequest request) {
         String uri = request.getRequestURI();
         User.Role role = (User.Role) request.getSession().getAttribute(Attributes.ROLE);

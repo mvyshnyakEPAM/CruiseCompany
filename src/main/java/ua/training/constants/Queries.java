@@ -44,7 +44,7 @@ public interface Queries {
     String SHIP_FIND_BY_NAME = "SELECT * FROM ship WHERE ship_name_en = ?";
     String SHIP_GET_FREE_PLACES = "SELECT free_places FROM ship WHERE ship_name_en = ?";
     String SHIP_FIND_ALL = "SELECT * FROM ship";
-    String SHIP_UPDATE = "UPDATE ship SET ship_name_en = ?, ship_name_ua = ?, price = ?, ports_visited = ?, departure = ?, arrival = ?, " +
+    String SHIP_UPDATE = "UPDATE ship SET price = ?, ports_visited = ?, departure = ?, arrival = ?, " +
                             "cruise_duration = ?, ship_class = ?, passenger_capacity = ?, free_places = ?, staff = ? WHERE ship_id = ?";
     String SHIP_DELETE = "DELETE FROM ship WHERE ship_id = ?";
     String SHIP_COUNT = "SELECT count(*) FROM ship";
