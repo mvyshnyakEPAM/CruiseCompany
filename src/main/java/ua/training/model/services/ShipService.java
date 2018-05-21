@@ -142,7 +142,8 @@ public class ShipService {
             connection.setAutoCommit(false);
             if (freePlacesAvailable(ship.getNameEn())) {
                 shipDao.addShipToUser(ship.getId(), userId);
-                ship.setFreePlaces(ship.getFreePlaces() - 1);
+                int freePlaces = shipDao.getFreePlacesAmount(ship.getNameEn());
+                ship.setFreePlaces(freePlaces - 1);
                 shipDao.update(ship);
                 for (Excursion excursion : excursions) {
                     excursionDao.addExcursionToUser(excursion.getId(), userId, ship.getNameEn());

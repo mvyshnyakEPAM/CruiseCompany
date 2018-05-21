@@ -7,86 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cab2eda-58b1-4e9f-b15c-f6ad693b1b7f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/ua/training/controller/commands/client/ShowCruiseInfoCommandTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ua/training/DateFormatTag.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ua/training/constants/CommandPaths.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/listeners/LoginDto.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/CruiseService$CruiseServiceHolder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/CruiseService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/controller/commands/client/ShowCruiseInfoCommandTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/constants/Messages.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/constants/Messages.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/constants/Queries.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/constants/Queries.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/constants/TableColumns.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/constants/TableColumns.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/CommandFactory.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/CommandFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/admin/AddBonusCommand.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/admin/AddBonusCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/admin/RemoveBonusCommand.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/admin/RemoveBonusCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/AddExcursionCommand.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/AddExcursionCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/PayCruiseCommand.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/PayCruiseCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/RemoveExcursionCommand.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/commands/client/RemoveExcursionCommand.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/controller/util/ControllerUtil.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/controller/util/ControllerUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/dao/cp/ConnectionPool.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/dao/cp/ConnectionPool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/ExcursionDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/ExcursionDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/PortDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/PortDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/ShipDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/ShipDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/dao/impl/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/ExcursionService.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/services/ExcursionService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/ShipService$ShipServiceHolder.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/services/ShipService$ShipServiceHolder.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/model/services/ShipServiceTest.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/entities/Ship.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/entities/Ship.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/ShipService.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/services/ShipService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/training/model/services/UserService.class" afterPath="$PROJECT_DIR$/target/classes/ua/training/model/services/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/controller/commands/LoginCommandTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ua/training/controller/commands/LoginCommandTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/controller/commands/RegisterCommandTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ua/training/controller/commands/RegisterCommandTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/controller/util/ControllerUtilTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ua/training/controller/util/ControllerUtilTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ua/training/model/services/UserServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/ua/training/model/services/UserServiceTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/client_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/client_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruise_005finfo_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruise_005finfo_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruises_005flist_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruises_005flist_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/my_005fcruises_005flist_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/my_005fcruises_005flist_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/components/head_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/components/head_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/index_jsp.class" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/index_jsp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/company.log" afterPath="$PROJECT_DIR$/company.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_bonus.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_bonus.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_excursion.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_excursion.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_excursion_has_user.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_excursion_has_user.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_port.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_port.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_port_has_ship.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_port_has_ship.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_ship.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_ship.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_user.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_user.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbdumps/cruise_company_db_user_has_ship.sql" afterPath="$PROJECT_DIR$/dbdumps/cruise_company_db_user_has_ship.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/constants/Queries.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/constants/Queries.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/controller/commands/CommandFactory.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/controller/commands/CommandFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/controller/util/ControllerUtil.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/controller/util/ControllerUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/ExcursionDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/ExcursionDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/PortDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/PortDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/ShipDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/ShipDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/entities/Ship.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/entities/Ship.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/services/ExcursionService.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/services/ExcursionService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/training/model/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/ua/training/model/services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_ua.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_ua.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/client.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/client.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/cruises_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/cruises_list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/my_cruises_list.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/my_cruises_list.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/registration.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/registration.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tld/custom.tld" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tld/custom.tld" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ua/training/controller/commands/RegisterCommandTest.java" afterPath="$PROJECT_DIR$/src/test/java/ua/training/controller/commands/RegisterCommandTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ua/training/controller/util/ControllerUtilTest.java" afterPath="$PROJECT_DIR$/src/test/java/ua/training/controller/util/ControllerUtilTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ua/training/model/services/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/ua/training/model/services/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_ua.properties" afterPath="$PROJECT_DIR$/target/classes/messages_ua.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2018-05-20" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2018-05-20" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/client_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/client_jsp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruise_005finfo_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruise_005finfo_jsp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruises_005flist_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/cruises_005flist_jsp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/my_005fcruises_005flist_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/client/my_005fcruises_005flist_jsp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/components/head_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/components/head_jsp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2018-05-21" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2018-05-21" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/index_jsp.java" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/index_jsp.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -122,7 +51,48 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="ShipService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1071">
+              <caret line="143" column="60" lean-forward="true" selection-start-line="143" selection-start-column="60" selection-end-line="143" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-260">
+              <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -156,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/client/cruise_info.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/constants/Parameters.java" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/constants/Attributes.java" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/controller/commands/admin/ShowShipBonusesCommand.java" />
@@ -195,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/registration.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tld/custom.tld" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/constants/Queries.java" />
         <option value="$PROJECT_DIR$/src/test/java/ua/training/controller/commands/client/ShowCruiseInfoCommandTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ua/training/model/services/UserServiceTest.java" />
@@ -204,9 +172,11 @@
         <option value="$PROJECT_DIR$/src/main/java/ua/training/model/services/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/model/dao/impl/ShipDaoImpl.java" />
         <option value="$PROJECT_DIR$/company.log" />
-        <option value="$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java" />
         <option value="$PROJECT_DIR$/src/test/java/ua/training/model/services/ShipServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ua/training/model/entities/Ship.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" />
       </list>
     </option>
   </component>
@@ -244,10 +214,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -262,12 +228,62 @@
             </path>
             <path>
               <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ua" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ua" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ua" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CruiseCompany" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CruiseCompany" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,12 +299,8 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources\images" />
-      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources\css" />
-      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\WEB-INF\tld" />
-      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\WEB-INF" />
-      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ua.training.model.entities" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ua.training" />
@@ -301,8 +313,12 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ua.training.controller.filters" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ua.training.model.entities" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources\images" />
+      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources\css" />
+      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\WEB-INF\tld" />
+      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\WEB-INF" />
+      <recent name="D:\Programming\JavaRush\ProjectsIDEA\CruiseCompany\src\main\webapp\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -317,7 +333,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="Maven.Tomcat">
     <configuration name="ShipServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -777,13 +793,11 @@
       <workItem from="1526892963303" duration="29000" />
       <workItem from="1526893004768" duration="6939000" />
       <workItem from="1526921826231" duration="246000" />
+      <workItem from="1526923347371" duration="1858000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ShipServiceTest - 2018.05.21 at 13h 43m 29s.xml">
-      <configuration name="ShipServiceTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ShipServiceTest - 2018.05.21 at 13h 45m 59s.xml">
       <configuration name="ShipServiceTest" configurationId="JUnit" />
     </history-entry>
@@ -808,12 +822,15 @@
     <history-entry file="UserServiceTest - 2018.05.21 at 19h 57m 31s.xml">
       <configuration name="UserServiceTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserServiceTest - 2018.05.21 at 20h 33m 26s.xml">
+      <configuration name="UserServiceTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="ua_training_in_CruiseCompany - 2018.05.21 at 13h 10m 01s.xml">
       <configuration name="ua.training in CruiseCompany" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="420087000" />
+    <option name="totallyTimeSpent" value="421945000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -828,20 +845,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27741936" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33208954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13752665" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -905,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="6" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="32" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/registration.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
@@ -920,13 +930,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/successful_registration.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1023,7 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1172">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-220">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,7 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-475">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,7 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,13 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1098,7 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,7 +1112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,7 +1119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1137,15 +1126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3859">
           <caret line="243" column="24" lean-forward="false" selection-start-line="243" selection-start-column="24" selection-end-line="243" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1161,7 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="39" column="49" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1169,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,7 +1155,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1185,7 +1162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1193,7 +1169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2028">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,7 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2725">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,22 +1198,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2448">
           <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ua/training/model/services/ShipServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ua/training/model/services/ShipServiceTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/ua/training/model/services/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/model/services/ShipService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="143" column="60" lean-forward="true" selection-start-line="143" selection-start-column="60" selection-end-line="143" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
           <folding />
         </state>
       </provider>

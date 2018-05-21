@@ -71,3 +71,5 @@ java.sql.SQLException: Parameter index out of range (11 > number of parameters, 
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
 2018-05-21 13:24:54.846 [http-bio-8080-exec-10] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
 2018-05-21 13:25:01.859 [http-bio-8080-exec-10] INFO  ua.training.controller.commands.client.PayCruiseCommand - info_successful_purchase
+2018-05-21 20:43:43.659 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
+2018-05-21 20:44:48.260 [http-bio-8080-exec-8] INFO  ua.training.controller.commands.LoginCommand - CLIENT Dentris91 logged successfully.
