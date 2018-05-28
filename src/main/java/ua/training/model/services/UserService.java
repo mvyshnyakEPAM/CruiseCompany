@@ -15,7 +15,7 @@ import java.util.Optional;
  * 30.04.2018
  */
 public class UserService {
-    private DaoFactory daoFactory = DaoFactory.getInstance();
+    DaoFactory daoFactory = DaoFactory.getInstance();
 
     private UserService() {
     }
